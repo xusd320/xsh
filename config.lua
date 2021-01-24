@@ -1,0 +1,8 @@
+require("basic")
+require("filetree")
+require("lsp")
+require("treesitter")
+require("telescope_setup")
+require("keymap")
+require("autocmd")
+require("plugins")
