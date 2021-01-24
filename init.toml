@@ -1,0 +1,125 @@
+#=============================================================================
+# Copyright (c) 2000-2100 Shaodong Xu
+# Author: Shaodong Xu < xusd320@gmail.com >
+# License: GPLv3
+#=============================================================================
+
+[options]
+    # compatible
+    vimcompatible = true
+
+    # ui
+    colorscheme = "palenight"
+    colorscheme_bg = "dark"
+    enable_guicolors = true
+    guifont = "Hack Nerd Font:h13"
+    windows_index_type = 3
+    buffer_index_type = 4
+
+    statusline_separator = "arrow"
+    statusline_unicode_symbols = true
+    statusline_inactive_separator = "bar"
+    statusline_left_sections = ['winnr', 'major mode', 'minor mode lighters', 'version control info', 'search status']    
+    statusline_right_sections = ['cursorpos', 'percentage', 'input method', 'date', 'time']    
+    enable_statusline_mode = true
+    enable_statusline_bfpath = true
+
+    autocomplete_method = "deoplete"
+    
+    snippet_engine = "ultisnips"
+
+    # script
+    bootstrap_before = "space#before"
+    bootstrap_after  = "space#after"    
+
+# Base layers
+[[layers]]
+  name = "ui"
+  enable_scrollbar = true
+  
+[[layers]]
+  name = "colorscheme"
+
+[[layers]]
+  name = 'autocomplete'
+  auto_completion_return_key_behavior = "complete"
+  auto_completion_tab_key_behavior = "cycle"
+  auto_completion_enable_snippets_in_popup = false
+
+[[layers]]
+  name = "lsp"
+  filetypes = [
+    "rust",
+    "c",
+    "cpp",
+    "typescript",
+    "javascript",
+    "python"
+  ]
+  [layers.override_cmd]
+  rust = ["rustup", "run", "nightly", "rls"]
+
+[[layers]]
+  name = 'incsearch'
+
+[[layers]]
+  name = 'denite'
+
+[[layers]]
+  name = "fzf"
+
+[[layers]]
+  name = "format"
+
+[[layers]]
+  name = "checkers"
+
+[[layers]]
+  name = "git"
+  git-plugin = "fugitive"
+
+[[layers]]
+  name = "VersionControl"
+
+[[layers]]
+  name = 'shell'
+  default_position = 'top'
+  default_height = 30
+
+# Language layers
+[[layers]]
+  name = "lang#rust"
+
+[[layers]]
+  name = "lang#c"
+  [layer.clang_std]
+    c = "c11"
+    cpp = "c++1z"
+    objc = "c11"
+    objcpp = "c++1z"
+
+[[layers]]
+  name = "lang#typescript"
+
+[[layers]]
+  name = "lang#javascript"
+
+[[layers]]
+  name = "lang#python"
+
+# Custom layers
+[[custom_plugins]]
+  repo = "roxma/nvim-yarp"
+  merged = 0
+
+[[custom_plugins]]
+  repo = "roxma/vim-hug-neovim-rpc"
+  merged = 0
+
+[[custom_plugins]]
+  repo = "flrnd/candid.vim"
+  merged = 0
+
+[[custom_plugins]]
+  repo = "junegunn/fzf.vim"
+  merged = 0
