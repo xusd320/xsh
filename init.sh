@@ -16,3 +16,4 @@ npm i -g javascript-typescript-langserver typescript-language-server
 pip3 install python-language-server
 
 curl -sLf https://spacevim.org/cn/install.sh | bash
+brew install neovim

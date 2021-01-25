@@ -57,7 +57,7 @@
     "python"
   ]
   [layers.override_cmd]
-  rust = ["rustup", "run", "nightly", "rls"]
+  rust = ["rust-analyzer"]
 
 [[layers]]
   name = 'incsearch'
@@ -106,20 +106,3 @@
 
 [[layers]]
   name = "lang#python"
-
-# Custom layers
-[[custom_plugins]]
-  repo = "roxma/nvim-yarp"
-  merged = 0
-
-[[custom_plugins]]
-  repo = "roxma/vim-hug-neovim-rpc"
-  merged = 0
-
-[[custom_plugins]]
-  repo = "flrnd/candid.vim"
-  merged = 0
-
-[[custom_plugins]]
-  repo = "junegunn/fzf.vim"
-  merged = 0

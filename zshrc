@@ -121,5 +121,5 @@ export PATH="$HOME/.depot_tools/:$PATH"
 
 alias vcpkg="~/.vcpkg/vcpkg"
 alias cnpm="npm --registry=https://registry.npm.taobao.org"
-alias vi="mvim -v"
-alias vim="mvim -v"
+alias vi="nvim"
+alias vim="nvim"
