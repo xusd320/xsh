@@ -35,7 +35,6 @@
 # Base layers
 [[layers]]
   name = "ui"
-  enable_scrollbar = true
   
 [[layers]]
   name = "colorscheme"
