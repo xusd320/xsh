@@ -28,6 +28,8 @@
     
     snippet_engine = "ultisnips"
 
+    enable_googlesuggest = 1
+
     # script
     bootstrap_before = "space#before"
     bootstrap_after  = "space#after"    
