@@ -23,3 +23,6 @@ chmod +x ~/.cargo/bin/rust-analyzer
 
 brew install llvm
 echo 'export PATH="/usr/local/opt/llvm/bin:$PATH"' >> ~/.zshrc
+
+brew tap homebrew/cask-fonts
+brew install --cask font-hack-nerd-font

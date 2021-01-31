@@ -12,7 +12,7 @@
     colorscheme = "palenight"
     colorscheme_bg = "dark"
     enable_guicolors = true
-    guifont = "Hack Nerd Font:h13"
+    guifont = "Hack Nerd Font:h14"
     windows_index_type = 3
     buffer_index_type = 4
 
