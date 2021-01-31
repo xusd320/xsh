@@ -20,3 +20,6 @@ brew install neovim ripgrep
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh\n
 curl https://github.com/rust-analyzer/rust-analyzer/releases/download/nightly/rust-analyzer-mac -o ~/.cargo/bin/rust-analyzer
 chmod +x ~/.cargo/bin/rust-analyzer 
+
+brew install llvm
+echo 'export PATH="/usr/local/opt/llvm/bin:$PATH"' >> ~/.zshrc

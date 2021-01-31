@@ -117,6 +117,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export PATH="$PATH:/usr/local/sbin:/Library/Developer/CommandLineTools/usr/bin/"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH="$HOME/.depot_tools/:$PATH"
 
 alias vcpkg="~/.vcpkg/vcpkg"
