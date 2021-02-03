@@ -10,7 +10,7 @@ curl https://raw.githubusercontent.com/JonathanSpeek/palenight-iterm2/master/pal
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 nvm use lts
-npm i -g javascript-typescript-langserver typescript-language-server
+npm i -g javascript-typescript-langserver typescript-language-server prettier
 
 pip3 install python-language-server
 
