@@ -15,6 +15,7 @@
     guifont = "Hack Nerd Font:h14"
     windows_index_type = 3
     buffer_index_type = 4
+    relativenumber = false
 
     statusline_separator = "arrow"
     statusline_unicode_symbols = true
