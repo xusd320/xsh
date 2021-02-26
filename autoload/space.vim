@@ -6,7 +6,7 @@ function! space#before() abort
 
   let g:neomake_open_list = 0
 
-  let g:LanguageClient_loggingFile = expand('~/.cache/vimfiles/LanguageClient.log')
+  let g:LanguageClient_loggingFile = expand('~/.cache/SpaceVim/LanguageClient.log')
 endfunction
 
 function! space#after() abort
