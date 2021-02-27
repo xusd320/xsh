@@ -8,8 +8,7 @@
       "autoreload": false
     },
     "checkOnSave": {
-      "enable": false,
-      "allTargets": false
+      "enable": false
     }
   }
 }

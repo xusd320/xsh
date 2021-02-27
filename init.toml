@@ -35,6 +35,11 @@
     bootstrap_before = "space#before"
     bootstrap_after  = "space#after"    
 
+# Disabled builtin layers
+[[layers]]
+  name = "checkers"
+  enable = false
+
 # Base layers
 [[layers]]
   name = "ui"
@@ -72,9 +77,6 @@
 
 [[layers]]
   name = "format"
-
-# [[layers]]
-  # name = "checkers"
 
 [[layers]]
   name = "git"
