@@ -112,3 +112,9 @@
 [[layers]]
   name = "lang#markdown"
 
+[[custom_plugins]]
+  repo = "autozimu/LanguageClient-neovim"
+  rev = "dev"
+  merged = true
+  build = "bash install.sh"
+

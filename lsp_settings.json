@@ -1,5 +1,15 @@
 {
   "rust-analyzer": {
-    "checkOnSave.enable": false
+    "procMacro": {
+      "enable": true
+    },
+    "cargo": {
+      "loadOutDirsFromCheck": true,
+      "autoreload": false
+    },
+    "checkOnSave": {
+      "enable": false,
+      "allTargets": false
+    }
   }
 }
