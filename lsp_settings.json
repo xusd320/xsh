@@ -9,6 +9,9 @@
     },
     "checkOnSave": {
       "enable": false
+    },
+    "updates": {
+      "channel": "stable"
     }
   }
 }

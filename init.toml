@@ -64,7 +64,8 @@
     "python"
   ]
   [layers.override_cmd]
-  rust = ["rust-analyzer"]
+  # RA_LOG=info vim to see write log
+  rust = ["rust-analyzer", "--log-file", "/Users/xusd/.cache/SpaceVim/lsp_server.log"]
 
 [[layers]]
   name = 'incsearch'
