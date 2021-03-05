@@ -17,8 +17,8 @@ pip3 install python-language-server
 curl -sLf https://spacevim.org/cn/install.sh | bash
 brew install neovim ripgrep 
 
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh\n
-curl https://github.com/rust-analyzer/rust-analyzer/releases/download/nightly/rust-analyzer-mac -o ~/.cargo/bin/rust-analyzer
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-mac -o ~/.cargo/bin/rust-analyzer
 chmod +x ~/.cargo/bin/rust-analyzer 
 
 brew install llvm
