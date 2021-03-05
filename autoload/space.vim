@@ -3,8 +3,9 @@ function! space#before() abort
 
   let g:LanguageClient_settingsPath = expand("~/.SpaceVim.d/lsp_settings.json")
   " let g:LanguageClient_loggingLevel = "INFO"
-  let g:LanguageClient_loggingFile = expand('~/.cache/SpaceVim/lsp_client.log')
+  " let g:LanguageClient_loggingFile = expand('~/.cache/SpaceVim/lsp_client.log')
 
+  let g:spacevim_lint_on_save = 0
   let g:vista_sidebar_position = "vertical topleft"
   let g:vista_sidebar_width = 36
   call SpaceVim#custom#SPCGroupName(['v'], '+Vista')
@@ -19,4 +20,8 @@ function! space#after() abort
   set lazyredraw
   set ttyfast
   set regexpengine=1
+  set timeout
+  set ttimeout
+  set timeoutlen=50
+  set ttimeoutlen=50
 endfunction
