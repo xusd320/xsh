@@ -13,6 +13,7 @@
     colorscheme_bg = "dark"
     enable_guicolors = true
     guifont = "Hack Nerd Font:h14"
+    sidebar_width = 36
     windows_index_type = 3
     buffer_index_type = 4
     relativenumber = false
@@ -121,3 +122,6 @@
   merged = true
   build = "bash install.sh"
 
+[[custom_plugins]]
+  repo = "liuchengxu/vista.vim"
+  merged = false

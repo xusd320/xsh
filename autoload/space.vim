@@ -4,12 +4,19 @@ function! space#before() abort
   let g:LanguageClient_settingsPath = expand("~/.SpaceVim.d/lsp_settings.json")
   " let g:LanguageClient_loggingLevel = "INFO"
   let g:LanguageClient_loggingFile = expand('~/.cache/SpaceVim/lsp_client.log')
+
+  let g:vista_sidebar_position = "vertical topleft"
+  let g:vista_sidebar_width = 36
+  call SpaceVim#custom#SPCGroupName(['v'], '+Vista')
+  call SpaceVim#custom#SPC('nore', ['v', 'v'], 'Vista!!', 'Vista show', 1)
 endfunction
 
 function! space#after() abort
-  :set clipboard=unnamed
-  :set foldmethod=syntax
-  :set nofoldenable
-  :set wrap
+  set clipboard=unnamed
+  set foldmethod=syntax
+  set nofoldenable
+  set wrap
+  set lazyredraw
+  set ttyfast
+  set regexpengine=1
 endfunction
-
