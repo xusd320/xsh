@@ -22,6 +22,6 @@ function! space#after() abort
   set regexpengine=1
   set timeout
   set ttimeout
-  set timeoutlen=50
+  set timeoutlen=300
   set ttimeoutlen=50
 endfunction
