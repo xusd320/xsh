@@ -25,3 +25,21 @@ function! space#after() abort
   set timeoutlen=300
   set ttimeoutlen=50
 endfunction
+
+function! LspMaybeHover(is_running) abort
+  if a:is_running.result
+    call LanguageClient_textDocument_hover()
+  endif
+endfunction
+
+function! LspMaybeHighlight(is_running) abort
+  if a:is_running.result
+    call LanguageClient#textDocument_documentHighlight()
+  endif
+endfunction
+
+augroup lsp_aucommands
+  au!
+  au CursorHold * call LanguageClient#isAlive(function('LspMaybeHover'))
+  au CursorMoved * call LanguageClient#isAlive(function('LspMaybeHighlight'))
+augroup END
