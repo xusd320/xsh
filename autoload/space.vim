@@ -24,6 +24,7 @@ function! space#after() abort
   set ttimeout
   set timeoutlen=300
   set ttimeoutlen=50
+  set updatetime=500
 endfunction
 
 function! LspCursorHighlight(is_running) abort
@@ -34,5 +35,5 @@ endfunction
 
 augroup lsp_aucmds
   au!
-  au CursorMoved *.{rs,c,cpp,py,sh,html,js,ts,jsx,tsx,css,md,json,toml} call LanguageClient#isAlive(function('LspCursorHighlight'))
+  au CursorHold * call LanguageClient#isAlive(function('LspCursorHighlight'))
 augroup END

@@ -4,8 +4,7 @@
       "enable": true
     },
     "cargo": {
-      "loadOutDirsFromCheck": true,
-      "autoreload": false
+      "loadOutDirsFromCheck": true
     },
     "checkOnSave": {
       "enable": false
