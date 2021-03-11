@@ -32,7 +32,7 @@ function! LspCursorHighlight(is_running) abort
   endif
 endfunction
 
-augroup lsp_aucommands
+augroup lsp_aucmds
   au!
-  au CursorMoved * call LanguageClient#isAlive(function('LspCursorHighlight'))
+  au CursorMoved *.{rs,c,cpp,py,sh,html,js,ts,jsx,tsx,css,md,json,toml} call LanguageClient#isAlive(function('LspCursorHighlight'))
 augroup END
