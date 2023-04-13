@@ -1,4 +1,4 @@
-vim.opt.background="dark"
+vim.opt.background = "dark"
 vim.opt.spell = true
 vim.opt.spelllang = "en"
 vim.opt.timeoutlen = 100
