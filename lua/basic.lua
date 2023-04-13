@@ -1,3 +1,4 @@
+vim.opt.background="dark"
 vim.opt.spell = true
 vim.opt.spelllang = "en"
 vim.opt.timeoutlen = 100
@@ -10,7 +11,7 @@ vim.opt.foldenable = true
 
 vim.g.mapleader = "space"
 
-lvim.colorscheme = "lunar"
+lvim.colorscheme = "catppuccin"
 
 lvim.log.level = "warn"
 

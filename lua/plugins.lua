@@ -15,6 +15,9 @@ lvim.plugins = {
     "christoomey/vim-tmux-navigator"
   },
   {
+    "catppuccin/nvim",
+  },
+  {
     'kkoomen/vim-doge',
     run = ':call doge#install()'
   },
