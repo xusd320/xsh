@@ -16,6 +16,7 @@ lvim.builtin.treesitter.ensure_installed = {
   "yaml",
   "cmake",
   "markdown",
+  "vimdoc",
 }
 lvim.builtin.treesitter.rainbow.enable = true
 lvim.builtin.treesitter.textobjects = {
