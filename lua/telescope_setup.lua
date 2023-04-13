@@ -3,6 +3,7 @@ lvim.builtin.telescope.defaults.layout_config.horizontal.width = 0.9
 lvim.builtin.telescope.defaults.layout_config.horizontal.height = 0.9
 lvim.builtin.telescope.defaults.layout_config.horizontal.preview_cutoff = 120
 lvim.builtin.telescope.defaults.layout_config.horizontal.prompt_position = "bottom"
+lvim.builtin.telescope.defaults.path_display = { "truncate" }
 for b, _ in pairs(lvim.builtin.telescope.pickers) do
   lvim.builtin.telescope.pickers[b].theme = nil
   lvim.builtin.telescope.pickers[b].show_line = false
