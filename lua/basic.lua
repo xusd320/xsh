@@ -24,3 +24,5 @@ lvim.builtin.alpha.active = false
 lvim.builtin.project.active = false
 
 lvim.builtin.terminal.active = true
+
+lvim.builtin.lualine.sections.lualine_b = { { 'filename', path = 1 } }
