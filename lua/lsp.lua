@@ -15,6 +15,7 @@ local lsp_servers = {
   "jsonls",
 }
 lvim.lsp.automatic_servers_installation = false
+lvim.lsp.installer.setup.ensure_installed = lsp_servers
 lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
   return not vim.tbl_contains(lsp_servers, server)
 end, require "mason-lspconfig".get_available_servers())
