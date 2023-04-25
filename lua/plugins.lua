@@ -7,7 +7,10 @@ lvim.plugins = {
   },
   {
     "f3fora/cmp-spell",
-    lazy = true,
+    event = { "InsertEnter", "CmdlineEnter" },
+    config = function()
+      table.insert(lvim.builtin.cmp.sources, { name = "spell" })
+    end
   },
   {
     "sindrets/diffview.nvim",

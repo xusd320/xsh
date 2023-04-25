@@ -25,7 +25,6 @@ lvim.lsp.diagnostics.virtual_text = {
   source = true
 }
 
-
 require("lvim.lsp.manager").setup("eslint")
 
 local formatters = require "lvim.lsp.null-ls.formatters"
@@ -35,13 +34,3 @@ formatters.setup {
     fileTypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "css", "less", "html" }
   }
 }
-
-lvim.builtin.cmp.sources = vim.list_extend(lvim.builtin.cmp.sources, {
-  name = "spell",
-  option = {
-    keep_all_entries = false,
-    enable_in_context = function()
-      return true
-    end,
-  },
-})
