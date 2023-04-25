@@ -36,7 +36,7 @@ formatters.setup {
   }
 }
 
-table.insert(lvim.builtin.cmp.sources, {
+lvim.builtin.cmp.sources = vim.list_extend(lvim.builtin.cmp.sources, {
   name = "spell",
   option = {
     keep_all_entries = false,
