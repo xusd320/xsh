@@ -7,6 +7,7 @@ lvim.plugins = {
   },
   {
     "f3fora/cmp-spell",
+    lazy = true,
   },
   {
     "sindrets/diffview.nvim",
