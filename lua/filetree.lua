@@ -1,4 +1,3 @@
-lvim.builtin.nvimtree.setup.open_on_setup = true
 lvim.builtin.nvimtree.setup.update_cwd = false
 lvim.builtin.nvimtree.setup.update_focused_file.update_cwd = false
 lvim.builtin.nvimtree.setup.hijack_directories.enable = true

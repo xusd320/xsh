@@ -1,9 +1,10 @@
 local lsp_servers = {
   "rust_analyzer",
   "tsserver",
+  "eslint",
   "cssls",
   "stylelint_lsp",
-  "sumneko_lua",
+  "lua_ls",
   "clangd",
   "bashls",
   "pyright",
@@ -14,26 +15,17 @@ local lsp_servers = {
   "vimls",
   "jsonls",
 }
-lvim.lsp.automatic_servers_installation = false
-lvim.lsp.installer.setup.ensure_installed = lsp_servers
+lvim.lsp.installer.setup.automatic_installation = true
 lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
   return not vim.tbl_contains(lsp_servers, server)
 end, require "mason-lspconfig".get_available_servers())
+
 lvim.lsp.diagnostics.virtual_text = {
   source = true
 }
 
 
-require("lvim.lsp.manager").setup("eslint", {
-  settings = {
-    experimental = {
-      useFlatConfig = false,
-    },
-    problems = {
-      shortenToSingleLine = false,
-    },
-  },
-})
+require("lvim.lsp.manager").setup("eslint")
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
@@ -42,6 +34,7 @@ formatters.setup {
     fileTypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "css", "less", "html" }
   }
 }
+
 table.insert(lvim.builtin.cmp.sources, {
   name = "spell",
   option = {

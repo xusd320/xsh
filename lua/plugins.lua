@@ -18,8 +18,8 @@ lvim.plugins = {
     "catppuccin/nvim",
   },
   {
-    'kkoomen/vim-doge',
-    run = ':call doge#install()'
+    "kkoomen/vim-doge",
+    build = ":call doge#install()"
   },
   {
     "windwp/nvim-spectre",
@@ -61,7 +61,7 @@ lvim.plugins = {
   },
   {
     "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
+    build = function() vim.fn["mkdp#util#install"]() end,
     ft = "markdown",
     config = function()
       vim.g.mkdp_auto_start = 1
@@ -75,8 +75,8 @@ lvim.plugins = {
     end,
   },
   {
-    'kevinhwang91/nvim-ufo',
-    requires = 'kevinhwang91/promise-async',
+    "kevinhwang91/nvim-ufo",
+    dependencies = "kevinhwang91/promise-async",
     config = function()
       lvim.lsp.on_attach_callback = function(client, bufnr)
         local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -87,10 +87,10 @@ lvim.plugins = {
         client.server_capabilities.textDocument = capabilities;
       end
 
-      require('ufo').setup({
+      require("ufo").setup({
         fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
           local newVirtText = {}
-          local suffix = ('  %d '):format(endLnum - lnum)
+          local suffix = ("  %d "):format(endLnum - lnum)
           local sufWidth = vim.fn.strdisplaywidth(suffix)
           local targetWidth = width - sufWidth
           local curWidth = 0
@@ -106,20 +106,21 @@ lvim.plugins = {
               chunkWidth = vim.fn.strdisplaywidth(chunkText)
               -- str width returned from truncate() may less than 2nd argument, need padding
               if curWidth + chunkWidth < targetWidth then
-                suffix = suffix .. (' '):rep(targetWidth - curWidth - chunkWidth)
+                suffix = suffix .. (" "):rep(targetWidth - curWidth - chunkWidth)
               end
               break
             end
             curWidth = curWidth + chunkWidth
           end
-          table.insert(newVirtText, { suffix, 'MoreMsg' })
+          table.insert(newVirtText, { suffix, "MoreMsg" })
           return newVirtText
         end
       })
-      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-      vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
-      vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith)
+
+      vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+      vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+      vim.keymap.set("n", "zr", require("ufo").openFoldsExceptKinds)
+      vim.keymap.set("n", "zm", require("ufo").closeFoldsWith)
     end
   }
 }
