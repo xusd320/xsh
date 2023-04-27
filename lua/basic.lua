@@ -10,6 +10,8 @@ vim.opt.foldcolumn = "0"
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = -1
 vim.opt.foldenable = true
+vim.opt.backup = true
+vim.opt.swapfile = true
 
 vim.g.mapleader = "space"
 
