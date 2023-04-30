@@ -29,7 +29,7 @@ lvim.builtin.alpha.active = true
 
 lvim.builtin.lir.active = false
 
-lvim.builtin.project.active = false
+lvim.builtin.project.active = true
 
 lvim.builtin.terminal.active = true
 
