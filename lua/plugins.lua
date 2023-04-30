@@ -13,12 +13,6 @@ lvim.plugins = {
     end
   },
   {
-    "sindrets/diffview.nvim",
-  },
-  {
-    "christoomey/vim-tmux-navigator"
-  },
-  {
     "catppuccin/nvim",
   },
   {

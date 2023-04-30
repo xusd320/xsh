@@ -1,4 +1,4 @@
-local lsp_servers = {
+lvim.lsp.installer.setup.ensure_installed = {
   "rust_analyzer",
   "tsserver",
   "eslint",
@@ -14,18 +14,10 @@ local lsp_servers = {
   "taplo",
   "vimls",
   "jsonls",
+  "yamlls",
 }
-lvim.lsp.installer.setup.automatic_installation = true
-lvim.lsp.installer.setup.ensure_installed = lsp_servers
-lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
-  return not vim.tbl_contains(lsp_servers, server)
-end, require "mason-lspconfig".get_available_servers())
-
-lvim.lsp.diagnostics.virtual_text = {
-  source = true
-}
-
-require("lvim.lsp.manager").setup("eslint")
+lvim.lsp.installer.setup.automatic_installation = { exclude = { "tailwindcss", "vuels" } }
+lvim.lsp.diagnostics.virtual_text = { source = true }
 
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {

@@ -59,16 +59,6 @@ lvim.builtin.which_key.mappings["t"] = {
 lvim.builtin.which_key.mappings["s"]["d"] = {
   "<cmd>Telescope grep_string<cr>", "Search word under cursor"
 }
-lvim.builtin.which_key.mappings["g"]["d"] = {
-  "<cmd>DiffviewOpen<cr>",
-  "DiffviewOpen",
-
-}
-lvim.builtin.which_key.mappings["g"]["x"] = {
-  "<cmd>DiffviewClose<cr>",
-  "DiffviewClose",
-
-}
 lvim.builtin.which_key.mappings["T"] = {
   "<cmd>ToggleTerm<cr>", "Toggle Term"
 }
