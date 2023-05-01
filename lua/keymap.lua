@@ -58,7 +58,7 @@ lvim.builtin.which_key.mappings["t"] = {
 
 lvim.builtin.which_key.mappings["s"]["R"] = {
   "<cmd>Spectre<cr>",
-  "Find and Replace"
+  "Search and Replace"
 }
 lvim.builtin.which_key.mappings["s"]["d"] = {
   "<cmd>Telescope grep_string<cr>", "Search word under cursor"
