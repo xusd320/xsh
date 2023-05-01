@@ -27,20 +27,16 @@ lvim.builtin.which_key.setup.plugins = {
 lvim.builtin.which_key.mappings["c"] = nil
 
 lvim.builtin.which_key.mappings["b"]["a"] = {
-  "<cmd>:enew<cr>",
-  "New Buffer",
+  "<cmd>:enew<cr>", "New Buffer",
 }
 lvim.builtin.which_key.mappings["b"]["c"] = {
-  "<cmd>BufferKill<cr>",
-  "Kill Buffer",
+  "<cmd>BufferKill<cr>", "Kill Buffer",
 }
 lvim.builtin.which_key.mappings["b"]["y"] = {
-  "<cmd>:%y<cr>",
-  "Copy Buffer",
+  "<cmd>:%y<cr>", "Copy Buffer",
 }
 lvim.builtin.which_key.mappings["b"]["d"] = {
-  "<cmd>:%d<cr>",
-  "Clear Buffer",
+  "<cmd>:%d<cr>", "Clear Buffer",
 }
 
 lvim.builtin.which_key.mappings["t"] = {
@@ -57,8 +53,7 @@ lvim.builtin.which_key.mappings["t"] = {
 }
 
 lvim.builtin.which_key.mappings["s"]["R"] = {
-  "<cmd>Spectre<cr>",
-  "Search and Replace"
+  "<cmd>Spectre<cr>", "Search and Replace"
 }
 lvim.builtin.which_key.mappings["s"]["d"] = {
   "<cmd>Telescope grep_string<cr>", "Search word under cursor"
@@ -71,3 +66,5 @@ lvim.builtin.which_key.mappings["T"] = {
 lvim.builtin.which_key.mappings["h"] = {
   "<cmd>DogeGenerate<cr>", "DogeGenerate"
 }
+
+lvim.builtin.which_key.mappings["w"] = nil
