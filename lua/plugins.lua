@@ -1,9 +1,19 @@
 lvim.plugins = {
   {
-    "mrjones2014/nvim-ts-rainbow",
+    "catppuccin/nvim",
   },
   {
-    "nvim-treesitter/nvim-treesitter-textobjects",
+    "simrat39/symbols-outline.nvim",
+    event = "BufRead",
+    config = function()
+      require("symbols-outline").setup()
+    end
+  },
+  {
+    "j-hui/fidget.nvim",
+    config = function()
+      require "fidget".setup {}
+    end
   },
   {
     "f3fora/cmp-spell",
@@ -13,7 +23,16 @@ lvim.plugins = {
     end
   },
   {
-    "catppuccin/nvim",
+    "mrjones2014/nvim-ts-rainbow",
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
   },
   {
     "kkoomen/vim-doge",
@@ -32,31 +51,12 @@ lvim.plugins = {
     end
   },
   {
-    "windwp/nvim-ts-autotag",
-    config = function()
-      require("nvim-ts-autotag").setup()
-    end,
-  },
-  {
     "f-person/git-blame.nvim",
     event = "BufRead",
     config = function()
       vim.cmd "highlight default link gitblame SpecialComment"
       vim.g.gitblame_enabled = 1
     end,
-  },
-  {
-    "simrat39/symbols-outline.nvim",
-    event = "BufRead",
-    config = function()
-      require("symbols-outline").setup()
-    end
-  },
-  {
-    "j-hui/fidget.nvim",
-    config = function()
-      require "fidget".setup {}
-    end
   },
   {
     "iamcco/markdown-preview.nvim",

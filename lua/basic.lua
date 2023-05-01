@@ -28,6 +28,7 @@ lvim.builtin.alpha.active = true
 lvim.builtin.lir.active = false
 
 lvim.builtin.project.active = true
+lvim.builtin.project.patterns = { ">Projects", ".git" }
 
 lvim.builtin.terminal.active = true
 

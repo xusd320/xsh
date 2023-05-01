@@ -19,10 +19,22 @@ lvim.lsp.installer.setup.ensure_installed = {
 lvim.lsp.installer.setup.automatic_installation = { exclude = { "tailwindcss", "vuels" } }
 lvim.lsp.diagnostics.virtual_text = { source = true }
 
+require("lvim.lsp.manager").setup("eslint", {
+  on_attach = function(_, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "EslintFixAll",
+    })
+  end,
+})
+
 local formatters = require "lvim.lsp.null-ls.formatters"
-formatters.setup {
-  {
-    command = 'prettierd',
-    fileTypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "css", "less", "html" }
-  }
+formatters.setup({
+  command = 'prettierd',
+  fileTypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "css", "less", "html" }
 }
+)
+formatters.setup({
+  command = "fixjson",
+  fileTypes = "json"
+})
