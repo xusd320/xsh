@@ -3,6 +3,15 @@ lvim.plugins = {
     "catppuccin/nvim",
   },
   {
+    "jose-elias-alvarez/typescript.nvim",
+    config = function()
+      require("typescript").setup({
+        disable_commands = false,
+        debug = false,
+      })
+    end
+  },
+  {
     "simrat39/symbols-outline.nvim",
     event = "BufRead",
     config = function()
