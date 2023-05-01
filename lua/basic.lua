@@ -17,8 +17,6 @@ vim.opt.directory = join_paths(get_cache_dir(), "swap")
 vim.opt.undofile = true
 vim.opt.undodir = join_paths(get_cache_dir(), "undo")
 
-vim.g.mapleader = "space"
-
 lvim.colorscheme = "catppuccin"
 
 lvim.log.level = "warn"
