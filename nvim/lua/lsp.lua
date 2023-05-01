@@ -29,12 +29,13 @@ require("lvim.lsp.manager").setup("eslint", {
 })
 
 local formatters = require "lvim.lsp.null-ls.formatters"
-formatters.setup({
-  command = 'prettierd',
-  fileTypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "css", "less", "html" }
+formatters.setup {
+  {
+    command = 'prettierd',
+    fileTypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "css", "less", "html" }
+  },
+  {
+    command = "fixjson",
+    fileTypes = "json"
+  }
 }
-)
-formatters.setup({
-  command = "fixjson",
-  fileTypes = "json"
-})
