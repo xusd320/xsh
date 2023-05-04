@@ -17,6 +17,9 @@ vim.opt.directory = join_paths(get_cache_dir(), "swap")
 vim.opt.undofile = true
 vim.opt.undodir = join_paths(get_cache_dir(), "undo")
 
+vim.g.XkbSwitchEnabled = 1
+vim.g.XkbSwitchLib = "/usr/local/lib/libInputSourceSwitcher.dylib"
+
 lvim.colorscheme = "catppuccin"
 
 lvim.log.level = "warn"

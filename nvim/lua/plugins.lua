@@ -1,5 +1,8 @@
 lvim.plugins = {
   {
+    "lyokha/vim-xkbswitch",
+  },
+  {
     "catppuccin/nvim",
   },
   {
