@@ -17,7 +17,7 @@ lvim.lsp.installer.setup.ensure_installed = {
   "yamlls",
 }
 lvim.lsp.installer.setup.automatic_installation = { exclude = { "tailwindcss", "vuels" } }
-lvim.lsp.diagnostics.virtual_text = { source = true }
+vim.diagnostic.config({ virtual_text = { source = true } })
 
 require("lvim.lsp.manager").setup("eslint", {
   on_attach = function(_, bufnr)
