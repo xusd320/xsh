@@ -84,16 +84,10 @@ lvim.plugins = {
     "kevinhwang91/nvim-ufo",
     dependencies = "kevinhwang91/promise-async",
     config = function()
-      lvim.lsp.on_attach_callback = function(client, bufnr)
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-        capabilities.textDocument.foldingRange = {
-          dynamicRegistration = false,
-          lineFoldingOnly = true
-        }
-        client.server_capabilities.textDocument = capabilities;
-      end
-
       require("ufo").setup({
+        provider_selector = function(bufnr, filetype, buftype)
+          return { 'treesitter', 'indent' }
+        end,
         fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
           local newVirtText = {}
           local suffix = ("  %d "):format(endLnum - lnum)
