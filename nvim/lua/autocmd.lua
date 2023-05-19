@@ -19,5 +19,19 @@ lvim.autocommands = {
       pattern = "zsh",
       command = "set filetype=bash"
     }
+  },
+  {
+    "BufEnter",
+    {
+      pattern = "*",
+      command = "call system('bash ~/xsh/tmux_vim.sh attach')"
+    }
+  },
+  {
+    "QuitPre",
+    {
+      pattern = "*",
+      command = "call system('bash ~/xsh/tmux_vim.sh unattach')"
+    }
   }
 }
