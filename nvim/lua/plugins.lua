@@ -9,7 +9,7 @@ lvim.plugins = {
     "simrat39/symbols-outline.nvim",
     event = "BufRead",
     config = function()
-      require("symbols-outline").setup { position = 'left' }
+      require("symbols-outline").setup { position = "left" }
     end
   },
   {

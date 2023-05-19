@@ -12,8 +12,8 @@ vim.opt.foldlevelstart = -1
 vim.opt.foldenable = true
 vim.opt.backup = true
 vim.opt.backupdir = join_paths(get_cache_dir(), "backup")
-vim.opt.swapfile = true
-vim.opt.directory = join_paths(get_cache_dir(), "swap")
+-- vim.opt.swapfile = true
+-- vim.opt.directory = join_paths(get_cache_dir(), "swap")
 vim.opt.undofile = true
 vim.opt.undodir = join_paths(get_cache_dir(), "undo")
 

@@ -22,6 +22,12 @@ lvim.builtin.telescope.pickers.lsp_implementations = {
 lvim.builtin.telescope.pickers.lsp_type_definitions = {
   show_line = false
 }
+lvim.builtin.telescope.pickers.lsp_incoming_calls = {
+  show_line = false
+}
+lvim.builtin.telescope.pickers.lsp_outgoing_calls = {
+  show_line = false
+}
 lvim.builtin.telescope.pickers.diagnostics = {
   line_width = 0
 }

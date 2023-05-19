@@ -31,7 +31,7 @@ require("lvim.lsp.manager").setup("eslint", {
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   {
-    command = 'prettierd',
+    command = "prettierd",
     fileTypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "css", "less", "html" }
   },
   {

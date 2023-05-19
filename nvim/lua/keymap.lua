@@ -5,7 +5,10 @@ lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
 lvim.lsp.buffer_mappings.normal_mode["gd"] = { "<cmd>Telescope lsp_definitions<cr>", "Goto definitions" }
 lvim.lsp.buffer_mappings.normal_mode["gD"] = { vim.lsp.buf.declaration, "Goto declarations" }
 lvim.lsp.buffer_mappings.normal_mode["gt"] = { "<cmd>Telescope lsp_type_definitions<cr>", "Goto type definitions" }
+vim.keymap.set('n', 'gi', "<cmd>echo \"Goto implementations\"<cr>", { desc = "Goto implementations" })
 lvim.lsp.buffer_mappings.normal_mode["gi"] = { "<cmd>Telescope lsp_implementations<cr>", "Goto implementations" }
+lvim.lsp.buffer_mappings.normal_mode["gI"] = { "<cmd>Telescope lsp_incoming_calls<cr>", "Goto incoming calls" }
+lvim.lsp.buffer_mappings.normal_mode["gO"] = { "<cmd>Telescope lsp_outgoing_calls<cr>", "Goto outgoing calls" }
 lvim.lsp.buffer_mappings.normal_mode["gr"] = { "<cmd>Telescope lsp_references<cr>", "Goto references" }
 lvim.lsp.buffer_mappings.normal_mode["gD"] = nil
 
