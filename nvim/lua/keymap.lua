@@ -24,8 +24,6 @@ lvim.builtin.which_key.setup.plugins = {
   spelling = { enabled = true, suggestions = 20 },
 }
 
-lvim.builtin.which_key.mappings["c"] = nil
-
 lvim.builtin.which_key.mappings["b"]["a"] = {
   "<cmd>:enew<cr>", "New Buffer",
 }
@@ -37,6 +35,23 @@ lvim.builtin.which_key.mappings["b"]["y"] = {
 }
 lvim.builtin.which_key.mappings["b"]["d"] = {
   "<cmd>:%d<cr>", "Clear Buffer",
+}
+
+lvim.builtin.which_key.mappings["c"] = nil
+
+lvim.builtin.which_key.mappings["h"] = {
+  "<cmd>DogeGenerate<cr>", "DogeGenerate"
+}
+
+lvim.builtin.which_key.mappings["l"]["o"] = {
+  "<cmd>SymbolsOutline<cr>", "SymbolsOutline"
+}
+
+lvim.builtin.which_key.mappings["s"]["R"] = {
+  "<cmd>Spectre<cr>", "Search and Replace"
+}
+lvim.builtin.which_key.mappings["s"]["d"] = {
+  "<cmd>Telescope grep_string<cr>", "Search word under cursor"
 }
 
 lvim.builtin.which_key.mappings["t"] = {
@@ -52,19 +67,8 @@ lvim.builtin.which_key.mappings["t"] = {
   }
 }
 
-lvim.builtin.which_key.mappings["s"]["R"] = {
-  "<cmd>Spectre<cr>", "Search and Replace"
-}
-lvim.builtin.which_key.mappings["s"]["d"] = {
-  "<cmd>Telescope grep_string<cr>", "Search word under cursor"
-}
+lvim.builtin.which_key.mappings["w"] = nil
 
 lvim.builtin.which_key.mappings["T"] = {
   "<cmd>ToggleTerm<cr>", "Toggle Term"
 }
-
-lvim.builtin.which_key.mappings["h"] = {
-  "<cmd>DogeGenerate<cr>", "DogeGenerate"
-}
-
-lvim.builtin.which_key.mappings["w"] = nil
