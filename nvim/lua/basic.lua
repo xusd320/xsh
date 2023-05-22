@@ -35,4 +35,11 @@ lvim.builtin.project.patterns = { ">Projects", ".git" }
 
 lvim.builtin.terminal.active = true
 
-lvim.builtin.lualine.sections.lualine_b = { { "filename", path = 1 } }
+lvim.builtin.lualine.sections.lualine_b = {
+  lualine_a = {'mode'},
+  lualine_b = {'branch', 'diff', 'diagnostics'},
+  lualine_c = {'filename'},
+  lualine_x = {'encoding', 'fileformat', 'filetype'},
+  lualine_y = {'progress'},
+  lualine_z = {'location'}
+}
