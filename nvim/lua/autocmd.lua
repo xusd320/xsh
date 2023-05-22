@@ -24,14 +24,14 @@ lvim.autocommands = {
     'BufEnter',
     {
       pattern = '*',
-      command = 'call system('bash ~/xsh/tmux_vim.sh attach')'
+      command = 'call system("bash ~/xsh/tmux_vim.sh attach")'
     }
   },
   {
     'QuitPre',
     {
       pattern = '*',
-      command = 'call system('bash ~/xsh/tmux_vim.sh unattach')'
+      command = 'call system("bash ~/xsh/tmux_vim.sh unattach")'
     }
   }
 }
