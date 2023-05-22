@@ -5,7 +5,11 @@ lvim.builtin.telescope.defaults.layout_config.horizontal = {
   preview_cutoff = 120,
   prompt_position = "bottom"
 }
-lvim.builtin.telescope.defaults.path_display = { "truncate" }
+lvim.builtin.telescope.defaults.path_display = function(opts, path)
+  local tail = require("telescope.utils").path_tail(path)
+  return string.format("%s (%s)", tail, path)
+end
+
 for b, _ in pairs(lvim.builtin.telescope.pickers) do
   lvim.builtin.telescope.pickers[b].theme = nil
   lvim.builtin.telescope.pickers[b].show_line = false
