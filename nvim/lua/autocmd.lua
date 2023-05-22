@@ -1,37 +1,37 @@
 lvim.autocommands = {
   {
-    "VimEnter",
+    'VimEnter',
     {
-      pattern = { "*" },
-      command = "clearjumps",
+      pattern = { '*' },
+      command = 'clearjumps',
     }
   },
   {
-    "FileType",
+    'FileType',
     {
-      pattern = "qf",
-      command = "wincmd J"
+      pattern = 'qf',
+      command = 'wincmd J'
     }
   },
   {
-    "FileType",
+    'FileType',
     {
-      pattern = "zsh",
-      command = "set filetype=bash"
+      pattern = 'zsh',
+      command = 'set filetype=bash'
     }
   },
   {
-    "BufEnter",
+    'BufEnter',
     {
-      pattern = "*",
-      command = "call system('bash ~/xsh/tmux_vim.sh attach')"
+      pattern = '*',
+      command = 'call system('bash ~/xsh/tmux_vim.sh attach')'
     }
   },
   {
-    "QuitPre",
+    'QuitPre',
     {
-      pattern = "*",
-      command = "call system('bash ~/xsh/tmux_vim.sh unattach')"
+      pattern = '*',
+      command = 'call system('bash ~/xsh/tmux_vim.sh unattach')'
     }
   }
 }

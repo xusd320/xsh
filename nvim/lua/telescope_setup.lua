@@ -1,13 +1,16 @@
-lvim.builtin.telescope.defaults.layout_strategy = "horizontal"
+lvim.builtin.telescope.defaults.layout_strategy = 'horizontal'
 lvim.builtin.telescope.defaults.layout_config.horizontal = {
   width = 0.9,
   height = 0.9,
   preview_cutoff = 120,
-  prompt_position = "bottom"
+  prompt_position = 'bottom'
 }
 lvim.builtin.telescope.defaults.path_display = function(opts, path)
-  local tail = require("telescope.utils").path_tail(path)
-  return string.format("%s (%s)", tail, path)
+  local home = require('plenary.path').path.home;
+  local cwd = vim.fn.getcwd()
+  local tail = require('telescope.utils').path_tail(path)
+  local shorten_path = string.gsub(path, string.gsub(cwd, '%-', '%%-'), '.')
+  return string.gsub(shorten_path, home, '~')
 end
 
 for b, _ in pairs(lvim.builtin.telescope.pickers) do

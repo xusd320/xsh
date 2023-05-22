@@ -1,88 +1,88 @@
 lvim.plugins = {
   {
-    "lyokha/vim-xkbswitch",
+    'lyokha/vim-xkbswitch',
   },
   {
-    "catppuccin/nvim",
+    'catppuccin/nvim',
   },
   {
-    "simrat39/symbols-outline.nvim",
-    event = "BufRead",
+    'simrat39/symbols-outline.nvim',
+    event = 'BufRead',
     config = function()
-      require("symbols-outline").setup { position = "left" }
+      require('symbols-outline').setup { position = 'left' }
     end
   },
   {
-    "j-hui/fidget.nvim",
+    'j-hui/fidget.nvim',
     config = function()
-      require "fidget".setup {
+      require 'fidget'.setup {
         text = {
-          spinner = "dots",
+          spinner = 'dots',
         },
       }
     end
   },
   {
-    "f3fora/cmp-spell",
-    event = { "InsertEnter", "CmdlineEnter" },
+    'f3fora/cmp-spell',
+    event = { 'InsertEnter', 'CmdlineEnter' },
     config = function()
-      table.insert(lvim.builtin.cmp.sources, { name = "spell" })
+      table.insert(lvim.builtin.cmp.sources, { name = 'spell' })
     end
   },
   {
-    "mrjones2014/nvim-ts-rainbow",
+    'mrjones2014/nvim-ts-rainbow',
   },
   {
-    "nvim-treesitter/nvim-treesitter-textobjects",
+    'nvim-treesitter/nvim-treesitter-textobjects',
   },
   {
-    "windwp/nvim-ts-autotag",
+    'windwp/nvim-ts-autotag',
     config = function()
-      require("nvim-ts-autotag").setup()
+      require('nvim-ts-autotag').setup()
     end,
   },
   {
-    "kkoomen/vim-doge",
-    build = ":call doge#install()"
+    'kkoomen/vim-doge',
+    build = ':call doge#install()'
   },
   {
-    "windwp/nvim-spectre",
+    'windwp/nvim-spectre',
     config = function()
-      require("spectre").setup()
+      require('spectre').setup()
     end,
   },
   {
-    "ggandor/leap.nvim",
+    'ggandor/leap.nvim',
     config = function()
-      require("leap").set_default_keymaps()
+      require('leap').set_default_keymaps()
     end
   },
   {
-    "f-person/git-blame.nvim",
-    event = "BufRead",
+    'f-person/git-blame.nvim',
+    event = 'BufRead',
     config = function()
-      vim.cmd "highlight default link gitblame SpecialComment"
+      vim.cmd 'highlight default link gitblame SpecialComment'
       vim.g.gitblame_enabled = 1
     end,
   },
   {
-    "iamcco/markdown-preview.nvim",
-    build = function() vim.fn["mkdp#util#install"]() end,
-    ft = "markdown",
+    'iamcco/markdown-preview.nvim',
+    build = function() vim.fn['mkdp#util#install']() end,
+    ft = 'markdown',
     config = function()
       vim.g.mkdp_auto_start = 1
     end,
   },
   {
-    "folke/todo-comments.nvim",
-    event = "BufRead",
+    'folke/todo-comments.nvim',
+    event = 'BufRead',
     config = function()
-      require("todo-comments").setup()
+      require('todo-comments').setup()
     end,
   },
   {
-    "kevinhwang91/nvim-ufo",
-    dependencies = "kevinhwang91/promise-async",
+    'kevinhwang91/nvim-ufo',
+    dependencies = 'kevinhwang91/promise-async',
     config = function()
       lvim.lsp.on_attach_callback = function(client, bufnr)
         local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -93,10 +93,10 @@ lvim.plugins = {
         client.server_capabilities.textDocument = capabilities;
       end
 
-      require("ufo").setup({
+      require('ufo').setup({
         fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
           local newVirtText = {}
-          local suffix = ("  %d "):format(endLnum - lnum)
+          local suffix = ('  %d '):format(endLnum - lnum)
           local sufWidth = vim.fn.strdisplaywidth(suffix)
           local targetWidth = width - sufWidth
           local curWidth = 0
@@ -111,21 +111,21 @@ lvim.plugins = {
               table.insert(newVirtText, { chunkText, hlGroup })
               chunkWidth = vim.fn.strdisplaywidth(chunkText)
               if curWidth + chunkWidth < targetWidth then
-                suffix = suffix .. (" "):rep(targetWidth - curWidth - chunkWidth)
+                suffix = suffix .. (' '):rep(targetWidth - curWidth - chunkWidth)
               end
               break
             end
             curWidth = curWidth + chunkWidth
           end
-          table.insert(newVirtText, { suffix, "MoreMsg" })
+          table.insert(newVirtText, { suffix, 'MoreMsg' })
           return newVirtText
         end
       })
 
-      vim.keymap.set("n", "zR", require("ufo").openAllFolds)
-      vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
-      vim.keymap.set("n", "zr", require("ufo").openFoldsExceptKinds)
-      vim.keymap.set("n", "zm", require("ufo").closeFoldsWith)
+      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+      vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
+      vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith)
     end
   }
 }
