@@ -41,5 +41,5 @@ lvim.builtin.lualine.sections = {
   lualine_c = { { 'filename', path = 1 } },
   lualine_x = { 'diagnostics' },
   lualine_y = { 'encoding', 'fileformat', 'filetype' },
-  lualine_z = { 'progress', 'location' }
+  lualine_z = { 'location', 'progress' }
 }
