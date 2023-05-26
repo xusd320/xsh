@@ -33,11 +33,17 @@ lvim.builtin.which_key.mappings['b']['a'] = {
 lvim.builtin.which_key.mappings['b']['c'] = {
   '<cmd>BufferKill<cr>', 'Kill Buffer',
 }
+lvim.builtin.which_key.mappings['b']['d'] = {
+  '<cmd>:%d<cr>', 'Clear Buffer',
+}
 lvim.builtin.which_key.mappings['b']['y'] = {
   '<cmd>:%y<cr>', 'Copy Buffer',
 }
-lvim.builtin.which_key.mappings['b']['d'] = {
-  '<cmd>:%d<cr>', 'Clear Buffer',
+lvim.builtin.which_key.mappings['b']['A'] = {
+  '<cmd>:%bd<cr>', 'Close Others Buffer',
+}
+lvim.builtin.which_key.mappings['b']['x'] = {
+  '<cmd>:%bd|e#|bd#<cr>', 'Close All Buffer',
 }
 
 lvim.builtin.which_key.mappings['c'] = nil
