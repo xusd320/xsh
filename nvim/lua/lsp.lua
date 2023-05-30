@@ -19,12 +19,6 @@ lvim.lsp.installer.setup.ensure_installed = {
 lvim.lsp.installer.setup.automatic_installation = { exclude = { 'tailwindcss', 'vuels' } }
 vim.diagnostic.config({ virtual_text = { source = true } })
 
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { 'tsserver' })
-local lspconfig = require 'lspconfig'
-require('lvim.lsp.manager').setup('tsserver', {
-  root_dir = lspconfig.util.root_pattern('.git', 'package.json', 'tsconfig.json', 'jsconfig.json', 'node_modules'),
-})
-
 require('lvim.lsp.manager').setup('eslint', {
   on_attach = function(_, bufnr)
     vim.api.nvim_create_autocmd('BufWritePre', {
