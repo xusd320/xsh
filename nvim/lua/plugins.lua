@@ -72,6 +72,14 @@ lvim.plugins = {
     end,
   },
   {
+    "sindrets/diffview.nvim",
+    event = "BufWinEnter",
+    config = function()
+      vim.keymap.set('n', '<leader>gd', ':DiffviewOpen<cr>', { desc = 'Open Diff View' })
+      vim.keymap.set('n', '<leader>gx', ':DiffviewClose<cr>', { desc = 'Close Diff View' })
+    end,
+  },
+  {
     'iamcco/markdown-preview.nvim',
     build = function() vim.fn['mkdp#util#install']() end,
     ft = 'markdown',
