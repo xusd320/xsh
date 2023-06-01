@@ -48,6 +48,10 @@ lvim.builtin.which_key.mappings['b']['x'] = {
 
 lvim.builtin.which_key.mappings['c'] = nil
 
+lvim.builtin.which_key.mappings['g']['d'] = {
+  '<cmd>DiffviewOpen<cr>', 'Git Diff'
+}
+
 lvim.builtin.which_key.mappings['h'] = {
   '<cmd>DogeGenerate<cr>', 'DogeGenerate'
 }
