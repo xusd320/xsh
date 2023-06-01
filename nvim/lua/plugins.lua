@@ -6,6 +6,18 @@ lvim.plugins = {
     'catppuccin/nvim',
   },
   {
+    "tpope/vim-surround",
+  },
+  {
+    "tpope/vim-repeat"
+  },
+  {
+    "Pocco81/auto-save.nvim",
+    config = function()
+      require("auto-save").setup()
+    end,
+  },
+  {
     'simrat39/symbols-outline.nvim',
     event = 'BufRead',
     config = function()
