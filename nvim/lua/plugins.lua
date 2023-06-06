@@ -1,5 +1,8 @@
 lvim.plugins = {
   {
+    'projekt0n/github-nvim-theme'
+  },
+  {
     'lyokha/vim-xkbswitch',
   },
   {
