@@ -37,3 +37,6 @@ lvim.builtin.project.patterns = { '>Projects', '.git' }
 lvim.builtin.terminal.active = true
 
 lvim.builtin.lualine.sections.lualine_c = { { 'filename', path = 1 } }
+
+lvim.builtin.gitsigns.opts.current_line_blame = true
+lvim.builtin.gitsigns.opts.current_line_blame_opts.delay = 200
