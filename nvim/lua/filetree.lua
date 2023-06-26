@@ -6,5 +6,6 @@ lvim.builtin.nvimtree.setup.filters.custom = {}
 lvim.builtin.nvimtree.setup.filesystem_watchers = {
   ignore_dirs = {
     "^.git$",
+    "^node_modules$",
   },
 }
