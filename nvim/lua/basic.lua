@@ -12,7 +12,7 @@ vim.opt.foldlevelstart = -1
 vim.opt.foldenable = true
 vim.opt.backup = true
 vim.opt.backupdir = join_paths(get_cache_dir(), 'backup')
-vim.opt.swapfile = true
+-- vim.opt.swapfile = true
 vim.opt.directory = join_paths(get_cache_dir(), 'swap')
 vim.opt.undofile = true
 vim.opt.undodir = join_paths(get_cache_dir(), 'undo')
@@ -25,7 +25,7 @@ lvim.colorscheme = 'github_dark_dimmed'
 
 lvim.log.level = 'warn'
 
-lvim.format_on_save.enabled = true
+lvim.format_on_save.enabled = false
 
 lvim.builtin.alpha.active = true
 
