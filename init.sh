@@ -2,14 +2,12 @@
 
 brew install wget llvm bat jq tmux neovim ripgrep
 brew tap homebrew/cask-fonts michaeleisel/homebrew-zld 
-brew install --cask alacritty rectangle font-hack-nerd-font visual-studio-code zld  
+brew install --cask iterm2 rectangle font-hack-nerd-font visual-studio-code zld  
 
 defaults write -g AppleFontSmoothing -int 0
 
 git clone git@github.com:xusd320/xsh.git 
-ln -s ~/xsh/alacritty.yml ~/.config/alacritty/alacritty.yml
-mkdir -p ~/.config/alacritty/themes
-git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+git clone https://github.com/dracula/iterm.git
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
