@@ -4,8 +4,6 @@ brew install wget llvm bat jq tmux neovim ripgrep
 brew tap homebrew/cask-fonts 
 brew install --cask clashx iterm2 rectangle font-hack-nerd-font visual-studio-code rectangle maccy
 
-defaults write -g AppleFontSmoothing -int 0
-
 git clone git@github.com:xusd320/xsh.git 
 git clone https://github.com/dracula/iterm.git
 
@@ -14,8 +12,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-# chmod 755 /usr/local/share/zsh
-# chmod 755 /usr/local/share/zsh/site-functions
+
 ln -s xsh/zshrc ~/.zshrc 
 ln -s xsh/p10k.zsh ~/.p10k.zsh
 
@@ -27,9 +24,11 @@ git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 ln -s ~/xsh/tmux.conf ~/.config/tmux/tmux.conf
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
- nvm install lts/fermium 
+nvm install lts/fermium 
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 sudo xcode-select -switch /Library/Developer/CommandLineTools 
-sudo ln -s /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/* /usr/local/include/
+
+brew install tabbyml/tabby/tabby
+tabby serve --port 8081 --device metal --model TabbyML/StarCoder-1B &

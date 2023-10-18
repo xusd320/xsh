@@ -133,5 +133,10 @@ lvim.plugins = {
       vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
       vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith)
     end
+  },
+  {
+    name = "tabby",
+    dir = '~/tabby/clients/vim',
+    enabled = true,
   }
 }
