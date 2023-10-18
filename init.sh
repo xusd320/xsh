@@ -1,8 +1,8 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 brew install wget llvm bat jq tmux neovim ripgrep
-brew tap homebrew/cask-fonts michaeleisel/homebrew-zld 
-brew install --cask iterm2 rectangle font-hack-nerd-font visual-studio-code zld  
+brew tap homebrew/cask-fonts 
+brew install --cask clashx iterm2 rectangle font-hack-nerd-font visual-studio-code rectangle maccy
 
 defaults write -g AppleFontSmoothing -int 0
 
@@ -19,17 +19,15 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 ln -s xsh/zshrc ~/.zshrc 
 ln -s xsh/p10k.zsh ~/.p10k.zsh
 
-LV_BRANCH='release-1.2/neovim-0.8' bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/fc6873809934917b470bff1b072171879899a36b/utils/installer/install.sh)
+LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
 ln -s ~/xsh/nvim ~/.config/lvim
 
 mkdir -p ~/.config/tmux
 git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 ln -s ~/xsh/tmux.conf ~/.config/tmux/tmux.conf
 
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
-nvm install lts/erbium
-
-python3 -m pip install --user --upgrade pynvim
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+ nvm install lts/fermium 
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
