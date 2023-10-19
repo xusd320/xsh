@@ -21,7 +21,7 @@ vim.g.XkbSwitchEnabled = 1
 vim.g.XkbSwitchLib = '/usr/local/lib/libInputSourceSwitcher.dylib'
 
 vim.g.tabby_accept_binding = '<C-Tab>'
-vim.g.tabby_dismiss_binding = '<C-/>'
+vim.g.tabby_dismiss_binding = '<C-_>'
 
 -- lvim.colorscheme = 'catppuccin'
 lvim.colorscheme = 'github_dark_dimmed'
