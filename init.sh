@@ -1,6 +1,6 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-brew install wget llvm bat jq tmux neovim ripgrep
+brew install wget llvm bat jq tmux neovim ripgrep cmake
 brew tap homebrew/cask-fonts 
 brew install --cask clashx iterm2 rectangle font-hack-nerd-font visual-studio-code rectangle maccy
 
@@ -18,6 +18,16 @@ ln -s xsh/p10k.zsh ~/.p10k.zsh
 
 LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
 ln -s ~/xsh/nvim ~/.config/lvim
+
+sudo chown -R $(whoami) /usr/local/bin
+
+git clone https://github.com/vovkasm/input-source-switcher.git                                                                                                                                                 ✔ 
+cd input-source-switcher
+mkdir build && cd build
+cmake ..
+make
+make install
+
 
 mkdir -p ~/.config/tmux
 git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
