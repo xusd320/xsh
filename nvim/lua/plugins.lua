@@ -12,7 +12,10 @@ lvim.plugins = {
     "tpope/vim-surround",
   },
   {
-    "tpope/vim-repeat"
+    'tpope/vim-repeat'
+  },
+  {
+    'simrat39/rust-tools.nvim',
   },
   {
     'simrat39/symbols-outline.nvim',
@@ -138,5 +141,5 @@ lvim.plugins = {
     name = "tabby",
     dir = '~/tabby/clients/vim',
     enabled = true,
-  }
+  },
 }
