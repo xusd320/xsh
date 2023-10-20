@@ -41,4 +41,4 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 sudo xcode-select -switch /Library/Developer/CommandLineTools 
 
 brew install tabbyml/tabby/tabby
-tabby serve --port 8081 --device metal --model TabbyML/StarCoder-1B &
+tabby serve --device metal --model TabbyML/StarCoder-1B
