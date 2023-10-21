@@ -1,1 +1,1 @@
-A code ide base on LunarVim.
+A code ide based on LunarVim.
