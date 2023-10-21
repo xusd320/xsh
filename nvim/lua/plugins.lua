@@ -1,10 +1,9 @@
 lvim.plugins = {
   'catppuccin/nvim',
-  'projekt0n/github-nvim-theme'
+  'projekt0n/github-nvim-theme',
   'lyokha/vim-xkbswitch',
-  'LunarVim/bigfile.nvim',
   'tpope/vim-surround',
-  'tpope/vim-repeat'
+  'tpope/vim-repeat',
   'mrjones2014/nvim-ts-rainbow',
   'nvim-treesitter/nvim-treesitter-textobjects',
   {
@@ -127,7 +126,7 @@ lvim.plugins = {
     enabled = true,
   },
   {
-    'simrat39/rust-tools.nvim'
+    'simrat39/rust-tools.nvim',
     dependency = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
   },
   {
@@ -145,7 +144,7 @@ lvim.plugins = {
         },
       }
     end,
-  }
+  },
   {
     "pmizio/typescript-tools.nvim",
     dependency = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
