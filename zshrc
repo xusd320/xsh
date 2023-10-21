@@ -25,13 +25,14 @@ source $HOME/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 export HOMEBREW_NO_AUTO_UPDATE=1
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/llvm/bin:$PATH"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export PATH="$HOME/.local/bin/:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.depot_tools/:$PATH"
+export PATH="/opt/homebrew/opt/python@3.10/libexec/bin:$PATH"
 
-export LDFLAGS="-L/usr/local/opt/llvm/lib"
-export CPPFLAGS="-I/usr/local/opt/llvm/include"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 
 export AR=llvm-ar
 export LD=lld
