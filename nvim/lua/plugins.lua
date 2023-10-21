@@ -1,22 +1,12 @@
 lvim.plugins = {
-  {
-    'projekt0n/github-nvim-theme'
-  },
-  {
-    'lyokha/vim-xkbswitch',
-  },
-  {
-    'catppuccin/nvim',
-  },
-  {
-    "tpope/vim-surround",
-  },
-  {
-    'tpope/vim-repeat'
-  },
-  {
-    'simrat39/rust-tools.nvim',
-  },
+  'catppuccin/nvim',
+  'projekt0n/github-nvim-theme'
+  'lyokha/vim-xkbswitch',
+  'LunarVim/bigfile.nvim',
+  'tpope/vim-surround',
+  'tpope/vim-repeat'
+  'mrjones2014/nvim-ts-rainbow',
+  'nvim-treesitter/nvim-treesitter-textobjects',
   {
     'simrat39/symbols-outline.nvim',
     event = 'BufRead',
@@ -43,12 +33,6 @@ lvim.plugins = {
     end
   },
   {
-    'mrjones2014/nvim-ts-rainbow',
-  },
-  {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-  },
-  {
     'windwp/nvim-ts-autotag',
     config = function()
       require('nvim-ts-autotag').setup()
@@ -71,8 +55,8 @@ lvim.plugins = {
     end
   },
   {
-    "sindrets/diffview.nvim",
-    event = "BufWinEnter",
+    'sindrets/diffview.nvim',
+    event = 'BufWinEnter',
   },
   {
     'iamcco/markdown-preview.nvim',
@@ -138,8 +122,35 @@ lvim.plugins = {
     end
   },
   {
-    name = "tabby",
+    name = 'tabby',
     dir = '~/tabby/clients/vim',
     enabled = true,
+  },
+  {
+    'simrat39/rust-tools.nvim'
+    dependency = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+  },
+  {
+    'saecki/crates.nvim',
+    version = 'v0.3.0',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require('crates').setup {
+        null_ls = {
+          enabled = true,
+          name = 'crates.nvim',
+        },
+        popup = {
+          border = 'rounded',
+        },
+      }
+    end,
+  }
+  {
+    "pmizio/typescript-tools.nvim",
+    dependency = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    config = function()
+      require("typescript-tools").setup {}
+    end,
   },
 }
