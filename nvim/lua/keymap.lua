@@ -28,64 +28,78 @@ lvim.builtin.which_key.setup.plugins = {
 }
 
 lvim.builtin.which_key.mappings['b']['a'] = {
-  '<cmd>:enew<cr>', 'New Buffer',
+  '<cmd>:enew<cr>',
+  'New Buffer',
 }
 lvim.builtin.which_key.mappings['b']['c'] = {
-  '<cmd>BufferKill<cr>', 'Kill Buffer',
+  '<cmd>BufferKill<cr>',
+  'Kill Buffer',
 }
 lvim.builtin.which_key.mappings['b']['d'] = {
-  '<cmd>:%d<cr>', 'Clear Buffer',
+  '<cmd>:%d<cr>',
+  'Clear Buffer',
 }
 lvim.builtin.which_key.mappings['b']['y'] = {
-  '<cmd>:%y<cr>', 'Copy Buffer',
+  '<cmd>:%y<cr>',
+  'Copy Buffer',
 }
 lvim.builtin.which_key.mappings['b']['A'] = {
-  '<cmd>:%bd<cr>', 'Close All Buffer',
+  '<cmd>:%bd<cr>',
+  'Close All Buffer',
 }
 lvim.builtin.which_key.mappings['b']['x'] = {
-  '<cmd>:%bd|e#|bd#<cr>', 'Close Others Buffer',
+  '<cmd>:%bd|e#|bd#<cr>',
+  'Close Others Buffer',
 }
 
 lvim.builtin.which_key.mappings['c'] = nil
 
 lvim.builtin.which_key.mappings['g']['d'] = {
-  '<cmd>DiffviewOpen<cr>', 'Git Diff'
+  '<cmd>DiffviewOpen<cr>',
+  'Git Diff',
 }
 
 lvim.builtin.which_key.mappings['h'] = {
-  '<cmd>DogeGenerate<cr>', 'DogeGenerate'
+  '<cmd>DogeGenerate<cr>',
+  'DogeGenerate',
 }
 
 lvim.builtin.which_key.mappings['l']['o'] = {
-  '<cmd>SymbolsOutline<cr>', 'SymbolsOutline'
+  '<cmd>SymbolsOutline<cr>',
+  'SymbolsOutline',
 }
 
 lvim.builtin.which_key.mappings['s']['R'] = {
-  '<cmd>Spectre<cr>', 'Search and Replace'
+  '<cmd>Spectre<cr>',
+  'Search and Replace',
 }
 lvim.builtin.which_key.mappings['s']['d'] = {
-  '<cmd>Telescope grep_string<cr>', 'Search word under cursor'
+  '<cmd>Telescope grep_string<cr>',
+  'Search word under cursor',
 }
 
 lvim.builtin.which_key.mappings['t'] = {
   name = 'Telescope',
   t = {
-    '<cmd>Telescope<cr>', 'Toggle'
+    '<cmd>Telescope<cr>',
+    'Toggle',
   },
   r = {
-    '<cmd>Telescope resume<cr>', 'Resume'
+    '<cmd>Telescope resume<cr>',
+    'Resume',
   },
   p = {
-    '<cmd>Telescope projects<cr>', 'Projects'
-  }
+    '<cmd>Telescope projects<cr>',
+    'Projects',
+  },
 }
 
 lvim.builtin.which_key.mappings['w'] = nil
 
 lvim.builtin.which_key.mappings['T'] = {
-  '<cmd>ToggleTerm<cr>', 'Toggle Term'
+  '<cmd>ToggleTerm<cr>',
+  'Toggle Term',
 }
-
 
 vim.api.nvim_set_keymap('n', '<m-d>', '<cmd>RustOpenExternalDocs<Cr>', { noremap = true, silent = true })
 

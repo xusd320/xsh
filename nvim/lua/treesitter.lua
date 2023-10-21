@@ -58,7 +58,7 @@ lvim.builtin.treesitter.textobjects = {
     enable = false,
   },
   auto_tag = {
-    enable = true
-  }
+    enable = true,
+  },
 }
 lvim.builtin.treesitter.textsubjects.enable = true

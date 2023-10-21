@@ -10,26 +10,26 @@ lvim.plugins = {
     'simrat39/symbols-outline.nvim',
     event = 'BufRead',
     config = function()
-      require('symbols-outline').setup { position = 'left' }
-    end
+      require('symbols-outline').setup({ position = 'left' })
+    end,
   },
   {
     'j-hui/fidget.nvim',
     branch = 'legacy',
     config = function()
-      require 'fidget'.setup {
+      require('fidget').setup({
         text = {
           spinner = 'dots',
         },
-      }
-    end
+      })
+    end,
   },
   {
     'f3fora/cmp-spell',
     event = { 'InsertEnter', 'CmdlineEnter' },
     config = function()
       table.insert(lvim.builtin.cmp.sources, { name = 'spell' })
-    end
+    end,
   },
   {
     'windwp/nvim-ts-autotag',
@@ -39,7 +39,7 @@ lvim.plugins = {
   },
   {
     'kkoomen/vim-doge',
-    build = ':call doge#install()'
+    build = ':call doge#install()',
   },
   {
     'windwp/nvim-spectre',
@@ -51,7 +51,7 @@ lvim.plugins = {
     'ggandor/leap.nvim',
     config = function()
       require('leap').set_default_keymaps()
-    end
+    end,
   },
   {
     'sindrets/diffview.nvim',
@@ -59,7 +59,9 @@ lvim.plugins = {
   },
   {
     'iamcco/markdown-preview.nvim',
-    build = function() vim.fn['mkdp#util#install']() end,
+    build = function()
+      vim.fn['mkdp#util#install']()
+    end,
     ft = 'markdown',
     config = function()
       vim.g.mkdp_auto_start = 1
@@ -80,9 +82,9 @@ lvim.plugins = {
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities.textDocument.foldingRange = {
           dynamicRegistration = false,
-          lineFoldingOnly = true
+          lineFoldingOnly = true,
         }
-        client.server_capabilities.textDocument = capabilities;
+        client.server_capabilities.textDocument = capabilities
       end
 
       require('ufo').setup({
@@ -111,14 +113,14 @@ lvim.plugins = {
           end
           table.insert(newVirtText, { suffix, 'MoreMsg' })
           return newVirtText
-        end
+        end,
       })
 
       vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
       vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
       vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
       vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith)
-    end
+    end,
   },
   {
     name = 'tabby',
@@ -127,14 +129,14 @@ lvim.plugins = {
   },
   {
     'simrat39/rust-tools.nvim',
-    dependency = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    dependency = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
   },
   {
     'saecki/crates.nvim',
     version = 'v0.3.0',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
-      require('crates').setup {
+      require('crates').setup({
         null_ls = {
           enabled = true,
           name = 'crates.nvim',
@@ -142,14 +144,7 @@ lvim.plugins = {
         popup = {
           border = 'rounded',
         },
-      }
-    end,
-  },
-  {
-    "pmizio/typescript-tools.nvim",
-    dependency = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    config = function()
-      require("typescript-tools").setup {}
+      })
     end,
   },
 }
