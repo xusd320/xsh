@@ -20,6 +20,7 @@ vim.opt.undodir = join_paths(get_cache_dir(), 'undo')
 vim.g.XkbSwitchEnabled = 1
 vim.g.XkbSwitchLib = '/usr/local/lib/libInputSourceSwitcher.dylib'
 
+vim.g.tabby_node_binary = vim.fn.expand('~/.nvm/versions/node/v18.18.2/bin/node')
 vim.g.tabby_accept_binding = '<C-Tab>'
 vim.g.tabby_dismiss_binding = '<C-_>'
 

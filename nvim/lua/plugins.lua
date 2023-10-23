@@ -123,8 +123,7 @@ lvim.plugins = {
     end,
   },
   {
-    name = 'tabby',
-    dir = '~/tabby/clients/vim',
+    'TabbyML/vim-tabby',
     enabled = true,
   },
   {
