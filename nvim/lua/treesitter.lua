@@ -17,6 +17,7 @@ lvim.builtin.treesitter.ensure_installed = {
   'yaml',
   'cmake',
   'markdown',
+  'regex',
   'vimdoc',
 }
 lvim.builtin.treesitter.rainbow.enable = true
