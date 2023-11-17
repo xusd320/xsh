@@ -17,6 +17,12 @@ vim.opt.directory = join_paths(get_cache_dir(), 'swap')
 vim.opt.undofile = true
 vim.opt.undodir = join_paths(get_cache_dir(), 'undo')
 
+-- git clone https://github.com/vovkasm/input-source-switcher.git
+-- cd input-source-switcher
+-- mkdir build && cd build
+-- cmake ..
+-- make
+-- make install
 vim.g.XkbSwitchEnabled = 1
 vim.g.XkbSwitchLib = '/usr/local/lib/libInputSourceSwitcher.dylib'
 
