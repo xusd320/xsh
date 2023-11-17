@@ -20,3 +20,4 @@ vim.list_extend(lvim.lsp.installer.setup.ensure_installed, {
 })
 
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { 'rust_analyzer' })
+lvim.lsp.automatic_configuration.skipped_filetypes = {}
