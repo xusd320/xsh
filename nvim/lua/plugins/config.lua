@@ -6,6 +6,38 @@ return {
     },
   },
   {
+    "folke/noice.nvim",
+    opts = {
+      routes = {
+        {
+          view = "cmdline",
+          filter = { event = "msg_showmode" },
+        },
+      },
+      lsp = {
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
+          ["cmp.entry.get_documentation"] = true,
+        },
+      },
+      cmdline = {
+        view = "cmdline",
+      },
+      messages = {
+        enabled = true,
+        view = "cmdline",
+      },
+      presets = {
+        bottom_search = true,
+        command_palette = true,
+        long_message_to_split = true,
+        inc_rename = false,
+        lsp_doc_border = true,
+      },
+    },
+  },
+  {
     "lyokha/vim-xkbswitch",
     lazy = true,
   },
@@ -45,9 +77,9 @@ return {
         lualine_a = { "mode" },
         lualine_b = { "branch" },
         lualine_c = { { "filename", path = 1 } },
-        lualine_x = { "encoding", "fileformat", "filetype" },
-        lualine_y = { "progress" },
-        lualine_z = { "location" },
+        lualine_x = { "filetype" },
+        lualine_y = { "location" },
+        lualine_z = { "progress" },
       },
     },
   },
@@ -59,7 +91,7 @@ return {
       },
     },
     opts = function(_, opts)
-      table.insert(opts.sources, 1, {
+      table.insert(opts.sources, {
         name = "spell",
         option = {
           keep_all_entries = false,
