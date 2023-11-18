@@ -158,8 +158,8 @@ return {
       },
     },
   },
-  {
-    "TabbyML/vim-tabby",
-    event = "BufRead",
-  },
+  -- {
+  --   "TabbyML/vim-tabby",
+  --   event = "BufRead",
+  -- },
 }

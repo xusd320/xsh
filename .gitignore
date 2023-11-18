@@ -1,4 +1,2 @@
 .netrwhist
 .DS_Store
-plugin
-nvim/lazy-lock.json
