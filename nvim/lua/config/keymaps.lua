@@ -16,6 +16,17 @@ wk.register({
       "Projects",
     },
   },
+  ["gl"] = {
+    name = "Goto call hierarchy",
+    i = {
+      "<cmd>Telescope lsp_incoming_calls<cr>",
+      "Goto incoming calls",
+    },
+    o = {
+      "<cmd>Telescope lsp_outgoing_calls<cr>",
+      "Goto outgoing calls",
+    },
+  },
 })
 
 wk.register({

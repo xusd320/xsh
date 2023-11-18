@@ -10,10 +10,11 @@ vim.opt.foldcolumn = "0"
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = -1
 vim.opt.foldenable = true
--- vim.opt.backup = true
-vim.opt.swapfile = true
-vim.opt.undofile = true
 vim.opt.relativenumber = false
+vim.opt.backup = true
+vim.opt.backupdir = vim.fn.expand("~/.local/state/nvim/backup")
+vim.opt.swapfile = false
+vim.opt.undofile = false
 
 vim.g.XkbSwitchEnabled = 1
 vim.g.XkbSwitchLib = "/usr/local/lib/libInputSourceSwitcher.dylib"
