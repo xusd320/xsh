@@ -40,11 +40,9 @@ export RANLIB=llvm-ranlib
 
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
-if [ "$(command -v lvim)" ]; then
-  alias vi="lvim"
-  alias vim="lvim"
-  export EDITOR=lvim
-fi
+alias vi="nvim"
+alias vim="nvim"
+export EDITOR=nvim
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
