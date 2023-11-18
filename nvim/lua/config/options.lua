@@ -13,6 +13,7 @@ vim.opt.foldenable = true
 -- vim.opt.backup = true
 vim.opt.swapfile = true
 vim.opt.undofile = true
+vim.opt.relativenumber = false
 
 vim.g.XkbSwitchEnabled = 1
 vim.g.XkbSwitchLib = "/usr/local/lib/libInputSourceSwitcher.dylib"

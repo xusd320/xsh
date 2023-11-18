@@ -18,7 +18,8 @@
     "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.ui.alpha",
     "lazyvim.plugins.extras.util.mini-hipatterns",
-    "lazyvim.plugins.extras.util.project"
+    "lazyvim.plugins.extras.util.project",
+    "lazyvim.plugins.extras.vscode"
   ],
   "news": {
     "NEWS.md": "2123"

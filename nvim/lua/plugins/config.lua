@@ -41,14 +41,6 @@ return {
     "lyokha/vim-xkbswitch",
     lazy = true,
   },
-
-  {
-    "ahmedkhalf/project.nvim",
-    opts = {
-      patterns = { ">Projects", ".git" },
-      detection_methods = { "patterns" },
-    },
-  },
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
@@ -104,6 +96,24 @@ return {
   },
   {
     "nvim-telescope/telescope.nvim",
+    dependencies = {
+      {
+        "ahmedkhalf/project.nvim",
+        opts = {
+          manual_mode = false,
+        },
+        event = "VeryLazy",
+        config = function(_, opts)
+          require("project_nvim").setup(opts)
+          require("lazyvim.util").on_load("telescope.nvim", function()
+            require("telescope").load_extension("projects")
+          end)
+        end,
+        keys = {
+          { "<leader>fp", "<Cmd>Telescope projects<CR>", desc = "Projects" },
+        },
+      },
+    },
     opts = {
       defaults = {
         layout_strategy = "horizontal",
@@ -124,72 +134,63 @@ return {
           return string.format("%s (%s)", tail, shorten_path), { { { 1, #tail }, "Constant" } }
         end,
       },
-      pickers = {
-        live_grep = {
-          additional_args = {
-            "-l",
-          },
-        },
-        grep_string = {
-          additional_args = {
-            "-l",
-          },
-        },
-        lsp_definitions = {
-          show_line = false,
-        },
-        lsp_references = {
-          show_line = false,
-        },
-        lsp_implementations = {
-          show_line = false,
-        },
-        lsp_type_definitions = {
-          show_line = false,
-        },
-        lsp_incoming_calls = {
-          show_line = false,
-        },
-        lsp_outgoing_calls = {
-          show_line = false,
-        },
-        lsp_workspace_symbols = {
-          show_line = false,
-        },
-        lsp_document_symbols = {
-          show_line = false,
-        },
+    },
+    pickers = {
+      lsp_definitions = {
+        show_line = false,
+      },
+      lsp_references = {
+        show_line = false,
+      },
+      lsp_implementations = {
+        show_line = false,
+      },
+      lsp_type_definitions = {
+        show_line = false,
+      },
+      lsp_incoming_calls = {
+        show_line = false,
+      },
+      lsp_outgoing_calls = {
+        show_line = false,
+      },
+      lsp_workspace_symbols = {
+        show_line = false,
+      },
+      lsp_document_symbols = {
+        show_line = false,
+      },
 
-        lsp_dynamic_workspace_symbols = {
-          show_line = false,
-        },
-        diagnostics = {
-          disable_coordinates = true,
-        },
-        treesitter = {
-          show_line = false,
-        },
-        tags = {
-          show_line = false,
-        },
-        current_buffer_tags = {
-          show_line = false,
-        },
-        quickfix = {
-          show_line = false,
-        },
-        loclist = {
-          show_line = false,
-        },
-        jumplist = {
-          show_line = false,
-        },
-        tagstack = {
-          show_line = false,
-        },
+      lsp_dynamic_workspace_symbols = {
+        show_line = false,
+      },
+      diagnostics = {
+        disable_coordinates = true,
+      },
+      treesitter = {
+        show_line = false,
+      },
+      tags = {
+        show_line = false,
+      },
+      current_buffer_tags = {
+        show_line = false,
+      },
+      quickfix = {
+        show_line = false,
+      },
+      loclist = {
+        show_line = false,
+      },
+      jumplist = {
+        show_line = false,
+      },
+      tagstack = {
+        show_line = false,
       },
     },
   },
+
   -- {
   --   "TabbyML/vim-tabby",
   --   event = "BufRead",
