@@ -14,7 +14,7 @@ vim.opt.relativenumber = false
 vim.opt.backup = true
 vim.opt.backupdir = vim.fn.expand("~/.local/state/nvim/backup")
 vim.opt.swapfile = false
-vim.opt.undofile = false
+vim.opt.undofile = true
 
 vim.g.XkbSwitchEnabled = 1
 vim.g.XkbSwitchLib = "/usr/local/lib/libInputSourceSwitcher.dylib"
