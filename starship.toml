@@ -2,12 +2,11 @@ add_newline = false
 
 format = """
 [](#9A348E)\
+[](bg:#DA627D fg:#9A348E)\
 $directory\
 [](fg:#DA627D bg:#FCA17D)\
 $git_branch\
 $git_status\
-[](fg:#FCA17D bg:#86BBD8)\
-$time\
 [ ](fg:#33658A)\
 """
 
@@ -17,6 +16,7 @@ format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
+
 [git_branch]
 symbol = ""
 style = "bg:#FCA17D"
@@ -25,9 +25,3 @@ format = '[ $symbol $branch ]($style)'
 [git_status]
 style = "bg:#FCA17D"
 format = '[$all_status$ahead_behind ]($style)'
-
-[time]
-disabled = false
-time_format = "%R"
-style = "bg:#33658A"
-format = '[ ♥ $time ]($style)'
