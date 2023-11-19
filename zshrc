@@ -6,6 +6,15 @@ source $ZPLUG_HOME/init.zsh
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions", use:"zsh-autosuggestions.zsh"
+zplug "agkozak/zsh-z"
+
+zplug "lib/completion", from:oh-my-zsh
+zplug 'modules/history', from:prezto
+zplug 'modules/git', from:prezto
+zplug 'modules/utility', from:prezto
+zplug 'modules/editor', from:prezto
+
+zstyle ':prezto:*:*' color 'yes'
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
