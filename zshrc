@@ -18,14 +18,19 @@ zplug load
 
 eval "$(starship init zsh)"
 
-export HOMEBREW_NO_AUTO_UPDATE=1
+alias ls='exa -G  --color auto --icons -a -s type'
+alias ll='exa -l --color always --icons -a -s type'
+
+alias vi="nvim"
+alias vim="nvim"
+export EDITOR=nvim
+
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="/opt/homebrew/opt/python@3.10/libexec/bin:$PATH"
 export PATH="$HOME/.local/bin/:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/.depot_tools/:$PATH"
-export PATH="/opt/homebrew/opt/python@3.10/libexec/bin:$PATH"
 
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
@@ -37,10 +42,6 @@ export STRIP=llvm-strip
 export RANLIB=llvm-ranlib
 
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
-
-alias vi="nvim"
-alias vim="nvim"
-export EDITOR=nvim
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  

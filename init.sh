@@ -1,27 +1,20 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-brew install wget llvm bat jq tmux neovim ripgrep cmake alacritty starship zplug git-delta
+brew install wget llvm bat jq tmux neovim ripgrep cmake alacritty starship zplug git-delta exa
 brew tap homebrew/cask-fonts
 brew install --cask clashx rectangle font-hack-nerd-font visual-studio-code rectangle maccy
 
 git clone git@github.com:xusd320/xsh.git
 
+ln -s ~/xsh/alacritty.yml ~/.config/alacritty/alacritty.yml
+ln -s ~/xsh/starship.toml ~/.config/starship.toml
+ln -s ~/xsh/gitconfig ~/.gitconfig
 ln -s xsh/zshrc ~/.zshrc
 
 LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
 ln -s ~/xsh/nvim ~/.config/nvim
-ln -s ~/xsh/alacritty.yml ~/.config/alacritty/alacritty.yml
-ln -s ~/xsh/starship.toml ~/.config/starship.toml
-ln -s ~/xsh/gitconfig ~/.gitconfig
 
 sudo chown -R $(whoami) /usr/local/bin
-
-git clone https://github.com/vovkasm/input-source-switcher.git  ✔ 
-cd input-source-switcher
-mkdir build && cd build
-cmake ..
-make
-make install
 
 mkdir -p ~/.config/tmux
 git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
