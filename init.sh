@@ -1,7 +1,7 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-brew install wget llvm bat jq tmux neovim ripgrep cmake alacritty starship zplug git-delta exa
-brew tap homebrew/cask-fonts
+brew tap homebrew/cask-fonts daipeihust/tap
+brew install wget llvm bat jq tmux neovim ripgrep cmake alacritty starship zplug git-delta exa im-select
 brew install --cask clashx rectangle font-hack-nerd-font visual-studio-code rectangle maccy
 
 git clone git@github.com:xusd320/xsh.git
