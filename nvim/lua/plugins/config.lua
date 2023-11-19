@@ -8,12 +8,6 @@ return {
   {
     "folke/noice.nvim",
     opts = {
-      routes = {
-        {
-          view = "cmdline",
-          filter = { event = "msg_showmode" },
-        },
-      },
       lsp = {
         override = {
           ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
