@@ -1,51 +1,5 @@
 return {
   {
-    "lewis6991/gitsigns.nvim",
-    optional = true,
-    opts = {
-      signs = {
-        add = { text = "┃" },
-        change = { text = "┃" },
-        delete = { text = "󱈸" },
-        topdelete = { text = "󱈸" },
-        changedelete = { text = "┃" },
-        untracked = { text = "┇" },
-      },
-      signcolumn = true,
-      numhl = true,
-    },
-  },
-  {
-    "neovim/nvim-lspconfig",
-    optional = true,
-    init = function()
-      local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      keys[#keys + 1] = { "K", false }
-    end,
-  },
-  { -- better statuscolumn
-    "luukvbaal/statuscol.nvim",
-    event = { "BufRead", "BufNewFile" },
-    opts = function()
-      local builtin = require("statuscol.builtin")
-      return {
-        ft_ignore = { "neo-tree", "neo-tree-popup", "alpha", "lazy", "mason" },
-        segments = {
-          { text = { builtin.lnumfunc }, click = "v:lua.ScLa" },
-          {
-            sign = { name = { "Diagnostic*" }, text = { ".*" }, maxwidth = 1, colwidth = 1, auto = true },
-            click = "v:lua.ScSa",
-          },
-          { text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
-        },
-      }
-    end,
-    init = function() end,
-    config = function(_, opts)
-      require("statuscol").setup(opts)
-    end,
-  },
-  { -- better fold
     "kevinhwang91/nvim-ufo",
     event = { "BufRead", "BufNewFile" },
     dependencies = { "kevinhwang91/promise-async" },

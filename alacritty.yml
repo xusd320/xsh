@@ -12,7 +12,11 @@ shell:
     - "tmux"
 
 key_bindings:
-- { key: Tab, mods: Control, chars: "\x1b[27;5;9~" }
+  - {key: Left, mods: Alt, chars: "\eb"}
+  - {key: Right, mods: Alt, chars: "\ef"}
+  - {key: Left, mods: Control, chars: "\eb"}
+  - {key: Right, mods: Control, chars: "\ef"}
+  - { key: Tab, mods: Control, chars: "\x1b[27;5;9~" }
 
 font:
   normal:

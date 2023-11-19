@@ -1,64 +1,5 @@
 return {
   {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "catppuccin",
-    },
-  },
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    opts = {
-      window = {
-        position = "right",
-      },
-    },
-  },
-  {
-    "lewis6991/gitsigns.nvim",
-    opts = {
-      current_line_blame = true,
-      current_line_blame_opts = {
-        delay = 200,
-      },
-    },
-  },
-  {
-    "nvim-lualine/lualine.nvim",
-    opts = {
-      options = {
-        component_separators = "|",
-        section_separators = { left = "", right = "" },
-      },
-      sections = {
-        lualine_a = { "mode" },
-        lualine_b = { "branch" },
-        lualine_c = { { "filename", path = 1 } },
-        lualine_x = { "filetype" },
-        lualine_y = { "location" },
-        lualine_z = { "progress" },
-      },
-    },
-  },
-  {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      {
-        "f3fora/cmp-spell",
-      },
-    },
-    opts = function(_, opts)
-      table.insert(opts.sources, {
-        name = "spell",
-        option = {
-          keep_all_entries = false,
-          enable_in_context = function()
-            return true
-          end,
-        },
-      })
-    end,
-  },
-  {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       {
@@ -153,9 +94,5 @@ return {
         show_line = false,
       },
     },
-  },
-  {
-    "TabbyML/vim-tabby",
-    lazy = false,
   },
 }
