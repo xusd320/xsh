@@ -1,17 +1,18 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-brew install wget llvm bat jq tmux neovim ripgrep cmake alacritty starship zplug
+brew install wget llvm bat jq tmux neovim ripgrep cmake alacritty starship zplug git-delta
 brew tap homebrew/cask-fonts
 brew install --cask clashx rectangle font-hack-nerd-font visual-studio-code rectangle maccy
 
 git clone git@github.com:xusd320/xsh.git
-git clone git@github.com:dracula/alacritty.git ~/.config/alacritty
 
 ln -s xsh/zshrc ~/.zshrc
-ln -s xsh/p10k.zsh ~/.p10k.zsh
 
 LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
-ln -s ~/xsh/nvim ~/.config/lvim
+ln -s ~/xsh/nvim ~/.config/nvim
+ln -s ~/xsh/alacritty.yml ~/.config/alacritty/alacritty.yml
+ln -s ~/xsh/starship.toml ~/.config/starship.toml
+ln -s ~/xsh/gitconfig ~/.gitconfig
 
 sudo chown -R $(whoami) /usr/local/bin
 
