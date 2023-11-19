@@ -10,6 +10,7 @@ zplug "agkozak/zsh-z"
 
 zplug "lib/completion", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
+zplug "modules/prompt", from:prezto
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
