@@ -22,12 +22,15 @@ format = '[ $symbol$branch(:$remote_branch) ]($style)'
 symbol = "  "
 style = "fg:#1C3A5E bg:#FCF392"
 
-[git_state]
-format = '\([$state( $progress_current/$progress_total )]($style)\)'
-style = "fg:#1C3A5E bg:#FCF392"
-
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style))'
+style = "fg:#1C3A5E bg:#FCF392"
+ahead = '⇡${count}'
+diverged = '⇕⇡${ahead_count}⇣${behind_count}'
+behind = '⇣${count}'
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total )]($style)\)'
 style = "fg:#1C3A5E bg:#FCF392"
 
 [git_metrics]
@@ -35,10 +38,6 @@ format = '([+$added]($added_style))([-$deleted]($deleted_style))'
 added_style = "fg:#1C3A5E bg:#FCF392"
 deleted_style = "fg:#1C3A5E bg:#FCF392"
 disabled = false
-
-[cmd_duration]
-format = "[  $duration ]($style)"
-style = "fg:bright-white bg:18"
 
 [character]
 success_symbol = '[ ➜](bold green) '
