@@ -30,7 +30,7 @@ diverged = '⇕⇡${ahead_count}⇣${behind_count}'
 behind = '⇣${count}'
 
 [git_state]
-format = '\([$state( $progress_current/$progress_total )]($style)\)'
+format = '[\($state( $progress_current/$progress_total )\)]($style)'
 style = "fg:#1C3A5E bg:#FCF392"
 
 [git_metrics]
