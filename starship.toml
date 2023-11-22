@@ -1,3 +1,6 @@
+add_newline = false
+command_timeout = 10000
+
 format = """\
 [](bg:#030B16 fg:#7DF9AA)\
 [󰀵 ](bg:#7DF9AA fg:#090c0c)\
