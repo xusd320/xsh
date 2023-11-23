@@ -14,15 +14,15 @@ return {
       default_component_configs = {
         git_status = {
           symbols = {
-            added = "",
-            deleted = "",
-            modified = "",
-            renamed = "➜",
-            untracked = "★",
-            ignored = "◌",
-            unstaged = "✗",
-            staged = "✓",
+            staged = "⊕",
+            deleted = "-",
             conflict = "",
+            modified = "!",
+            renamed = "»",
+            untracked = "?",
+            added = "+",
+            ignored = "",
+            unstaged = "⊖",
           },
         },
         file_size = {
