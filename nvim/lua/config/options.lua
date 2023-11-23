@@ -1,15 +1,5 @@
-vim.opt.background = "dark"
 vim.opt.spell = true
 vim.opt.spelllang = "en"
-vim.opt.timeoutlen = 100
-vim.opt.ignorecase = false
-vim.opt.showmode = true
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
-vim.opt.foldcolumn = "0"
-vim.opt.foldlevel = 99
-vim.opt.foldlevelstart = -1
-vim.opt.foldenable = true
 vim.opt.relativenumber = false
 vim.opt.cmdheight = 0
 vim.opt.backup = true
