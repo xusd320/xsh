@@ -4,6 +4,8 @@ return {
     opts = {
       layout = {
         default_direction = "prefer_left",
+        max_width = { 200, 0.3 },
+        min_width = 60,
       },
     },
   },
