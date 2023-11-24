@@ -26,8 +26,20 @@ return {
           },
         },
         file_size = {
-          enabled = false,
-        },
+            enabled = false,
+          },
+          type = {
+            enabled = false,
+          },
+          last_modified = {
+            enabled = false,
+          },
+          created = {
+            enabled = false,
+          },
+          symlink_target = {
+            enabled = false,
+          },
       },
     },
   },
