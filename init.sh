@@ -22,6 +22,7 @@ ln -s ~/xsh/tmux.conf ~/.config/tmux/tmux.conf
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
 nvm install lts/fermium
+npm i -g cspell
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 

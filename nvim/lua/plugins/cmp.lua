@@ -16,6 +16,16 @@ return {
       local luasnip = require("luasnip")
       local cmp = require("cmp")
 
+      opts.window = {
+        documentation = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered(),
+      }
+
+      opts.confirm_opts = {
+        behavior = cmp.SelectBehavior.Replace,
+        select = false,
+      }
+
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
@@ -44,7 +54,7 @@ return {
         option = {
           keep_all_entries = false,
           enable_in_context = function()
-            return true
+            return false
           end,
         },
       })
