@@ -15,9 +15,9 @@ return {
         git_status = {
           symbols = {
             staged = "⊕",
-            deleted = "-",
+            deleted = "⊖",
             conflict = "",
-            modified = "!",
+            modified = "◍",
             renamed = "»",
             untracked = "?",
             added = "+",
