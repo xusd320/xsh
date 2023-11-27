@@ -1,7 +1,7 @@
 local wk = require("which-key")
 
 wk.register({
-  ["<leader>T"] = {
+  ["<leader><Space>"] = {
     name = "Telescope",
     t = {
       "<cmd>Telescope<cr>",
