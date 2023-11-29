@@ -6,10 +6,10 @@ return {
         view = "cmdline",
       },
       messages = {
-        enabled = false,
+        -- enabled = false,
       },
       notify = {
-        enabled = false,
+        -- enabled = false,
       },
     },
   },
