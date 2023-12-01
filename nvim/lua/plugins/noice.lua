@@ -2,14 +2,36 @@ return {
   {
     "folke/noice.nvim",
     opts = {
+      presets = {
+        bottom_search = true,
+        command_palette = true,
+        long_message_to_split = true,
+        inc_rename = false,
+        lsp_doc_border = false,
+      },
+      routes = {
+        {
+          filter = {
+            event = "msg_show",
+            any = {
+              { find = "%d+L, %d+B" },
+              { find = "; after #%d+" },
+              { find = "; before #%d+" },
+              { find = "%d fewer lines" },
+              { find = "%d more lines" },
+            },
+          },
+          opts = { skip = true },
+        },
+      },
       cmdline = {
         view = "cmdline",
       },
       messages = {
-        -- enabled = false,
+        view = "cmdline",
       },
       notify = {
-        -- enabled = false,
+        enabled = false,
       },
     },
   },
