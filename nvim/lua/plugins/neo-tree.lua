@@ -9,8 +9,14 @@ return {
         bind_to_cwd = false,
         follow_current_file = { enabled = true },
         use_libuv_file_watcher = true,
+        filters = {
+          respect_gitignore = true,
+          gitignore_source = "git check-ignore",
+        },
       },
       sources = { "filesystem", "buffers", "git_status" },
+      enable_git_status = true,
+      git_status_async = true,
       default_component_configs = {
         git_status = {
           symbols = {
@@ -26,20 +32,20 @@ return {
           },
         },
         file_size = {
-            enabled = false,
-          },
-          type = {
-            enabled = false,
-          },
-          last_modified = {
-            enabled = false,
-          },
-          created = {
-            enabled = false,
-          },
-          symlink_target = {
-            enabled = false,
-          },
+          enabled = false,
+        },
+        type = {
+          enabled = false,
+        },
+        last_modified = {
+          enabled = false,
+        },
+        created = {
+          enabled = false,
+        },
+        symlink_target = {
+          enabled = false,
+        },
       },
     },
   },
