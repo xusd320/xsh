@@ -1,1 +1,1 @@
-A code ide based on LunarVim.
+# A code ide based on LazyVim
