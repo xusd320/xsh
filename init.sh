@@ -1,7 +1,7 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 brew tap homebrew/cask-fonts daipeihust/tap
-brew install wget llvm bat jq tmux neovim ripgrep fd cmake alacritty starship zplug git-delta exa im-select
+brew install wget llvm bat jq tmux neovim ripgrep fd cmake alacritty starship antigen git-delta exa im-select fnm
 brew install --cask clashx rectangle font-hack-nerd-font visual-studio-code rectangle maccy
 
 git clone git@github.com:xusd320/xsh.git
@@ -19,9 +19,6 @@ sudo chown -R $(whoami) /usr/local/bin
 mkdir -p ~/.config/tmux
 git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 ln -s ~/xsh/tmux.conf ~/.config/tmux/tmux.conf
-
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
-nvm install lts/fermium
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 

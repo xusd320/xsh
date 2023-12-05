@@ -1,25 +1,18 @@
 export LANG=en_US.UTF-8
 
-export ZPLUG_HOME=/opt/homebrew/opt/zplug
-source $ZPLUG_HOME/init.zsh
+source /opt/homebrew/share/antigen/antigen.zsh
+antigen use oh-my-zsh
 
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "zsh-users/zsh-autosuggestions", use:"zsh-autosuggestions.zsh"
-zplug "agkozak/zsh-z"
+antigen bundle git
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-syntax-highlighting
 
-zplug "lib/completion", from:oh-my-zsh
-zplug "plugins/git", from:oh-my-zsh
-zplug "modules/prompt", from:prezto
-
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    antigen bundle osx
 fi
 
-zplug load
+antigen apply
 
 eval "$(starship init zsh)"
 
@@ -48,8 +41,6 @@ export RANLIB=llvm-ranlib
 
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+eval "$(fnm env --use-on-cd)"
 
 export TABBY_DISABLE_USAGE_COLLECTION=1
