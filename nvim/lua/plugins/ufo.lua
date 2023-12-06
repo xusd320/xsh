@@ -41,7 +41,7 @@ return {
       return {
         fold_virt_text_handler = handler,
         provider_selector = function()
-          return { "treesitter", "indent" }
+          return { "treesitter" }
         end,
         open_fold_hl_timeout = 400,
         close_fold_kinds = { "imports", "comment" },
