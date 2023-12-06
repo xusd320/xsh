@@ -3,17 +3,26 @@ export LANG=en_US.UTF-8
 source /opt/homebrew/share/antigen/antigen.zsh
 antigen use oh-my-zsh
 
+antigen bundle adb
+antigen bundle common-aliases
+antigen bundle command-not-found
+antigen bundle compleat
+antigen bundle copybuffer
+antigen bundle copyfile
+antigen bundle copypath
 antigen bundle git
 antigen bundle git-extra
+antigen bundle git-fast
 antigen bundle git-flow 
 antigen bundle history
-antigen bundle command-not-found
-antigen bundle common-aliases
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle nats
+antigen bundle ripgrep
+antigen bundle tmux
 antigen bundle z
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle zsh-users/zsh-syntax-highlighting
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     antigen bundle osx
