@@ -10,6 +10,7 @@ ln -s ~/xsh/alacritty.yml ~/.config/alacritty/alacritty.yml
 ln -s ~/xsh/starship.toml ~/.config/starship.toml
 ln -s ~/xsh/gitconfig ~/.gitconfig
 ln -s xsh/zshrc ~/.zshrc
+ln -s ~/xsh/lazygit ~/.config/lazygit
 
 LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
 ln -s ~/xsh/nvim ~/.config/nvim

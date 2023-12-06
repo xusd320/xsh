@@ -58,6 +58,8 @@ export RANLIB=llvm-ranlib
 
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
+export XDG_CONFIG_HOME="$HOME/.config"
+
 eval "$(fnm env --use-on-cd)"
 
 export TABBY_DISABLE_USAGE_COLLECTION=1
