@@ -9,7 +9,7 @@ return {
         bind_to_cwd = false,
         follow_current_file = { enabled = true },
         use_libuv_file_watcher = true,
-        filters = {
+        filtered_items = {
           respect_gitignore = true,
           gitignore_source = "git check-ignore",
         },
