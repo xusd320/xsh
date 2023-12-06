@@ -1,4 +1,4 @@
-vim.opt.cmdheight = 0
+vim.opt.cmdheight = 1
 vim.opt.relativenumber = false
 vim.opt.backup = true
 vim.opt.backupdir = vim.fn.expand("~/.local/state/nvim/backup")
