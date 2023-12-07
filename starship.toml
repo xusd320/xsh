@@ -9,6 +9,7 @@ format = """\
 $directory\
 [](fg:#3B76F0 bg:#FCF392)\
 $git_branch\
+$git_commit\
 $git_status\
 $git_state\
 $git_metrics\
@@ -24,6 +25,10 @@ style = "fg:#E4E4E4 bg:#3B76F0"
 format = '[ $symbol$branch(:$remote_branch) ]($style)'
 style = "fg:#1C3A5E bg:#FCF392"
 symbol = "  "
+
+[git_commit]
+format = '[\($tag\)]($style)'
+style = "fg:#1C3A5E bg:#FCF392"
 
 [git_status]
 format = '([\[$all_status$ahead_behind\]]($style))'
