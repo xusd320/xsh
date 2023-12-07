@@ -27,7 +27,7 @@ style = "fg:#1C3A5E bg:#FCF392"
 symbol = "  "
 
 [git_commit]
-format = '[\($tag\)]($style)'
+format = '[$tag]($style)'
 style = "fg:#1C3A5E bg:#FCF392"
 
 [git_status]
