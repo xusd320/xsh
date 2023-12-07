@@ -55,8 +55,6 @@ cursor:
   style: Block
   unfocused_hollow: true
 
-alt_send_esc: true
-
 key_bindings:
   - { key: Key0,   mods: Command,         action: ResetFontSize    }
   - { key: Equals, mods: Command,         action: IncreaseFontSize }
