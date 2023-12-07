@@ -27,9 +27,10 @@ style = "fg:#1C3A5E bg:#FCF392"
 symbol = "  "
 
 [git_commit]
-format = "[\\($hash$tag\\)]($style) "
+format = "[\\($hash$tag\\)]($style)"
 only_detached = true
 tag_disabled = false
+tag_symbol = "ᜑ"
 style = "fg:#1C3A5E bg:#FCF392"
 
 [git_status]
