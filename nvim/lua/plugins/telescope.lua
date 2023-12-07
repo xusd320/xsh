@@ -47,7 +47,7 @@ return {
           horizontal = {
             width = 0.9,
             height = 0.9,
-            preview_width = 0.40,
+            preview_width = 0.5,
             preview_cutoff = 60,
             prompt_position = "bottom",
           },
