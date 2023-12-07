@@ -30,7 +30,7 @@ symbol = "  "
 format = "[\\($hash$tag\\)]($style)"
 only_detached = true
 tag_disabled = false
-tag_symbol = "ᜑ"
+tag_symbol = "༓"
 style = "fg:#1C3A5E bg:#FCF392"
 
 [git_status]
