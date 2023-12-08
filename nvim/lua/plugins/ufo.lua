@@ -26,7 +26,6 @@ return {
             local hlGroup = chunk[2]
             table.insert(newVirtText, { chunkText, hlGroup })
             chunkWidth = vim.fn.strdisplaywidth(chunkText)
-            -- str width returned from truncate() may less than 2nd argument, need padding
             if curWidth + chunkWidth < targetWidth then
               suffix = suffix .. (" "):rep(targetWidth - curWidth - chunkWidth)
             end
@@ -40,9 +39,6 @@ return {
 
       return {
         fold_virt_text_handler = handler,
-        provider_selector = function()
-          return { "treesitter" }
-        end,
         open_fold_hl_timeout = 400,
         preview = {
           win_config = { border = { "", "─", "", "", "", "─", "", "" }, winblend = 0 },

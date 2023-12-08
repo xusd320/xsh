@@ -12,7 +12,6 @@ return {
             sign = { name = { "Diagnostic*" }, text = { ".*" }, maxwidth = 1, colwidth = 1, auto = true },
             click = "v:lua.ScSa",
           },
-          { text = { builtin.foldfunc, " " }, click = "v:lua.ScFa" },
         },
       }
     end,

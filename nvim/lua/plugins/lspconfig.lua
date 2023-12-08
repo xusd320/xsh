@@ -11,6 +11,14 @@ end
 return {
   "neovim/nvim-lspconfig",
   opts = {
+    capabilities = {
+      textDocument = {
+        foldingRange = {
+          dynamicRegistration = false,
+          lineFoldingOnly = true,
+        },
+      },
+    },
     servers = {
       eslint = {
         root_dir = get_typescript_root_dir,
