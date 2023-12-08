@@ -1,14 +1,14 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 brew tap homebrew/cask-fonts daipeihust/tap
-brew install wget llvm bat jq tmux neovim ripgrep fd cmake alacritty starship antigen git-delta exa im-select fnm
+brew install wget llvm bat jq neovim ripgrep fd cmake wezterm starship antigen git-delta exa im-select fnm
 brew install --cask clashx rectangle font-hack-nerd-font visual-studio-code rectangle maccy
 
 git clone git@github.com:xusd320/xsh.git
 
-ln -s ~/xsh/alacritty.yml ~/.config/alacritty/alacritty.yml
 ln -s ~/xsh/starship.toml ~/.config/starship.toml
 ln -s ~/xsh/gitconfig ~/.gitconfig
+ln -s ~/xsh/wezterm ~/.config/wezterm
 ln -s xsh/zshrc ~/.zshrc
 ln -s ~/xsh/lazygit ~/.config/lazygit
 
@@ -16,10 +16,6 @@ LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.
 ln -s ~/xsh/nvim ~/.config/nvim
 
 sudo chown -R $(whoami) /usr/local/bin
-
-mkdir -p ~/.config/tmux
-git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
-ln -s ~/xsh/tmux.conf ~/.config/tmux/tmux.conf
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 

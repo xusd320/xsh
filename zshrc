@@ -17,7 +17,6 @@ antigen bundle git-flow
 antigen bundle history
 antigen bundle nats
 antigen bundle ripgrep
-antigen bundle tmux
 antigen bundle z
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
