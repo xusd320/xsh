@@ -49,6 +49,15 @@ return {
         end, { "i", "s" }),
       })
 
+      opts.performance = {
+        debounce = 120,
+        throttle = 60,
+        fetching_timeout = 500,
+        confirm_resolve_timeout = 80,
+        async_budget = 1,
+        max_view_entries = 200,
+      }
+
       table.insert(opts.sources, {
         name = "spell",
         option = {
