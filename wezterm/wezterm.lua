@@ -26,8 +26,6 @@ config.window_padding = {
   bottom = 0,
 }
 
-config.disable_default_key_bindings = true
-
 config.leader = { key = "a", mods = "CTRL" }
 
 config.keys = {
