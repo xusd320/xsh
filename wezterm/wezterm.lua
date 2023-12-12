@@ -5,7 +5,9 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
-config.font = wezterm.font("Hack Nerd Font")
+config.color_scheme = "Catppuccin Mocha"
+
+config.font = wezterm.font_with_fallback("Hack Nerd Font")
 
 config.font_size = 14.0
 
@@ -16,8 +18,6 @@ config.freetype_render_target = "HorizontalLcd"
 config.cell_width = 0.9
 
 config.front_end = "OpenGL"
-
-config.color_scheme = "Catppuccin Mocha"
 
 config.window_padding = {
   left = 0,
