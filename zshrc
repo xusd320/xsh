@@ -1,39 +1,24 @@
-export LANG=en_US.UTF-8
-
-source /opt/homebrew/share/antigen/antigen.zsh
-antigen use oh-my-zsh
-
-antigen bundle common-aliases
-antigen bundle command-not-found
-antigen bundle compleat
-antigen bundle copyfile
-antigen bundle copypath
-antigen bundle git
-antigen bundle git-commit
-antigen bundle git-escape-magic
-antigen bundle git-extra
-antigen bundle git-fast
-antigen bundle git-flow
-antigen bundle history
-antigen bundle nats
-antigen bundle ripgrep
-antigen bundle z
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    antigen bundle osx
-    antigen bundle brew
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-antigen apply
+export ZSH="$HOME/.oh-my-zsh"
 
-eval "$(starship init zsh)"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
-alias ls='exa -G  --color auto --icons -a -s type'
-alias ll='exa -l --color always --icons -a -s type'
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+
+if [ ! -d "$HOME/.cache/zsh" ]; then
+    mkdir -p $HOME/.cache/zsh
+fi
+
+export ZSH_COMPDUMP="$HOME/.cache/zsh/zcompdump-$HOST-$ZSH_VERSION"
+
+source $ZSH/oh-my-zsh.sh
+
+source $HOME/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
+
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 alias vi="nvim"
 alias vim="nvim"
@@ -54,6 +39,8 @@ export LD=lld
 export NM=llvm-nm
 export STRIP=llvm-strip
 export RANLIB=llvm-ranlib
+
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
