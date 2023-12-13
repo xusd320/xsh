@@ -9,7 +9,7 @@ return {
         segments = {
           { text = { builtin.lnumfunc }, click = "v:lua.ScLa" },
           {
-            sign = { name = { "Diagnostic*" }, text = { ".*" }, maxwidth = 1, colwidth = 1, auto = true },
+            sign = { name = { "Diagnostic*" }, text = { ".*" }, maxwidth = 1, colwidth = 2, auto = true },
             click = "v:lua.ScSa",
           },
         },
