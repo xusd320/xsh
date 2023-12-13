@@ -26,6 +26,8 @@ config.window_padding = {
   bottom = 0,
 }
 
+config.disable_default_key_bindings = true
+
 config.leader = { key = "a", mods = "CTRL" }
 
 config.keys = {
@@ -51,8 +53,16 @@ config.keys = {
   { key = "7", mods = "LEADER", action = wezterm.action({ ActivateTab = 6 }) },
   { key = "8", mods = "LEADER", action = wezterm.action({ ActivateTab = 7 }) },
   { key = "9", mods = "LEADER", action = wezterm.action({ ActivateTab = 8 }) },
-  { key = "&", mods = "LEADER|SHIFT", action = wezterm.action({ CloseCurrentTab = { confirm = true } }) },
-  { key = "x", mods = "LEADER", action = wezterm.action({ CloseCurrentPane = { confirm = true } }) },
+  { key = "x", mods = "LEADER", action = wezterm.action({ CloseCurrentPane = { confirm = false } }) },
+  { key = "f", mods = "CMD", action = wezterm.action({ Search = { CaseSensitiveString = "" } }) },
+  { key = "h", mods = "CMD", action = wezterm.action({ HideApplication }) },
+  { key = "k", mods = "CMD", action = wezterm.action({ ClearScrollback = "ScrollbackOnly" }) },
+  { key = "t", mods = "CMD", action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }) },
+  { key = "T", mods = "CMD|SHIFT", action = wezterm.action({ SpawnTab = "DefaultDomain" }) },
+  { key = "v", mods = "CMD", action = wezterm.action({ PasteFrom = "Clipboard" }) },
+  { key = "w", mods = "CMD", action = wezterm.action({ CloseCurrentTab = { confirm = false } }) },
+  { key = "+", mods = "CMD", action = wezterm.action({ IncreaseFontSize }) },
+  { key = "-", mods = "CMD", action = wezterm.action({ DecreaseFontSize }) },
 }
 
 config.window_decorations = "RESIZE"
