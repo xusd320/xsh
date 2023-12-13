@@ -37,14 +37,27 @@ alias ll='exa -l --color always --icons -a -s type'
 
 alias vi="nvim"
 alias vim="nvim"
-	@@ -55,6 +40,8 @@ export NM=llvm-nm
+export EDITOR=nvim
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="/opt/homebrew/opt/python@3.10/libexec/bin:$PATH"
+export PATH="$HOME/.local/bin/:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+export AR=llvm-ar
+export LD=lld
+export NM=llvm-nm
 export STRIP=llvm-strip
 export RANLIB=llvm-ranlib
-
-export HOMEBREW_NO_AUTO_UPDATE=1
 
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 
 export XDG_CONFIG_HOME="$HOME/.config"
-eval "$(fnm env --use-on-cd)"
+
+export HOMEBREW_NO_AUTO_UPDATE=1
+
 export TABBY_DISABLE_USAGE_COLLECTION=1
+
+eval "$(fnm env --use-on-cd)"
