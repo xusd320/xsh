@@ -55,7 +55,7 @@ config.keys = {
   { key = "9", mods = "LEADER", action = wezterm.action({ ActivateTab = 8 }) },
   { key = "x", mods = "LEADER", action = wezterm.action({ CloseCurrentPane = { confirm = false } }) },
   { key = "f", mods = "CMD", action = wezterm.action({ Search = { CaseSensitiveString = "" } }) },
-  { key = "h", mods = "CMD", action = wezterm.action({ HideApplication }) },
+  { key = "h", mods = "CMD", action = wezterm.action.HideApplication },
   { key = "k", mods = "CMD", action = wezterm.action({ ClearScrollback = "ScrollbackOnly" }) },
   { key = "t", mods = "CMD", action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }) },
   { key = "T", mods = "CMD|SHIFT", action = wezterm.action({ SpawnTab = "DefaultDomain" }) },
