@@ -21,21 +21,31 @@ return {
         },
       },
       {
-        "nvim-telescope/telescope-live-grep-args.nvim",
-        version = "^1.0.0",
-        event = "VeryLazy",
-        config = function(_, opts)
+        "princejoogie/dir-telescope.nvim",
+        config = function()
           require("lazyvim.util").on_load("telescope.nvim", function()
-            require("telescope").load_extension("live_grep_args")
+            require("dir-telescope").setup({
+              hidden = false,
+              no_ignore = true,
+              show_preview = true,
+            })
+            require("telescope").load_extension("dir")
           end)
         end,
         keys = {
           {
-            "<leader>sx",
+            "<leader>sf",
             function()
-              require("telescope").extensions.live_grep_args.live_grep_args()
+              require("telescope").extensions.dir.live_grep()
             end,
-            desc = "Grep with args",
+            desc = "Grep in directory",
+          },
+          {
+            "<leader>fd",
+            function()
+              require("telescope").extensions.dir.find_files()
+            end,
+            desc = "Find files in directory",
           },
         },
       },
