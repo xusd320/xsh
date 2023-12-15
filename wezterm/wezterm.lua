@@ -5,6 +5,17 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
+config.window_decorations = "RESIZE"
+
+config.native_macos_fullscreen_mode = true
+
+config.window_padding = {
+  left = 0,
+  right = 0,
+  top = 0,
+  bottom = 0,
+}
+
 config.color_scheme = "Catppuccin Mocha"
 
 config.font = wezterm.font_with_fallback({ "Hack Nerd Font" })
@@ -18,13 +29,6 @@ config.freetype_render_target = "HorizontalLcd"
 config.cell_width = 0.9
 
 config.front_end = "OpenGL"
-
-config.window_padding = {
-  left = 0,
-  right = 0,
-  top = 0,
-  bottom = 0,
-}
 
 config.disable_default_key_bindings = true
 
@@ -57,8 +61,12 @@ config.keys = {
   { key = "-", mods = "CMD", action = wezterm.action.DecreaseFontSize },
 }
 
-config.window_decorations = "RESIZE"
-
-config.native_macos_fullscreen_mode = true
+config.mouse_bindings = {
+  {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'CMD',
+    action = wezterm.action.OpenLinkAtMouseCursor,
+  },
+}
 
 return config
