@@ -63,8 +63,8 @@ config.keys = {
 
 config.mouse_bindings = {
   {
-    event = { Up = { streak = 1, button = 'Left' } },
-    mods = 'CMD',
+    event = { Up = { streak = 1, button = "Left" } },
+    mods = "CMD",
     action = wezterm.action.OpenLinkAtMouseCursor,
   },
 }
