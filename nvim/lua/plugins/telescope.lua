@@ -52,21 +52,23 @@ return {
     },
     opts = {
       defaults = {
-        layout_strategy = "horizontal",
+        layout_strategy = "vertical",
         layout_config = {
-          horizontal = {
+          vertical = {
             width = 0.9,
             height = 0.9,
-            preview_width = 0.5,
-            preview_cutoff = 60,
+            preview_height = 0.6,
+            preview_cutoff = 1,
             prompt_position = "bottom",
           },
         },
-        path_display = function(opts, path)
+        path_display = function(_, path)
+          local tail = vim.fs.basename(path)
+          local parent = vim.fs.dirname(path)
           local home = require("plenary.path").path.home
           local cwd = vim.fn.getcwd()
-          local shorten_path = string.gsub(path, string.gsub(cwd, "%-", "%%-"), ".")
-          return string.gsub(shorten_path, home, "~")
+          local shorten_path = string.gsub(parent, string.gsub(cwd, "%-", "%%-"), ".")
+          return string.format("%s\t\t%s", tail, string.gsub(shorten_path, home, "~"))
         end,
       },
       pickers = {
@@ -94,7 +96,6 @@ return {
         lsp_document_symbols = {
           show_line = false,
         },
-
         lsp_dynamic_workspace_symbols = {
           show_line = false,
         },
