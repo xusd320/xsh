@@ -1,6 +1,7 @@
 vim.opt.cmdheight = 0
 vim.opt.relativenumber = false
-vim.opt.wrap = true 
+vim.opt.wrap = true
+vim.opt.conceallevel = 0
 vim.opt.ignorecase = false
 vim.opt.smartcase = false
 vim.opt.showmode = true
@@ -10,4 +11,3 @@ vim.opt.swapfile = false
 vim.opt.undofile = true
 
 vim.g.root_spec = { "cwd" }
-
