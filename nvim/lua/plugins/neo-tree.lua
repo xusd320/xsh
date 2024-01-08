@@ -5,6 +5,7 @@ return {
       window = {
         position = "right",
       },
+      reveal = true,
       filesystem = {
         bind_to_cwd = false,
         follow_current_file = { enabled = true },
