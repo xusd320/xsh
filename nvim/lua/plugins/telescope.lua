@@ -52,13 +52,13 @@ return {
     },
     opts = {
       defaults = {
-        layout_strategy = "vertical",
+        layout_strategy = "horizontal",
         layout_config = {
-          vertical = {
+          horizontal = {
             width = 0.9,
             height = 0.9,
-            preview_height = 0.6,
-            preview_cutoff = 1,
+            preview_width = 0.5,
+            preview_cutoff = 0,
             prompt_position = "bottom",
           },
         },
