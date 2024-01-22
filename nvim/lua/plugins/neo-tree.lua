@@ -6,9 +6,8 @@ return {
         position = "right",
         mappings = {
           Y = "copy_selector",
-        }
+        },
       },
-      reveal = true,
       filesystem = {
         bind_to_cwd = false,
         follow_current_file = { enabled = true },
@@ -69,14 +68,18 @@ return {
             ["URI"] = vim.uri_from_fname(filepath),
           }
 
-          local options = vim.tbl_filter(function(val) return vals[val] ~= "" end, vim.tbl_keys(vals))
+          local options = vim.tbl_filter(function(val)
+            return vals[val] ~= ""
+          end, vim.tbl_keys(vals))
           if vim.tbl_isempty(options) then
             return
           end
           table.sort(options)
           vim.ui.select(options, {
             prompt = "Choose to copy to clipboard:",
-            format_item = function(item) return ("%s: %s"):format(item, vals[item]) end,
+            format_item = function(item)
+              return ("%s: %s"):format(item, vals[item])
+            end,
           }, function(choice)
             local result = vals[choice]
             if result then
@@ -84,7 +87,7 @@ return {
             end
           end)
         end,
-      }
+      },
     },
   },
 }
