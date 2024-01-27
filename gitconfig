@@ -9,8 +9,14 @@
     light = false
     side-by-side = true
 
-[merge]
-    conflictstyle = diff3
-
 [diff]
     colorMoved = default
+
+[merge]
+    conflictstyle = diff3
+	keepBackup = false
+	tool = diffconflicts
+
+[mergetool "diffconflicts"]
+	cmd = vim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+	trustExitCode = true
