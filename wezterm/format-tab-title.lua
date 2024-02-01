@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
 
 local function get_current_working_dir(tab)
-  local current_dir = tab.active_pane.current_working_dir or ""
+  local current_dir = tostring(tab.active_pane.current_working_dir) or ""
   return string.gsub(current_dir, "(.*[/\\])(.*)", "%2")
 end
 
