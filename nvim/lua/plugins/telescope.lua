@@ -51,6 +51,14 @@ return {
       },
     },
     opts = {
+      vimgrep_arguments = {
+        "rg",
+        "--color=never",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+      },
       defaults = {
         layout_strategy = "horizontal",
         layout_config = {
