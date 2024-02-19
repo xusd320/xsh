@@ -2,9 +2,7 @@ return {
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      {
-        "f3fora/cmp-spell",
-      },
+      "f3fora/cmp-spell",
     },
     opts = function(_, opts)
       local has_words_before = function()
