@@ -12,6 +12,9 @@ return {
             sign = { name = { "Diagnostic*" }, text = { ".*" }, maxwidth = 1, colwidth = 2, auto = true },
             click = "v:lua.ScSa",
           },
+          {
+            sign = { name = { "Dap*", maxwidth = 1, colwidth = 2, auto = true } },
+          },
         },
       }
     end,
