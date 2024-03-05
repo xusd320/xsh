@@ -1,11 +1,6 @@
 return {
   {
     "simrat39/rust-tools.nvim",
-    opts = {
-      tools = {
-        on_initialized = function() end,
-      },
-    },
     keys = {
       {
         "gm",
