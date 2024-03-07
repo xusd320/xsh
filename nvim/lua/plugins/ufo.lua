@@ -55,9 +55,7 @@ return {
       {
         "zP",
         function()
-          if not require("ufo").peekFoldedLinesUnderCursor() then
-            vim.lsp.buf.hover()
-          end
+          require("ufo").peekFoldedLinesUnderCursor()
         end,
         desc = "Peek folded lines under cursor or hover",
       },
