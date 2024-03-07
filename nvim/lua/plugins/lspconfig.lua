@@ -26,6 +26,43 @@ return {
       tsserver = {
         root_dir = get_typescript_root_dir,
       },
+      rust_analyzer = {
+        settings = {
+          ["rust-analyzer"] = {
+            cachePriming = {
+              enable = false,
+            },
+            cargo = {
+              allFeatures = false,
+            },
+            check = {
+              allTargets = false,
+            },
+            checkOnSave = {
+              allFeatures = false,
+            },
+            completion = {
+              fullFunctionSignatures = true,
+              termSearch = {
+                enable = true,
+              },
+            },
+            diagnostics = {
+              experimental = {
+                enable = true,
+              },
+            },
+            hover = {
+              actions = {
+                enable = false,
+              },
+            },
+            lens = {
+              enable = false,
+            },
+          },
+        },
+      },
     },
   },
 }
