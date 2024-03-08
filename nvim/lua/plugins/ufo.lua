@@ -53,7 +53,7 @@ return {
     end,
     keys = {
       {
-        "zP",
+        "zp",
         function()
           require("ufo").peekFoldedLinesUnderCursor()
         end,
