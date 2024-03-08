@@ -1,6 +1,7 @@
 return {
   {
     "mrcjkb/rustaceanvim",
+    enabled = false,
     opts = {
       server = {
         default_settings = {
@@ -27,6 +28,14 @@ return {
               experimental = {
                 enable = true,
               },
+            },
+            hover = {
+              actions = {
+                enable = false,
+              },
+            },
+            lens = {
+              enable = false,
             },
           },
         },
