@@ -1,4 +1,4 @@
-vim.opt.cmdheight = 0
+vim.opt.cmdheight = 1
 vim.opt.relativenumber = false
 vim.opt.wrap = true
 vim.opt.conceallevel = 0

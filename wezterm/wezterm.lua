@@ -20,7 +20,7 @@ config.color_scheme = "Catppuccin Mocha"
 
 config.font = wezterm.font_with_fallback({ "Hack Nerd Font" })
 
-config.font_size = 14.0
+config.font_size = 13.0
 
 config.freetype_load_target = "Light"
 
