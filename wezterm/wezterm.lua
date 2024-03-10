@@ -18,7 +18,7 @@ config.window_padding = {
 
 config.color_scheme = "Catppuccin Mocha"
 
-config.font_size = 13.5
+config.font_size = 14.0
 
 config.freetype_load_target = "Light"
 
