@@ -17,25 +17,24 @@ return {
             },
             checkOnSave = {
               allFeatures = false,
+              command = "clippy",
+              extraArgs = { "--no-deps" },
             },
             completion = {
               fullFunctionSignatures = true,
-              termSearch = {
-                enable = true,
-              },
             },
             diagnostics = {
               experimental = {
                 enable = true,
               },
             },
-            hover = {
-              actions = {
-                enable = false,
+            procMacro = {
+              enable = true,
+              ignored = {
+                ["async-trait"] = { "async_trait" },
+                ["napi-derive"] = { "napi" },
+                ["async-recursion"] = { "async_recursion" },
               },
-            },
-            lens = {
-              enable = false,
             },
           },
         },
