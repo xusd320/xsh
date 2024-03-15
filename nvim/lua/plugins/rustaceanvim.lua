@@ -1,6 +1,7 @@
 return {
   {
     "mrcjkb/rustaceanvim",
+    enabled = false,
     opts = {
       server = {
         default_settings = {
