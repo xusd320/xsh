@@ -126,9 +126,6 @@ return {
                   enable = true,
                 },
               },
-              lens = {
-                enable = false,
-              },
               procMacro = {
                 enable = true,
                 ignored = {
