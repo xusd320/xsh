@@ -61,13 +61,14 @@ return {
         dap = {
           adapter = adapter,
         },
-        inlay_hints = {
-          disable = true,
-        },
         server = {
           standalone = false,
         },
         tools = {
+          inlay_hints = {
+            auto = false,
+            show_parameter_hints = false,
+          },
           on_initialized = function()
             vim.cmd([[
                   augroup RustLSP
@@ -124,6 +125,9 @@ return {
                 experimental = {
                   enable = true,
                 },
+              },
+              lens = {
+                enable = false,
               },
               procMacro = {
                 enable = true,
