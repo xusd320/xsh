@@ -61,6 +61,9 @@ return {
         dap = {
           adapter = adapter,
         },
+        inlay_hints = {
+          disable = true,
+        },
         server = {
           standalone = false,
         },
