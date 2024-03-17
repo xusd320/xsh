@@ -1,7 +1,6 @@
 return {
   {
     "mrcjkb/rustaceanvim",
-    url = "git@github.com:xusd320/rustaceanvim.git",
     opts = {
       server = {
         default_settings = {
