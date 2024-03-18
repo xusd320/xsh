@@ -59,13 +59,15 @@ config.keys = {
   { key = "w", mods = "CMD", action = wezterm.action({ CloseCurrentTab = { confirm = false } }) },
   { key = "+", mods = "CMD", action = wezterm.action.IncreaseFontSize },
   { key = "-", mods = "CMD", action = wezterm.action.DecreaseFontSize },
+  { key = "[", mods = "CMD", action = wezterm.action.ActivateTabRelative(-1) },
+  { key = "]", mods = "CMD", action = wezterm.action.ActivateTabRelative(1) },
 }
 
-for i = 0, 9 do
+for i = 1, 9 do
   table.insert(config.keys, {
     key = tostring(i),
     mods = "CMD",
-    action = wezterm.action.ActivateTab(i),
+    action = wezterm.action.ActivateTab(i - 1),
   })
 end
 
