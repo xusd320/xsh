@@ -61,6 +61,14 @@ config.keys = {
   { key = "-", mods = "CMD", action = wezterm.action.DecreaseFontSize },
 }
 
+for i = 0, 9 do
+  table.insert(config.keys, {
+    key = tostring(i),
+    mods = "CMD",
+    action = wezterm.action.ActivateTab(i),
+  })
+end
+
 config.mouse_bindings = {
   {
     event = { Up = { streak = 1, button = "Left" } },
