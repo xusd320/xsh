@@ -17,7 +17,7 @@ local function biome_lsp_or_prettier(bufnr)
     ".prettierrc.toml",
     "prettier.config.js",
     "prettier.config.cjs",
-  }, { upward = true })[1]
+  }, { upward = false })[1]
   if has_prettier then
     return { "prettier" }
   end

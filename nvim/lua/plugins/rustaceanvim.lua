@@ -2,6 +2,11 @@ return {
   {
     "mrcjkb/rustaceanvim",
     opts = {
+      capabilities = {
+        experimental = {
+          snippetTextEdit = false,
+        },
+      },
       server = {
         default_settings = {
           ["rust-analyzer"] = {
