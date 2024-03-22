@@ -27,11 +27,6 @@ return {
             completion = {
               fullFunctionSignatures = true,
             },
-            diagnostics = {
-              experimental = {
-                enable = true,
-              },
-            },
             procMacro = {
               enable = true,
               ignored = {
