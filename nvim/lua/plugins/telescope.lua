@@ -3,24 +3,6 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       {
-        "ahmedkhalf/project.nvim",
-        opts = {
-          manual_mode = false,
-          detection_methods = { "pattern" },
-          patterns = { ".git" },
-        },
-        event = "VeryLazy",
-        config = function(_, opts)
-          require("project_nvim").setup(opts)
-          require("lazyvim.util").on_load("telescope.nvim", function()
-            require("telescope").load_extension("projects")
-          end)
-        end,
-        keys = {
-          { "<leader>fp", "<Cmd>Telescope projects<CR>", desc = "Projects" },
-        },
-      },
-      {
         "princejoogie/dir-telescope.nvim",
         config = function()
           require("lazyvim.util").on_load("telescope.nvim", function()
@@ -51,14 +33,6 @@ return {
       },
     },
     opts = {
-      vimgrep_arguments = {
-        "rg",
-        "--color=never",
-        "--no-heading",
-        "--with-filename",
-        "--line-number",
-        "--column",
-      },
       defaults = {
         layout_strategy = "horizontal",
         layout_config = {
@@ -70,14 +44,14 @@ return {
             prompt_position = "bottom",
           },
         },
-        path_display = function(_, path)
-          local tail = vim.fs.basename(path)
-          local parent = vim.fs.dirname(path)
-          local home = require("plenary.path").path.home
-          local cwd = vim.fn.getcwd()
-          local shorten_path = string.gsub(parent, string.gsub(cwd, "%-", "%%-"), ".")
-          return string.format("%s\t\t%s", tail, string.gsub(shorten_path, home, "~"))
-        end,
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+        },
       },
       pickers = {
         lsp_definitions = {
