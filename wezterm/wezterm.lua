@@ -20,6 +20,8 @@ config.color_scheme = "Catppuccin Mocha"
 
 config.font_size = 13.0
 
+config.font = wezterm.font("Hack Nerd Font")
+
 config.freetype_load_target = "Light"
 
 config.freetype_render_target = "HorizontalLcd"

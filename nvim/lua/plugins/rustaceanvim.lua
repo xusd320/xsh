@@ -2,12 +2,12 @@ return {
   {
     "mrcjkb/rustaceanvim",
     opts = {
-      capabilities = {
-        experimental = {
-          snippetTextEdit = false,
-        },
-      },
       server = {
+        capabilities = {
+          experimental = {
+            snippetTextEdit = false,
+          },
+        },
         default_settings = {
           ["rust-analyzer"] = {
             cachePriming = {
