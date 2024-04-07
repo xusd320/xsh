@@ -30,4 +30,8 @@ config.front_end = "OpenGL"
 
 config.scrollback_lines = 10000
 
+config.keys = {
+  { key = "k", mods = "SUPER", action = wezterm.action({ ClearScrollback = "ScrollbackAndViewport" }) },
+}
+
 return config
