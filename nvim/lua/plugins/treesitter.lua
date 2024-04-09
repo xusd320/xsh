@@ -1,6 +1,9 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      "HiPhish/rainbow-delimiters.nvim",
+    },
     opts = {
       highlight = {
         additional_vim_regex_highlighting = false,
