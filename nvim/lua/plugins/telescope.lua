@@ -63,9 +63,7 @@ return {
           },
         },
         path_display = {
-          filename_first = {
-            reverse_directories = true,
-          },
+          filename_first = true,
         },
         vimgrep_arguments = {
           "rg",
