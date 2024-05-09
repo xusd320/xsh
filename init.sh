@@ -2,8 +2,8 @@
 
 brew tap homebrew/cask-fonts 
 brew tap daipeihust/tap
-brew install wget llvm bat jq neovim ripgrep fd cmake wezterm starship git-delta exa im-select fnm
-brew install --cask clashx rectangle font-hack-nerd-font visual-studio-code rectangle maccy
+brew install wget llvm bat jq neovim ripgrep fd wezterm starship git-delta exa im-select fnm
+brew install --cask cmake clashx rectangle font-hack-nerd-font visual-studio-code rectangle maccy
 
 git clone git@github.com:xusd320/xsh.git
 
