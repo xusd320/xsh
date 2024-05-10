@@ -65,6 +65,7 @@ return {
         path_display = {
           filename_first = true,
         },
+        sorting_strategy = "ascending",
         vimgrep_arguments = {
           "rg",
           "--color=never",
