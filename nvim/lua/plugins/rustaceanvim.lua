@@ -1,6 +1,8 @@
 return {
   {
     "mrcjkb/rustaceanvim",
+    -- disbable https://github.com/mrcjkb/rustaceanvim/pull/316
+    commit = "2b0377e",
     opts = {
       server = {
         capabilities = {

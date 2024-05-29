@@ -28,7 +28,7 @@ config.cell_width = 0.9
 
 config.front_end = "OpenGL"
 
-config.scrollback_lines = 10000
+config.scrollback_lines = 100000
 
 config.keys = {
   { key = "k", mods = "SUPER", action = wezterm.action({ ClearScrollback = "ScrollbackAndViewport" }) },
