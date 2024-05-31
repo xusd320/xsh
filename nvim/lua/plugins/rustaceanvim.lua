@@ -1,8 +1,18 @@
+vim.g.rustaceanvim = {
+  server = {
+    cmd = function()
+      local mason_registry = require("mason-registry")
+      local ra_binary = mason_registry.is_installed("rust-analyzer")
+          and mason_registry.get_package("rust-analyzer"):get_install_path() .. "/rust-analyzer"
+        or "rust-analyzer"
+      return { ra_binary }
+    end,
+  },
+}
+
 return {
   {
     "mrcjkb/rustaceanvim",
-    -- disbable https://github.com/mrcjkb/rustaceanvim/pull/316
-    commit = "2b0377e",
     opts = {
       server = {
         capabilities = {
