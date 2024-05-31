@@ -1,5 +1,5 @@
 local function biome_lsp_or_prettier(bufnr)
-  local has_biome_lsp = vim.lsp.get_active_clients({
+  local has_biome_lsp = vim.lsp.get_clients({
     bufnr = bufnr,
     name = "biome",
   })[1]
@@ -42,7 +42,7 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "biome",
+        -- "biome",
       },
     },
   },
