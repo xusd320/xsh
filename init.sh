@@ -1,6 +1,5 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-brew tap homebrew/cask-fonts 
 brew tap daipeihust/tap
 brew install wget llvm bat jq neovim ripgrep fd wezterm antigen starship git-delta eza im-select fnm
 brew install --cask cmake font-hack-nerd-font visual-studio-code rectangle maccy
