@@ -11,6 +11,9 @@ end
 return {
   "neovim/nvim-lspconfig",
   opts = {
+    inlay_hints = {
+      enabled = false,
+    },
     capabilities = {
       textDocument = {
         foldingRange = {
@@ -23,9 +26,15 @@ return {
       eslint = {
         root_dir = get_typescript_root_dir,
       },
-      tsserver = {
+      vtsls = {
         root_dir = get_typescript_root_dir,
       },
+    },
+    setup = {
+      -- rust_analyzer will be setup by rustacean
+      rust_analyzer = function()
+        return true
+      end,
     },
   },
 }
