@@ -16,7 +16,6 @@
     "lazyvim.plugins.extras.lang.yaml",
     "lazyvim.plugins.extras.linting.eslint",
     "lazyvim.plugins.extras.util.mini-hipatterns",
-    "lazyvim.plugins.extras.util.project",
     "lazyvim.plugins.extras.vscode",
     "lazyvim.plugins.extras.editor.aerial"
   ],

@@ -3,24 +3,6 @@ return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       {
-        "ahmedkhalf/project.nvim",
-        opts = {
-          manual_mode = false,
-          detection_methods = { "pattern" },
-          patterns = { ".git" },
-        },
-        event = "VeryLazy",
-        config = function(_, opts)
-          require("project_nvim").setup(opts)
-          require("lazyvim.util").on_load("telescope.nvim", function()
-            require("telescope").load_extension("projects")
-          end)
-        end,
-        keys = {
-          { "<leader>fp", "<Cmd>Telescope projects<CR>", desc = "Projects" },
-        },
-      },
-      {
         "princejoogie/dir-telescope.nvim",
         config = function()
           require("lazyvim.util").on_load("telescope.nvim", function()
@@ -128,6 +110,10 @@ return {
           show_line = false,
         },
       },
+    },
+    keys = {
+      { "<leader>fr", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
+      { "<leader>fR", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
     },
   },
 }

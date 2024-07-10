@@ -16,6 +16,14 @@ wk.register({
       "Projects",
     },
   },
+  ["<leader>fr"] = {
+    LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }),
+    "Recent (cwd)",
+  },
+  ["<leader>fR"] = {
+    "<cmd>FzfLua oldfiles<cr>",
+    "Recent",
+  },
   ["gl"] = {
     name = "Goto call hierarchy",
     i = {
