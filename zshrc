@@ -32,7 +32,7 @@ antigen apply
 
 eval "$(starship init zsh)"
 
-alias ls='exa --color auto --icons -a -s type'
+alias ls='eza --color auto --icons -a -s type'
 
 alias vi="nvim"
 alias vim="nvim"
