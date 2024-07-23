@@ -5,9 +5,7 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
-config.window_decorations = "RESIZE"
-
-config.native_macos_fullscreen_mode = true
+config.window_decorations = "TITLE | RESIZE"
 
 config.window_padding = {
   left = 0,
@@ -16,9 +14,13 @@ config.window_padding = {
   bottom = 0,
 }
 
+config.window_frame = {
+  font_size = 14.0,
+}
+
 config.color_scheme = "Catppuccin Mocha"
 
-config.font_size = 13.0
+config.font_size = 14.0
 
 config.freetype_load_target = "Light"
 
