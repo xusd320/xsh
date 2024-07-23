@@ -20,4 +20,4 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 sudo xcode-select -switch /Library/Developer/CommandLineTools
 
 brew install tabbyml/tabby/tabby
-tabby serve --device metal --model TabbyML/DeepseekCoder-6.7B --host 127.0.0.1 --port 8080 >>~/.tabby/tabby.log &
+tabby serve --device metal --model TabbyML/DeepseekCoder-6.7B --host 127.0.0.1 --port 8080 >~/.tabby/tabby.log &

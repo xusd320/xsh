@@ -34,6 +34,8 @@ config.scrollback_lines = 100000
 
 config.keys = {
   { key = "k", mods = "SUPER", action = wezterm.action({ ClearScrollback = "ScrollbackAndViewport" }) },
+  { key = "Tab", mods = "CTRL", action = wezterm.action.DisableDefaultAssignment },
+  { key = "Tab", mods = "SHIFT|CTRL", action = wezterm.action.DisableDefaultAssignment },
 }
 
 return config
