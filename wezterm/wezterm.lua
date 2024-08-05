@@ -5,13 +5,15 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
-config.window_decorations = "TITLE | RESIZE"
+config.window_decorations = "RESIZE"
+
+config.native_macos_fullscreen_mode = true
 
 config.window_padding = {
-  left = 0,
-  right = 0,
-  top = 0,
-  bottom = 0,
+  left = 1,
+  right = 1,
+  top = 1,
+  bottom = 1,
 }
 
 config.window_frame = {
@@ -26,7 +28,7 @@ config.freetype_load_target = "Light"
 
 config.freetype_render_target = "HorizontalLcd"
 
-config.cell_width = 0.9
+config.cell_width = 0.86
 
 config.front_end = "OpenGL"
 
