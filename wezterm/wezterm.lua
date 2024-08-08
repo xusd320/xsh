@@ -20,7 +20,7 @@ config.window_frame = {
   font_size = 14.0,
 }
 
-config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "catppuccin-mocha"
 
 config.font_size = 14.0
 
