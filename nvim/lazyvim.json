@@ -7,9 +7,6 @@
     "lazyvim.plugins.extras.dap.core",
     "lazyvim.plugins.extras.dap.nlua",
     "lazyvim.plugins.extras.editor.aerial",
-    "lazyvim.plugins.extras.editor.dial",
-    "lazyvim.plugins.extras.editor.leap",
-    "lazyvim.plugins.extras.editor.mini-files",
     "lazyvim.plugins.extras.editor.outline",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.json",
@@ -21,11 +18,11 @@
     "lazyvim.plugins.extras.linting.eslint",
     "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.ui.treesitter-context",
-    "lazyvim.plugins.extras.util.mini-hipatterns",
-    "lazyvim.plugins.extras.vscode"
+    "lazyvim.plugins.extras.util.mini-hipatterns"
   ],
   "news": {
     "NEWS.md": "6520"
   },
   "version": 6
 }
+
