@@ -3,6 +3,8 @@ require("format-tab-title")
 
 local wezterm = require("wezterm")
 
+local rose_pine_theme = require("./rose-pine/plugin/").moon
+
 local config = wezterm.config_builder()
 
 config.window_decorations = "RESIZE"
@@ -16,11 +18,11 @@ config.window_padding = {
   bottom = 1,
 }
 
-config.window_frame = {
-  font_size = 14.0,
-}
+config.window_frame = rose_pine_theme.window_frame()
 
-config.color_scheme = "catppuccin-mocha"
+config.window_frame.font_size = 14.0
+
+config.colors = rose_pine_theme.colors()
 
 config.font_size = 14.0
 
