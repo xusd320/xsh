@@ -35,7 +35,6 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 
   if has_unseen_output then
     return {
-      { Foreground = { Color = "#28719c" } },
       { Text = title },
     }
   end
