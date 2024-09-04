@@ -6,6 +6,8 @@ brew install --cask cmake font-hack-nerd-font visual-studio-code rectangle maccy
 
 git clone git@github.com:xusd320/xsh.git
 
+cd
+
 ln -s ~/xsh/wezterm ~/.config/wezterm
 ln -s ~/xsh/zshrc ~/.zshrc
 ln -s ~/xsh/starship.toml ~/.config/starship.toml
