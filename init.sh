@@ -13,6 +13,11 @@ ln -s ~/xsh/gitconfig ~/.gitconfig
 ln -s ~/xsh/lazygit ~/.config/lazygit
 ln -s ~/xsh/nvim ~/.config/nvim
 
+cd ~/xsh/nvim
+git submodule update --init --recursive
+
+cd
+
 sudo chown -R $(whoami) /usr/local/bin
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
