@@ -10,11 +10,6 @@ return {
             or "rust-analyzer"
           return { ra_binary }
         end,
-        capabilities = {
-          experimental = {
-            snippetTextEdit = false,
-          },
-        },
         default_settings = {
           ["rust-analyzer"] = {
             cachePriming = {
