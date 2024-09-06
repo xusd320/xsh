@@ -85,9 +85,6 @@ return {
         lsp_dynamic_workspace_symbols = {
           show_line = false,
         },
-        diagnostics = {
-          disable_coordinates = true,
-        },
         treesitter = {
           show_line = false,
         },
