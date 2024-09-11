@@ -6,7 +6,7 @@ return {
       name = "rose-pine",
     },
     opts = {
-      colorscheme = "rose-pine-moon",
+      colorscheme = "catppuccin-mocha",
     },
   },
 }
