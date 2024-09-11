@@ -56,6 +56,11 @@ return {
           "--line-number",
           "--column",
         },
+        preview = {
+          filesize_limit = 10,
+          highlight_limit = 0.25,
+          timeout = 100,
+        },
       },
       pickers = {
         lsp_definitions = {

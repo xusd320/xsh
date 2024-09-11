@@ -13,7 +13,7 @@ return {
         follow_current_file = { enabled = true },
         use_libuv_file_watcher = true,
         filtered_items = {
-          hide_dotfiles = true,
+          hide_dotfiles = false,
           hide_gitignored = true,
           gitignore_source = "git check-ignore",
         },
@@ -59,26 +59,31 @@ return {
           local modify = vim.fn.fnamemodify
 
           local vals = {
-            ["BASENAME"] = modify(filename, ":r"),
-            ["EXTENSION"] = modify(filename, ":e"),
-            ["FILENAME"] = filename,
-            ["PATH (CWD)"] = modify(filepath, ":."),
-            ["PATH (HOME)"] = modify(filepath, ":~"),
-            ["PATH"] = filepath,
-            ["URI"] = vim.uri_from_fname(filepath),
+            ["FILENAME"] = { priority = 6, val = filename },
+            ["PATH (CWD)"] = { priority = 5, val = modify(filepath, ":.") },
+            ["BASENAME"] = { priority = 4, val = modify(filename, ":r") },
+            ["EXTENSION"] = { priority = 3, val = modify(filename, ":e") },
+            ["PATH"] = { priority = 2, val = filepath },
+            ["PATH (HOME)"] = { priority = 1, val = modify(filepath, ":~") },
+            ["URI"] = { priority = 0, val = vim.uri_from_fname(filepath) },
           }
 
           local options = vim.tbl_filter(function(val)
-            return vals[val] ~= ""
+            return vals[val].val ~= ""
           end, vim.tbl_keys(vals))
+
           if vim.tbl_isempty(options) then
             return
           end
-          table.sort(options)
+
+          table.sort(options, function(a, b)
+            return vals[a].priority > vals[b].priority
+          end)
+
           vim.ui.select(options, {
             prompt = "Choose to copy to clipboard:",
             format_item = function(item)
-              return ("%s: %s"):format(item, vals[item])
+              return ("%s: %s"):format(item, vals[item].val)
             end,
           }, function(choice)
             local result = vals[choice]
