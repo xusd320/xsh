@@ -59,7 +59,7 @@ return {
         preview = {
           filesize_limit = 10,
           highlight_limit = 0.25,
-          timeout = 100,
+          timeout = 1000,
         },
       },
       pickers = {
