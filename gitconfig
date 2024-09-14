@@ -1,6 +1,8 @@
 [core]
     pager = delta
 	excludesfile = ~/.config/.gitignore_global
+	untrackedCache = true
+	fsmonitor = true
 
 [interactive]
     diffFilter = delta --color-only
@@ -39,3 +41,5 @@
 [user]
 	name = xusd320
 	email = xusd320@gmail.com
+[feature]
+	manyFiles = true
