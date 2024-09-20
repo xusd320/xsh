@@ -88,7 +88,7 @@ return {
           }, function(choice)
             local result = vals[choice]
             if result then
-              vim.fn.setreg("+", result)
+              vim.fn.setreg("+", result.val)
             end
           end)
         end,
