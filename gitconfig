@@ -1,8 +1,6 @@
 [core]
     pager = delta
 	  excludesfile = ~/.config/.gitignore_global
-	  untrackedCache = true
-	  fsmonitor = true
 
 [interactive]
     diffFilter = delta --color-only

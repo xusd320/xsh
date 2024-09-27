@@ -29,6 +29,10 @@ return {
             completion = {
               fullFunctionSignatures = true,
             },
+            diagnostics = {
+              enable = true,
+              disabled = { "unresolved-proc-macro" },
+            },
             procMacro = {
               enable = true,
               ignored = {
