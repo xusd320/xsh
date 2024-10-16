@@ -31,7 +31,10 @@ return {
             },
             diagnostics = {
               enable = true,
-              disabled = { "unresolved-proc-macro" },
+              disabled = {
+                "unresolved-proc-macro",
+                "unlinked-file",
+              },
             },
             procMacro = {
               enable = true,
