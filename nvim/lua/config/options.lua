@@ -14,3 +14,5 @@ vim.opt.swapfile = false
 vim.opt.undofile = true
 
 vim.g.root_spec = { "cwd" }
+
+vim.g.snacks_animate = false
