@@ -62,56 +62,6 @@ return {
           timeout = 1000,
         },
       },
-      pickers = {
-        lsp_definitions = {
-          show_line = false,
-        },
-        lsp_references = {
-          show_line = false,
-        },
-        lsp_implementations = {
-          show_line = false,
-        },
-        lsp_type_definitions = {
-          show_line = false,
-        },
-        lsp_incoming_calls = {
-          show_line = false,
-        },
-        lsp_outgoing_calls = {
-          show_line = false,
-        },
-        lsp_workspace_symbols = {
-          show_line = false,
-        },
-        lsp_document_symbols = {
-          show_line = false,
-        },
-        lsp_dynamic_workspace_symbols = {
-          show_line = false,
-        },
-        treesitter = {
-          show_line = false,
-        },
-        tags = {
-          show_line = false,
-        },
-        current_buffer_tags = {
-          show_line = false,
-        },
-        quickfix = {
-          show_line = false,
-        },
-        loclist = {
-          show_line = false,
-        },
-        jumplist = {
-          show_line = false,
-        },
-        tagstack = {
-          show_line = false,
-        },
-      },
     },
     keys = {
       { "<leader>fr", LazyVim.pick("oldfiles", { cwd = vim.uv.cwd() }), desc = "Recent (cwd)" },
