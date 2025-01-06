@@ -45,8 +45,8 @@ return {
       },
       fuzzy = {
         sorts = {
-          "score",
           "kind",
+          "score",
           function(a, b)
             local sort = require("blink.cmp.fuzzy.sort")
             if a.source_id == "dictionary" and b.source_id == "dictionary" then
