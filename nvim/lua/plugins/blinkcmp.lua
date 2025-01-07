@@ -10,8 +10,6 @@ return {
         config = function()
           require("cmp_dictionary").setup({
             paths = { "/usr/share/dict/words" },
-            exact_length = 4,
-            max_number_items = 10,
           })
         end,
       },
@@ -30,30 +28,14 @@ return {
       },
       signature = { enabled = true },
       sources = {
-        default = {
+        compat = {
           "dictionary",
         },
         providers = {
           dictionary = {
-            name = "dictionary",
-            module = "blink.compat.source",
-            opts = {
-              keyword_length = 4,
-            },
+            score_offset = -100,
+            min_keyword_length = 2,
           },
-        },
-      },
-      fuzzy = {
-        sorts = {
-          "kind",
-          "score",
-          function(a, b)
-            local sort = require("blink.cmp.fuzzy.sort")
-            if a.source_id == "dictionary" and b.source_id == "dictionary" then
-              return sort.label(a, b)
-            end
-          end,
-          "label",
         },
       },
     },
