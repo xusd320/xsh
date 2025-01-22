@@ -3,41 +3,38 @@ return {
     "saghen/blink.cmp",
     dependencies = {
       {
-        "uga-rosa/cmp-dictionary",
-        dependencies = {
-          "saghen/blink.compat",
-        },
-        config = function()
-          require("cmp_dictionary").setup({
-            paths = { "/usr/share/dict/words" },
-          })
-        end,
+        "Kaiser-Yang/blink-cmp-dictionary",
+        dependencies = { "nvim-lua/plenary.nvim" },
       },
     },
     opts = {
-      completion = {
-        list = {
-          selection = {
-            preselect = false,
-            auto_insert = true,
-          },
-        },
-        documentation = { auto_show = true },
-      },
       keymap = {
-        preset = "enter",
-        ["<Tab>"] = { "select_next", "fallback" },
-        ["<S-Tab>"] = { "select_prev", "fallback" },
+        preset = "default",
+        ["<Tab>"] = { "snippet_forward", "fallback" },
+        ["<S-Tab>"] = { "snippet_backward", "fallback" },
+        ["<Up>"] = { "select_prev", "fallback" },
+        ["<Down>"] = { "select_next", "fallback" },
+        ["<C-p>"] = { "select_prev", "fallback" },
+        ["<C-n>"] = { "select_next", "fallback" },
+        ["<S-k>"] = { "scroll_documentation_up", "fallback" },
+        ["<S-j>"] = { "scroll_documentation_down", "fallback" },
+        ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+        ["<C-e>"] = { "hide", "fallback" },
       },
       signature = { enabled = true },
       sources = {
-        compat = {
-          "dictionary",
-        },
+        default = { "dictionary" },
         providers = {
           dictionary = {
+            module = "blink-cmp-dictionary",
+            name = "Dict",
+            min_keyword_length = 3,
             score_offset = -100,
-            min_keyword_length = 2,
+            opts = {
+              dictionary_files = {
+                "/usr/share/dict/words",
+              },
+            },
           },
         },
       },
