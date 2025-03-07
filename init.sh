@@ -1,8 +1,8 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 brew tap daipeihust/tap laishulu/homebrew
-brew install wget llvm bat jq neovim ripgrep fd wezterm antigen starship git-delta eza im-select fnm macism ncdu ollama
-brew install --cask cmake font-hack-nerd-font visual-studio-code rectangle maccy
+brew install wget llvm lld bat jq neovim ripgrep fd wezterm antigen starship git-delta eza im-select fnm macism ncdu ollama graphviz cloc just
+brew install --cask cmake font-hack-nerd-font visual-studio-code rectangle maccy switchhosts
 
 git clone git@github.com:xusd320/xsh.git
 
@@ -12,6 +12,7 @@ ln -s ~/xsh/starship.toml ~/.config/starship.toml
 ln -s ~/xsh/gitconfig ~/.gitconfig
 ln -s ~/xsh/lazygit ~/.config/lazygit
 ln -s ~/xsh/nvim ~/.config/nvim
+ln -s ~/xsh/nvim/ripgreprc ~/.ripgreprc
 
 sudo chown -R $(whoami) /usr/local/bin
 

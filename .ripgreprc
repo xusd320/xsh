@@ -1,0 +1,7 @@
+--glob=!*tests*
+--glob=!userCase
+--glob=!package-lock.json
+--glob=!pnpm-lock.yaml
+--glob=!yarn.lock
+--glob=!compiled
+
