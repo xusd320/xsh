@@ -12,7 +12,7 @@ ln -s ~/xsh/starship.toml ~/.config/starship.toml
 ln -s ~/xsh/gitconfig ~/.gitconfig
 ln -s ~/xsh/lazygit ~/.config/lazygit
 ln -s ~/xsh/nvim ~/.config/nvim
-ln -s ~/xsh/nvim/ripgreprc ~/.ripgreprc
+ln -s ~/xsh/ripgreprc ~/.ripgreprc
 
 sudo chown -R $(whoami) /usr/local/bin
 
