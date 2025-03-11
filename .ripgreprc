@@ -1,4 +1,4 @@
---glob=!Cargo.json
+--glob=!Cargo.lock
 --glob=!package-lock.json
 --glob=!pnpm-lock.yaml
 --glob=!yarn.lock
