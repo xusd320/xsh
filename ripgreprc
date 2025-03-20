@@ -4,4 +4,6 @@
 --glob=!yarn.lock
 --glob=!compiled
 --glob=!*tests*
+--glob=!*.test.*
+--glob=!*.test.*
 --glob=!userCase

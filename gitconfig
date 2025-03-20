@@ -22,6 +22,9 @@
 	  cmd = vim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
 	  trustExitCode = true
 
+[push]
+	  autoSetupRemote = true
+
 [user]
 	  name = xusd320
 	  email = xusd320@gmail.com
