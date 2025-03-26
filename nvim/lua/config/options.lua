@@ -16,3 +16,5 @@ vim.opt.undofile = true
 vim.g.root_spec = { "cwd" }
 
 vim.g.snacks_animate = false
+
+vim.g.lazyvim_prettier_needs_config = false
