@@ -9,32 +9,31 @@ local get_typescript_root_dir = function(fname)
 end
 
 return {
-  "neovim/nvim-lspconfig",
-  opts = {
-    inlay_hints = {
-      enabled = false,
-    },
-    capabilities = {
-      textDocument = {
-        foldingRange = {
-          dynamicRegistration = false,
-          lineFoldingOnly = true,
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      inlay_hints = {
+        enabled = false,
+      },
+      capabilities = {
+        textDocument = {
+          foldingRange = {
+            dynamicRegistration = false,
+            lineFoldingOnly = true,
+          },
+        },
+      },
+      servers = {
+        -- eslint = {
+        --   root_dir = get_typescript_root_dir,
+        -- },
+        vtsls = {
+          root_dir = get_typescript_root_dir,
         },
       },
     },
-    servers = {
-      -- eslint = {
-      --   root_dir = get_typescript_root_dir,
-      -- },
-      vtsls = {
-        root_dir = get_typescript_root_dir,
-      },
-    },
-    setup = {
-      -- rust_analyzer will be setup by rustacean
-      rust_analyzer = function()
-        return true
-      end,
-    },
+    -- FIXME: https://github.com/LazyVim/LazyVim/issues/6039
+    { "mason-org/mason.nvim", version = "1" },
+    { "mason-org/mason-lspconfig.nvim", version = "1" },
   },
 }
