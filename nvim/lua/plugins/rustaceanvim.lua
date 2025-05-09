@@ -16,7 +16,7 @@ return {
             },
             checkOnSave = {
               allFeatures = false,
-              command = "clippy",
+              command = "cargo check",
               extraArgs = { "--no-deps" },
             },
             completion = {

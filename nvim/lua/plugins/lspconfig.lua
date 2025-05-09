@@ -12,9 +12,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
-      inlay_hints = {
-        enabled = false,
-      },
       capabilities = {
         textDocument = {
           foldingRange = {
@@ -22,6 +19,12 @@ return {
             lineFoldingOnly = true,
           },
         },
+      },
+      document_highlight = {
+        enabled = true,
+      },
+      inlay_hints = {
+        enabled = false,
       },
       servers = {
         -- eslint = {
