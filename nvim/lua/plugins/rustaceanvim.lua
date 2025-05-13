@@ -13,12 +13,10 @@ return {
             },
             check = {
               allTargets = false,
-            },
-            checkOnSave = {
-              allFeatures = false,
-              command = "cargo check",
+              command = "clippy",
               extraArgs = { "--no-deps" },
             },
+            checkOnSave = true,
             completion = {
               fullFunctionSignatures = true,
             },
