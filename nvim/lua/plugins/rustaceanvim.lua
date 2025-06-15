@@ -3,6 +3,7 @@ return {
     "mrcjkb/rustaceanvim",
     opts = {
       server = {
+        cmd = { "rust-analyzer" },
         default_settings = {
           ["rust-analyzer"] = {
             cachePriming = {
@@ -26,6 +27,9 @@ return {
                 "unresolved-proc-macro",
                 "unlinked-file",
               },
+            },
+            files = {
+              watcher = "client",
             },
             procMacro = {
               enable = true,
