@@ -5,8 +5,11 @@
     "lazyvim.plugins.extras.coding.mini-surround",
     "lazyvim.plugins.extras.coding.neogen",
     "lazyvim.plugins.extras.editor.aerial",
+    "lazyvim.plugins.extras.editor.snacks_explorer",
     "lazyvim.plugins.extras.editor.telescope",
+    "lazyvim.plugins.extras.formatting.biome",
     "lazyvim.plugins.extras.formatting.prettier",
+    "lazyvim.plugins.extras.lang.git",
     "lazyvim.plugins.extras.lang.json",
     "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.rust",
@@ -17,7 +20,9 @@
     "lazyvim.plugins.extras.test.core",
     "lazyvim.plugins.extras.ui.treesitter-context",
     "lazyvim.plugins.extras.util.gitui",
-    "lazyvim.plugins.extras.util.mini-hipatterns"
+    "lazyvim.plugins.extras.util.mini-hipatterns",
+    "lazyvim.plugins.extras.util.octo",
+    "lazyvim.plugins.extras.util.rest"
   ],
   "install_version": 7,
   "news": {
@@ -25,4 +30,3 @@
   },
   "version": 8
 }
-
