@@ -2,12 +2,18 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
-
       picker = {
         sources = {
           explorer = {
+            auto_close = true,
+            jump = { close = true },
             layout = {
-              preset = "right",
+              preset = "vscode",
+            },
+          },
+          recent = {
+            filter = {
+              paths = false,
             },
           },
         },
