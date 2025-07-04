@@ -11,6 +11,7 @@ return {
             },
             cargo = {
               allFeatures = false,
+              targetDir = "target/rust-analyzer",
             },
             check = {
               allTargets = false,

@@ -59,4 +59,4 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 
 export TABBY_DISABLE_USAGE_COLLECTION=1
 
-eval "$(fnm env --use-on-cd)"
+eval "$(fnm env)"
