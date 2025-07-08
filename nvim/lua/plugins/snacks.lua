@@ -2,6 +2,9 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
+      explorer = {
+        replace_netrw = true,
+      },
       picker = {
         sources = {
           explorer = {
@@ -9,8 +12,8 @@ return {
             jump = { close = true },
             layout = {
               preset = "right",
+              auto_hide = { "input" },
             },
-            replace_netrw = true,
           },
           recent = {
             filter = {
