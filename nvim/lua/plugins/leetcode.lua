@@ -6,7 +6,6 @@ return {
     lazy = leet_arg ~= vim.fn.argv(0, -1),
     cmd = "Leet",
     dependencies = {
-      "nvim-telescope/telescope.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
     },

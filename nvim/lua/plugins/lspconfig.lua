@@ -27,9 +27,9 @@ return {
         enabled = false,
       },
       servers = {
-        eslint = {
-          root_dir = get_typescript_root_dir,
-        },
+        -- eslint = {
+        --   root_dir = get_typescript_root_dir,
+        -- },
         vtsls = {
           root_dir = get_typescript_root_dir,
         },
