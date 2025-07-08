@@ -17,7 +17,7 @@ return {
           },
           recent = {
             filter = {
-              paths = false,
+              cwd = true,
             },
           },
         },
