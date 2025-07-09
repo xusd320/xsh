@@ -8,8 +8,6 @@ return {
       picker = {
         sources = {
           explorer = {
-            auto_close = true,
-            jump = { close = true },
             layout = {
               preset = "right",
               auto_hide = { "input" },
