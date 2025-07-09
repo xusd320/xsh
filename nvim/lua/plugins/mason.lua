@@ -20,7 +20,6 @@ return {
         "vim-language-server",
         "shfmt",
         "js-debug-adapter",
-        "gitui",
         "stylua",
         "marksman",
         "dot-language-server",

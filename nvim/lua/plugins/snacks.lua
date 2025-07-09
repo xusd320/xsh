@@ -3,9 +3,14 @@ return {
     "folke/snacks.nvim",
     opts = {
       explorer = {
-        replace_netrw = true,
+        replace_netrw = false,
       },
       picker = {
+        formatters = {
+          file = {
+            truncate = 100,
+          },
+        },
         sources = {
           explorer = {
             layout = {
