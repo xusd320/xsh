@@ -23,11 +23,7 @@ return {
               fullFunctionSignatures = true,
             },
             diagnostics = {
-              enable = true,
-              disabled = {
-                "unresolved-proc-macro",
-                "unlinked-file",
-              },
+              enable = false,
             },
             files = {
               watcher = "client",
