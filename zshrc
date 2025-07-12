@@ -4,7 +4,8 @@ export PATH="/opt/homebrew/bin:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
 
 plugins=(
-  alias-finder
+  command-not-found
+  common-aliases
   copyfile
   copypath
   cp
@@ -24,6 +25,14 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+    autoload -Uz compinit
+    compinit
+fi
 
 export EDITOR=nvim
 

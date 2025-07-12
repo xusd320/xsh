@@ -1,3 +1,5 @@
+-- nvim leetcode.nvim
+
 local leet_arg = "leetcode.nvim"
 
 return {
