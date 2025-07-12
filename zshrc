@@ -42,7 +42,6 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="$HOME/.local/bin/:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-export PATH="/opt/homebrew/opt/python@3.10/libexec/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
 export CPPFLAGS="-L/opt/homebrew/opt/llvm/lib -Wl,-rpath,/opt/homebrew/opt/llvm/lib"
 export AR=llvm-ar
