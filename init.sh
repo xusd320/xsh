@@ -1,7 +1,7 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 brew tap daipeihust/tap laishulu/homebrew
-brew install wget llvm lld bat jq neovim ripgrep fzf fd wezterm antigen starship git-delta eza im-select fnm macism ncdu graphviz cloc just
+brew install zsh wget llvm lld bat jq neovim ripgrep fzf fd wezterm starship git-delta eza procs im-select fnm macism ncdu graphviz cloc systemd zoxide
 brew install --cask cmake font-hack-nerd-font visual-studio-code rectangle maccy switchhosts
 
 git clone git@github.com:xusd320/xsh.git
@@ -19,6 +19,3 @@ sudo chown -R $(whoami) /usr/local/bin
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # sudo xcode-select -switch /Library/Developer/CommandLineTools
-
-# brew install tabbyml/tabby/tabby
-# nohup tabby serve --device metal --model TabbyML/StarCoder2-7B --host 127.0.0.1 --port 8080 >~/.tabby/tabby.log &
