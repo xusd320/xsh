@@ -16,9 +16,13 @@ config.window_padding = {
   bottom = 1,
 }
 
+config.max_fps = 120
+
 config.color_scheme = "catppuccin-mocha"
 
 config.font_size = 14.0
+
+config.font = wezterm.font("JetBrains Mono")
 
 config.freetype_load_target = "Light"
 
