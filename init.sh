@@ -8,6 +8,7 @@ brew tap daipeihust/tap && brew install im-select
 brew tap laishulu/homebrew && brew install macism
 
 git clone git@github.com:xusd320/xsh.git
+git submodule update --init
 
 ln -s ~/xsh/wezterm ~/.config/wezterm
 ln -s ~/xsh/zshrc ~/.zshrc
@@ -22,4 +23,3 @@ sudo chown -R $(whoami) /usr/local/bin
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # sudo xcode-select -switch /Library/Developer/CommandLineTools
-
