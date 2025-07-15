@@ -30,6 +30,12 @@ return {
           },
         },
       },
+      styles = {
+        input = {
+          relative = "cursor",
+          row = 1,
+        },
+      },
     },
   },
 }
