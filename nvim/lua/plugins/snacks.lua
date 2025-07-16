@@ -5,6 +5,12 @@ return {
       explorer = {
         replace_netrw = true,
       },
+      terminal = {
+        win = {
+          position = "float",
+          border = "rounded",
+        },
+      },
       picker = {
         formatters = {
           file = {
