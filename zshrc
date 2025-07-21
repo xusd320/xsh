@@ -20,7 +20,7 @@ plugins=(
   rust
   starship
   systemd
-  zoxide
+  z
 )
 
 source $ZSH/oh-my-zsh.sh
