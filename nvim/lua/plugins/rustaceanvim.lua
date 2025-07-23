@@ -10,7 +10,7 @@ return {
               enable = false,
             },
             cargo = {
-              allFeatures = false,
+              allTargets = false,
               targetDir = "target/rust-analyzer",
             },
             check = {
