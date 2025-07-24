@@ -14,12 +14,14 @@ return {
               targetDir = "target/rust-analyzer",
             },
             check = {
-              allTargets = false,
               command = "clippy",
               extraArgs = { "--no-deps" },
             },
             checkOnSave = true,
             completion = {
+              callable = {
+                snippets = "none",
+              },
               fullFunctionSignatures = true,
             },
             diagnostics = {
