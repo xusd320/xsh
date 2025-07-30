@@ -1,7 +1,7 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-brew install wget llvm lld bat jq neovim ripgrep fzf fd wezterm starship git-delta eza procs fnm macism ncdu cloc systemd mcfly
+brew install wget llvm lld bat jq neovim ripgrep fzf fd wezterm starship git-delta eza procs fnm macism ncdu cloc systemd mcfly dust
 brew install zsh zsh-syntax-highlighting zsh-autosuggestions
 brew install --cask cmake font-hack-nerd-font visual-studio-code rectangle maccy switchhosts
 brew tap daipeihust/tap && brew install im-select
