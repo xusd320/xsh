@@ -13,22 +13,19 @@ return {
               allTargets = false,
               targetDir = "target/rust-analyzer",
             },
-            cfg = {
-              setTest = true,
-            },
             check = {
               command = "clippy",
               extraArgs = { "--no-deps" },
             },
             checkOnSave = true,
             completion = {
-              callable = {
-                snippets = "none",
-              },
-              fullFunctionSignatures = true,
+              -- callable = {
+              --   snippets = "none",
+              -- },
+              -- fullFunctionSignatures = true,
             },
             diagnostics = {
-              enable = false,
+              enable = true,
             },
             files = {
               watcher = "client",
