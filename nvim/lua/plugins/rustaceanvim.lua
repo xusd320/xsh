@@ -11,7 +11,7 @@ return {
             },
             cargo = {
               allTargets = false,
-              targetDir = "target/rust-analyzer",
+              targetDir = true,
             },
             check = {
               command = "clippy",

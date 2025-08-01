@@ -5,7 +5,7 @@ command_timeout = 10000
 palette = "catppuccin_mocha"
 
 [git_metrics]
-disabled = false
+disabled = true
 
 
 [character]
