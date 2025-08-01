@@ -4,9 +4,11 @@ add_newline = false
 command_timeout = 10000
 palette = "catppuccin_mocha"
 
-[git_metrics]
-disabled = true
+[git_status]
+disabled = false
 
+[git_metrics]
+disabled = false
 
 [character]
 success_symbol = "[[󰄛](green) ❯](peach)"
