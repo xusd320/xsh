@@ -19,10 +19,7 @@ return {
             },
             checkOnSave = true,
             completion = {
-              -- callable = {
-              --   snippets = "none",
-              -- },
-              -- fullFunctionSignatures = true,
+              fullFunctionSignatures = true,
             },
             diagnostics = {
               enable = true,
