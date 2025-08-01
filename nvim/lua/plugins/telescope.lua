@@ -34,6 +34,7 @@ return {
     },
     opts = {
       defaults = {
+        find_command = { "fd", "--type", "f", "--hidden", "--exclude", ".git" },
         layout_strategy = "horizontal",
         layout_config = {
           horizontal = {
@@ -44,10 +45,18 @@ return {
             prompt_position = "bottom",
           },
         },
+        live_grep = {
+          only_cwd = true,
+        },
+        sorting_strategy = "ascending",
         path_display = {
           filename_first = true,
         },
-        sorting_strategy = "ascending",
+        preview = {
+          filesize_limit = 10,
+          highlight_limit = 0.25,
+          timeout = 1000,
+        },
         vimgrep_arguments = {
           "rg",
           "--color=never",
@@ -55,11 +64,10 @@ return {
           "--with-filename",
           "--line-number",
           "--column",
-        },
-        preview = {
-          filesize_limit = 10,
-          highlight_limit = 0.25,
-          timeout = 1000,
+          "--smart-case",
+          "--hidden",
+          "--glob",
+          "!.git/",
         },
       },
     },
