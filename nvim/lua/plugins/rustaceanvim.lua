@@ -10,6 +10,7 @@ return {
               enable = false,
             },
             cargo = {
+              allFeatures = false,
               allTargets = false,
               targetDir = true,
             },
