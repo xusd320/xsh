@@ -1,6 +1,6 @@
 return {
   "olimorris/codecompanion.nvim",
-  event = { "BufRead", "BufNewFile" },
+  lazy = false,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
@@ -39,13 +39,10 @@ return {
   config = function()
     require("codecompanion").setup({
       adapters = {
-        gemini = function()
-          return require("codecompanion.adapters").extend("gemini", {
-            api_key = function()
-              return os.getenv("GEMINI_API_KEY")
-            end,
-          })
-        end,
+        opts = {
+          allow_insecure = true,
+          proxy = "http://127.0.0.1:7897",
+        },
       },
       display = {
         action_palette = {
@@ -87,12 +84,15 @@ return {
         },
       },
     })
+
+    vim.keymap.del("n", "<leader><Space>")
+
     require("which-key").add({
-      { "<leader>a", group = "CodeCompanion" },
-      { "<leader>aa", "<cmd>CodeCompanion<cr>", desc = "CodeCompanion Prompt" },
-      { "<leader>ab", "<cmd>CodeCompanionChat<cr>", desc = "CodeCompanion Chat" },
-      { "<leader>ac", "<cmd>CodeCompanionActions<cr>", desc = "CodeCompanion Actions" },
-      { "<leader>ad", "<cmd>CodeCompanionCmd<cr>", desc = "CodeCompanion Cmd" },
+      { "<leader><Space>", group = "CodeCompanion", mode = {} },
+      { "<leader><Space>a", "<cmd>CodeCompanion<cr>", desc = "CodeCompanion Prompt" },
+      { "<leader><Space>A", "<cmd>CodeCompanionActions<cr>", desc = "CodeCompanion Actions" },
+      { "<leader><Space>c", "<cmd>CodeCompanionChat<cr>", desc = "CodeCompanion Chat" },
+      { "<leader><Space>C", "<cmd>CodeCompanionCmd<cr>", desc = "CodeCompanion Cmd" },
     })
   end,
 }
