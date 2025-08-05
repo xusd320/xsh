@@ -4,12 +4,12 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
-    "ravitemer/mcphub.nvim",
-    {
-      "Davidyz/VectorCode",
-      build = "pipx upgrade vectorcode",
-      dependencies = { "nvim-lua/plenary.nvim" },
-    },
+    -- "ravitemer/mcphub.nvim",
+    -- {
+    --   "Davidyz/VectorCode",
+    --   build = "pipx upgrade vectorcode",
+    --   dependencies = { "nvim-lua/plenary.nvim" },
+    -- },
     {
       "MeanderingProgrammer/render-markdown.nvim",
       ft = { "markdown", "codecompanion" },
@@ -23,18 +23,18 @@ return {
         })
       end,
     },
-    {
-      "HakonHarnes/img-clip.nvim",
-      opts = {
-        filetypes = {
-          codecompanion = {
-            prompt_for_file_name = false,
-            template = "[Image]($FILE_PATH)",
-            use_absolute_path = true,
-          },
-        },
-      },
-    },
+    -- {
+    --   "HakonHarnes/img-clip.nvim",
+    --   opts = {
+    --     filetypes = {
+    --       codecompanion = {
+    --         prompt_for_file_name = false,
+    --         template = "[Image]($FILE_PATH)",
+    --         use_absolute_path = true,
+    --       },
+    --     },
+    --   },
+    -- },
   },
   config = function()
     require("codecompanion").setup({
@@ -57,14 +57,19 @@ return {
         },
       },
       extensions = {
-        mcphub = {
-          callback = "mcphub.extensions.codecompanion",
-          opts = {
-            make_vars = true,
-            make_slash_commands = true,
-            show_result_in_chat = true,
-          },
-        },
+        -- mcphub = {
+        --   callback = "mcphub.extensions.codecompanion",
+        --   opts = {
+        --     make_vars = true,
+        --     make_slash_commands = true,
+        --     show_result_in_chat = true,
+        --   },
+        -- },
+        -- vectorcode = {
+        --   opts = {
+        --     add_tool = true,
+        --   },
+        -- },
       },
       strategies = {
         chat = {
@@ -76,11 +81,6 @@ return {
         },
         cmd = {
           adapter = "gemini",
-        },
-      },
-      vectorcode = {
-        opts = {
-          add_tool = true,
         },
       },
     })
