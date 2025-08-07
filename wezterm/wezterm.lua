@@ -5,7 +5,7 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
-local opacity = 1
+local opacity = 0.8
 
 local transparent_bg = "rgba(22, 24, 26, " .. opacity .. ")"
 
@@ -36,7 +36,7 @@ config.window_decorations = "RESIZE"
 
 config.window_background_opacity = opacity
 
-config.window_background_image = (os.getenv("WEZTERM_CONFIG_FILE") or ""):gsub("wezterm.lua", "bg-blurred.png")
+config.window_background_image = (os.getenv("WEZTERM_CONFIG_FILE") or ""):gsub("wezterm.lua", "blur-red.png")
 
 config.font_size = 14.0
 
