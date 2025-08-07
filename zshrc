@@ -20,6 +20,7 @@ plugins=(
   rust
   starship
   systemd
+  web-search
   z
 )
 
