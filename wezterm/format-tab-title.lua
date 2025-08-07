@@ -33,9 +33,26 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 
   local title = string.format("%s. %s ~ %s ", tab.tab_index + 1, get_process(tab), cwd)
 
+  local background = config.colors.brights[1]
+  local foreground = config.colors.foreground
+
+  if tab.is_active then
+    background = config.colors.brights[7]
+    foreground = config.colors.background
+  elseif hover then
+    background = config.colors.brights[8]
+    foreground = config.colors.background
+  end
+
   if has_unseen_output then
     return {
+      { Foreground = { Color = background } },
+      { Text = "█" },
+      { Background = { Color = background } },
+      { Foreground = { Color = foreground } },
       { Text = title },
+      { Foreground = { Color = background } },
+      { Text = "█" },
     }
   end
 

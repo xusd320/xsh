@@ -5,7 +5,9 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
-config.window_decorations = "RESIZE"
+local opacity = 0.8
+
+local transparent_bg = "rgba(22, 24, 26, " .. opacity .. ")"
 
 config.native_macos_fullscreen_mode = true
 
@@ -18,7 +20,23 @@ config.window_padding = {
 
 config.max_fps = 120
 
-config.color_scheme = "catppuccin-mocha"
+-- config.color_scheme = "catppuccin-mocha"
+
+config.colors = require("cyberdream")
+
+config.colors.tab_bar = {
+  background = config.window_background_image and "rgba(0, 0, 0, 0)" or transparent_bg,
+  new_tab = { fg_color = config.colors.background, bg_color = config.colors.brights[6] },
+  new_tab_hover = { fg_color = config.colors.background, bg_color = config.colors.foreground },
+}
+
+config.force_reverse_video_cursor = true
+
+config.window_decorations = "RESIZE"
+
+config.window_background_opacity = opacity
+
+config.window_background_image = (os.getenv("WEZTERM_CONFIG_FILE") or ""):gsub("wezterm.lua", "bg-blurred.png")
 
 config.font_size = 14.0
 
