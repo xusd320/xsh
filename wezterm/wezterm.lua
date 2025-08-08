@@ -5,7 +5,7 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
-local opacity = 0.8
+local opacity = 1
 
 local transparent_bg = "rgba(22, 24, 26, " .. opacity .. ")"
 
@@ -20,9 +20,9 @@ config.window_padding = {
 
 config.max_fps = 120
 
--- config.color_scheme = "catppuccin-mocha"
+config.color_scheme = "catppuccin-mocha"
 
-config.colors = require("cyberdream")
+config.colors = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
 
 config.colors.tab_bar = {
   background = config.window_background_image and "rgba(0, 0, 0, 0)" or transparent_bg,

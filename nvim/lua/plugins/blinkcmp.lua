@@ -29,6 +29,7 @@ return {
               },
             },
           },
+          lsp = { fallbacks = { "dictionary" } },
         },
         per_filetype = {
           codecompanion = { "codecompanion" },
