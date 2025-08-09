@@ -38,12 +38,6 @@ return {
   },
   config = function()
     require("codecompanion").setup({
-      adapters = {
-        opts = {
-          allow_insecure = true,
-          proxy = "http://127.0.0.1:7897",
-        },
-      },
       display = {
         action_palette = {
           width = 95,

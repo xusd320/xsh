@@ -6,6 +6,7 @@ return {
         replace_netrw = true,
       },
       terminal = {
+        auto_close = true,
         win = {
           position = "float",
           border = "rounded",
@@ -25,6 +26,7 @@ return {
         sources = {
           explorer = {
             auto_close = true,
+            hidden = true,
             layout = {
               auto_hide = { "input" },
               preview = true,
@@ -56,12 +58,6 @@ return {
         input = {
           relative = "cursor",
           row = 1,
-        },
-        win = {
-          backdrop = {
-            blend = 40,
-            transparent = true,
-          },
         },
       },
     },
