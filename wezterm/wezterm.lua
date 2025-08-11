@@ -24,10 +24,12 @@ config.color_scheme = "catppuccin-mocha"
 
 config.colors = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
 
+config.window_background_image = (os.getenv("WEZTERM_CONFIG_FILE") or ""):gsub("wezterm.lua", "blur-red.png")
+
 config.colors.tab_bar = {
   background = config.window_background_image and "rgba(0, 0, 0, 0)" or transparent_bg,
-  new_tab = { fg_color = config.colors.background, bg_color = config.colors.brights[6] },
-  new_tab_hover = { fg_color = config.colors.background, bg_color = config.colors.foreground },
+  new_tab = { bg_color = config.colors.background, fg_color = config.colors.brights[7] },
+  new_tab_hover = { bg_color = config.colors.background, fg_color = config.colors.foreground },
 }
 
 config.force_reverse_video_cursor = true
@@ -35,8 +37,6 @@ config.force_reverse_video_cursor = true
 config.window_decorations = "RESIZE"
 
 config.window_background_opacity = opacity
-
-config.window_background_image = (os.getenv("WEZTERM_CONFIG_FILE") or ""):gsub("wezterm.lua", "blur-red.png")
 
 config.font_size = 14.0
 

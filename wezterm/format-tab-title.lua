@@ -16,6 +16,16 @@ local function get_process(tab)
 end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+  local cwd = wezterm.format({
+    { Attribute = { Italic = true } },
+    { Text = get_current_working_dir(tab) },
+  })
+
+  local title = string.format("%s. %s ~ %s ", tab.tab_index + 1, get_process(tab), cwd)
+
+  local background = config.colors.background
+  local foreground = config.colors.foreground
+
   local has_unseen_output = false
   if not tab.is_active then
     for _, pane in ipairs(tab.panes) do
@@ -26,33 +36,20 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
     end
   end
 
-  local cwd = wezterm.format({
-    { Attribute = { Italic = true } },
-    { Text = get_current_working_dir(tab) },
-  })
-
-  local title = string.format("%s. %s ~ %s ", tab.tab_index + 1, get_process(tab), cwd)
-
-  local background = config.colors.brights[1]
-  local foreground = config.colors.foreground
-
-  if tab.is_active then
-    background = config.colors.brights[7]
-    foreground = config.colors.background
-  elseif hover then
-    background = config.colors.brights[8]
-    foreground = config.colors.background
-  end
-
-  if has_unseen_output then
-    return {
-      { Background = { Color = background } },
-      { Foreground = { Color = foreground } },
-      { Text = title },
-    }
+  if hover then
+    background = background:lignten_fixed(0.1)
+    foreground = foreground:lignten_fixed(0.1)
+  elseif has_unseen_output then
+    background = background:lignten_fixed(0.2)
+    foreground = foreground:lignten_fixed(0.2)
+  elseif tab.is_active then
+    background = background:lignten_fixed(0.3)
+    foreground = foreground:lignten_fixed(0.3)
   end
 
   return {
+    { Background = { Color = background } },
     { Text = title },
+    { Foreground = { Color = foreground } },
   }
 end)

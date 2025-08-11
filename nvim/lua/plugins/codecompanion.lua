@@ -4,12 +4,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
-    -- "ravitemer/mcphub.nvim",
-    -- {
-    --   "Davidyz/VectorCode",
-    --   build = "pipx upgrade vectorcode",
-    --   dependencies = { "nvim-lua/plenary.nvim" },
-    -- },
+    "ravitemer/codecompanion-history.nvim",
     {
       "MeanderingProgrammer/render-markdown.nvim",
       ft = { "markdown", "codecompanion" },
@@ -23,6 +18,13 @@ return {
         })
       end,
     },
+    -- "ravitemer/mcphub.nvim",
+    -- {
+    --   "Davidyz/VectorCode",
+    --   build = "pipx upgrade vectorcode",
+    --   dependencies = { "nvim-lua/plenary.nvim" },
+    -- },
+
     -- {
     --   "HakonHarnes/img-clip.nvim",
     --   opts = {
@@ -51,6 +53,9 @@ return {
         },
       },
       extensions = {
+        history = {
+          enabled = true,
+        },
         -- mcphub = {
         --   callback = "mcphub.extensions.codecompanion",
         --   opts = {
