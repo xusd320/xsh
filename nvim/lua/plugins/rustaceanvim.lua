@@ -12,6 +12,7 @@ return {
             cargo = {
               allFeatures = false,
               allTargets = false,
+              target = vim.fn.environ().RA_TARGET,
               targetDir = true,
             },
             check = {
