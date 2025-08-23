@@ -8,7 +8,7 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    lazy = true,
+    commit = "76a8d05",
     opts = {
       custom_highlights = function(colors)
         local u = require("catppuccin.utils.colors")
