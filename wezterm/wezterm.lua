@@ -20,7 +20,7 @@ config.window_padding = {
 
 config.max_fps = 120
 
-config.colors = wezterm.color.get_builtin_schemes()["Catppuccin Frappe"]
+config.colors = wezterm.color.get_builtin_schemes()["Catppuccin Mocha"]
 
 config.window_background_image = (os.getenv("WEZTERM_CONFIG_FILE") or ""):gsub("wezterm.lua", "blur-red.png")
 
