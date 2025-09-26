@@ -18,7 +18,6 @@ return {
         "markdown-toc",
         "markdownlint-cli2",
         "marksman",
-        "node-debug2-adapter",
         "prettier",
         "shfmt",
         "stylelint",
