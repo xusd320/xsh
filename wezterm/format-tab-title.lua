@@ -16,9 +16,6 @@ local function get_process(tab)
 end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-  local background = config.colors.background
-  local foreground = config.colors.foreground
-
   local has_unseen_output = false
   if not tab.is_active then
     for _, pane in ipairs(tab.panes) do
@@ -29,26 +26,20 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
     end
   end
 
-  if has_unseen_output then
-    foreground = config.colors.brights[1]
-  elseif tab.is_active then
-    foreground = config.colors.brights[2]
-  elseif hover then
-    foreground = config.colors.brights[3]
-  end
-
   local cwd = wezterm.format({
     { Attribute = { Italic = true } },
-    { Background = { Color = background } },
-    { Foreground = { Color = foreground } },
     { Text = get_current_working_dir(tab) },
   })
 
   local title = string.format("%s. %s ~ %s ", tab.tab_index + 1, get_process(tab), cwd)
 
+  if has_unseen_output then
+    return {
+      { Text = title },
+    }
+  end
+
   return {
-    { Background = { Color = background } },
-    { Foreground = { Color = foreground } },
     { Text = title },
   }
 end)
