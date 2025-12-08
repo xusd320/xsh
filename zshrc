@@ -4,23 +4,12 @@ export PATH="/opt/homebrew/bin:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
 
 plugins=(
-  command-not-found
-  common-aliases
-  copyfile
-  copypath
-  cp
-  extract
   eza
   fnm
-  gh
   git
   git-commit
   history-substring-search
-  procs
-  rust
   starship
-  systemd
-  web-search
   z
 )
 
