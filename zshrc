@@ -60,4 +60,3 @@ alias vi="nvim"
 alias vim="nvim"
 
 eval "$(fnm env)"
-eval "$(mcfly init zsh)"

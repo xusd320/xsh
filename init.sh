@@ -2,11 +2,11 @@ xcode-select --install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-brew tap daipeihust/tap 
+brew tap daipeihust/tap
 brew tap laishulu/homebrew
-brew install wget llvm lld bat jq neovim ripgrep fzf fd starship git-delta eza procs fnm macism ncdu cloc mcfly dua-cli im-select macism
+brew install wget llvm lld bat jq neovim ripgrep fzf fd starship git-delta eza fnm macism cloc im-select macism
 brew install zsh zsh-syntax-highlighting zsh-autosuggestions
-brew install --cask cmake font-hack-nerd-font visual-studio-code rectangle maccy switchhosts wezterm@nightly
+brew install --cask cmake font-hack-nerd-font visual-studio-code rectangle switchhosts wezterm@nightly tree-sitter-cli
 
 git clone git@github.com:xusd320/xsh.git
 git submodule update --init
