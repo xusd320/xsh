@@ -11,13 +11,22 @@ brew install --cask cmake font-hack-nerd-font visual-studio-code rectangle switc
 git clone git@github.com:xusd320/xsh.git
 git submodule update --init
 
-ln -s ~/xsh/wezterm ~/.config/wezterm
-ln -s ~/xsh/zshrc ~/.zshrc
-ln -s ~/xsh/starship.toml ~/.config/starship.toml
-ln -s ~/xsh/gitconfig ~/.gitconfig
-ln -s ~/xsh/lazygit ~/.config/lazygit
-ln -s ~/xsh/nvim ~/.config/nvim
-ln -s ~/xsh/ripgreprc ~/.ripgreprc
+mkdir -p ~/.config
+
+force_link() {
+    src=$1
+    dst=$2
+    rm -rf "$dst"
+    ln -s "$src" "$dst"
+}
+
+force_link ~/xsh/wezterm ~/.config/wezterm
+force_link ~/xsh/zshrc ~/.zshrc
+force_link ~/xsh/starship.toml ~/.config/starship.toml
+force_link ~/xsh/gitconfig ~/.gitconfig
+force_link ~/xsh/lazygit ~/.config/lazygit
+force_link ~/xsh/nvim ~/.config/nvim
+force_link ~/xsh/ripgreprc ~/.ripgreprc
 
 sudo chown -R $(whoami) /usr/local/bin
 

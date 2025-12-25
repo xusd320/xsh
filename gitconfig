@@ -30,7 +30,7 @@
 	  email = xusd320@gmail.com
 
 [oh-my-zsh]
-	git-commit-alias = 92aed2e93624124182ba977a91efa5bbe1e76d5f
+	git-commit-alias = 0f45f82c0afdcaf71b193e349d01c069a3fb9de7
 
 [alias]
 	build = "!a() {\nlocal _scope _attention _message\nwhile [ $# -ne 0 ]; do\ncase $1 in\n  -s | --scope )\n    if [ -z $2 ]; then\n      echo \"Missing scope!\"\n      return 1\n    fi\n    _scope=\"$2\"\n    shift 2\n    ;;\n  -a | --attention )\n    _attention=\"!\"\n    shift 1\n    ;;\n  * )\n    _message=\"${_message} $1\"\n    shift 1\n    ;;\nesac\ndone\ngit commit -m \"build${_scope:+(${_scope})}${_attention}:${_message}\"\n}; a"
