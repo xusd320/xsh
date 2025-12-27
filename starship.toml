@@ -10,6 +10,17 @@ disabled = false
 [git_metrics]
 disabled = false
 
+[username]
+show_always = false
+style_user = "bg:surface0 fg:text"
+style_root = "bg:surface0 fg:text"
+format = '[ $user ]($style)'
+
+[hostname]
+ssh_only = true
+style = "bg:surface0 fg:text"
+format = '[ $hostname ]($style)'
+
 [character]
 success_symbol = "[[󰄛](green) ❯](peach)"
 error_symbol = "[[󰄛](red) ❯](peach)"

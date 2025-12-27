@@ -1,0 +1,26 @@
+# =============================================================================
+# Ghostty Configuration
+# =============================================================================
+
+# --- Font Configuration ---
+font-family = "Hack Nerd Font"
+font-size = 14
+
+# --- Theme ---
+theme = "Catppuccin Mocha"
+
+# --- Window Settings ---
+window-padding-x = 4
+window-padding-y = 4
+window-decoration = true
+
+# --- Keybindings ---
+# Toggle Quick Terminal (Global)
+keybind = global:cmd+grave_accent=toggle_quick_terminal
+# Native Search (Requires 'tip' channel)
+keybind = cmd+f=start_search
+
+# --- Updates ---
+# Use 'tip' channel to get the latest features (e.g., native search)
+auto-update-channel = tip
+auto-update = download
