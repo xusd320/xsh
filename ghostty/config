@@ -27,3 +27,9 @@ keybind = cmd+f=start_search
 # Use 'tip' channel to get the latest features (e.g., native search)
 auto-update-channel = tip
 auto-update = download
+
+# --- Cursor ---
+cursor-style = block
+cursor-style-blink = true
+cursor-click-to-move = true
+

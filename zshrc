@@ -75,3 +75,11 @@ alias vi="nvim"
 alias vim="nvim"
 
 source ~/xsh/git-auto-perf.zsh
+
+# --- Cursor Fix ---
+# Force cursor to be a blinking block to ensure visibility
+function _force_cursor_block() {
+  echo -ne '\e[1 q'
+}
+precmd_functions+=(_force_cursor_block)
+
