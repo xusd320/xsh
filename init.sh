@@ -14,11 +14,11 @@ brew tap daipeihust/tap
 brew tap laishulu/homebrew
 
 # CLI Tools
-brew install wget llvm lld bat jq neovim ripgrep fzf fd starship git-delta eza fnm macism cloc im-select macism zoxide zsh-history-substring-search lazygit zellij rustup
+brew install wget llvm lld bat jq neovim ripgrep fzf fd starship git-delta eza fnm macism cloc im-select zoxide zsh-history-substring-search lazygit zellij rustup cmake tree-sitter
 brew install zsh zsh-syntax-highlighting zsh-autosuggestions
 
 # GUI Applications & Fonts
-brew install --cask cmake font-hack-nerd-font visual-studio-code rectangle switchhosts ghostty tree-sitter-cli
+brew install --cask font-hack-nerd-font font-jetbrains-mono-nerd-font visual-studio-code rectangle switchhosts ghostty
 
 # =============================================================================
 # Dotfiles Setup

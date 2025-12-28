@@ -73,3 +73,5 @@ eval "$(fnm env)"
 # =============================================================================
 alias vi="nvim"
 alias vim="nvim"
+
+source ~/xsh/git-auto-perf.zsh

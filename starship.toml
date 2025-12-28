@@ -6,9 +6,11 @@ palette = "catppuccin_mocha"
 
 [git_status]
 disabled = false
+ignore_submodules = true
+use_git_executable = true
 
 [git_metrics]
-disabled = false
+disabled = true
 
 [username]
 show_always = false
