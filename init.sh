@@ -18,7 +18,7 @@ brew install wget llvm lld bat jq neovim ripgrep fzf fd starship git-delta eza f
 brew install zsh zsh-syntax-highlighting zsh-autosuggestions
 
 # GUI Applications & Fonts
-brew install --cask font-hack-nerd-font font-jetbrains-mono-nerd-font visual-studio-code rectangle switchhosts ghostty
+brew install --cask font-monaspace-nerd-font visual-studio-code rectangle switchhosts ghostty
 
 # =============================================================================
 # Dotfiles Setup
