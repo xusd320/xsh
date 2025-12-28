@@ -15,8 +15,13 @@ return {
       },
     },
     sources = {
-      default = { "dictionary" },
+      default = { "lazydev", "lsp", "path", "snippets", "buffer", "dictionary" },
       providers = {
+        lazydev = {
+          name = "LazyDev",
+          module = "lazydev.integrations.blink",
+          score_offset = 100,
+        },
         dictionary = {
           module = "blink-cmp-dictionary",
           name = "Dict",

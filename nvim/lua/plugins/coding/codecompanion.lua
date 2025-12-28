@@ -9,15 +9,6 @@ return {
       "MeanderingProgrammer/render-markdown.nvim",
       ft = { "markdown", "codecompanion" },
     },
-    {
-      "nvim-mini/mini.diff",
-      config = function()
-        local diff = require("mini.diff")
-        diff.setup({
-          source = diff.gen_source.none(),
-        })
-      end,
-    },
   },
   config = function()
     require("codecompanion").setup({

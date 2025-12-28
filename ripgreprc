@@ -1,7 +1,47 @@
---glob=!Cargo.lock
---glob=!target
+# Version Control
+--glob=!.git/
+
+# Package Managers & Dependencies
+--glob=!node_modules/
+--glob=!bower_components/
+--glob=!vendor/
+--glob=!.venv/
+--glob=!venv/
+
+# Lock Files (Noise reduction)
 --glob=!package-lock.json
 --glob=!pnpm-lock.yaml
 --glob=!yarn.lock
---glob=!compiled
---glob=!userCase
+--glob=!bun.lockb
+--glob=!Cargo.lock
+--glob=!Gemfile.lock
+--glob=!composer.lock
+--glob=!go.sum
+--glob=!poetry.lock
+
+# Build Outputs & Artifacts
+--glob=!target/
+--glob=!dist/
+--glob=!build/
+--glob=!out/
+--glob=!output/
+--glob=!*.min.js
+--glob=!*.min.css
+--glob=!*.map
+
+# System & IDE
+--glob=!.DS_Store
+--glob=!.idea/
+--glob=!.vscode/
+--glob=!.settings/
+--glob=!Thumbs.db
+
+# Language Specific
+--glob=!__pycache__/
+--glob=!*.pyc
+--glob=!*.pyo
+--glob=!.pytest_cache/
+--glob=!.mypy_cache/
+--glob=!.next/
+--glob=!.nuxt/
+--glob=!coverage/

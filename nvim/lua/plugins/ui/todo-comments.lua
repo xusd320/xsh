@@ -1,0 +1,37 @@
+return {
+  "folke/todo-comments.nvim",
+  cmd = { "TodoTrouble", "TodoTelescope" },
+  event = { "BufReadPost", "BufNewFile" },
+  opts = {
+    signs = true,
+    merge_keywords = true,
+    highlight = {
+      multiline = true,
+      multiline_pattern = "^.",
+      multiline_context = 10,
+      before = "",
+      keyword = "wide",
+      after = "fg",
+      pattern = [[.*<(KEYWORDS)\s*:]],
+      comments_only = true,
+      max_line_len = 400,
+      exclude = {},
+    },
+    colors = {
+      error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
+      warning = { "DiagnosticWarn", "WarningMsg", "#FBBF24" },
+      info = { "DiagnosticInfo", "#2563EB" },
+      hint = { "DiagnosticHint", "#10B981" },
+      default = { "Identifier", "#7C3AED" },
+      test = { "Identifier", "#FF00FF" },
+    },
+  },
+  keys = {
+    { "]t", function() require("todo-comments").jump_next() end, desc = "Next Todo Comment" },
+    { "[t", function() require("todo-comments").jump_prev() end, desc = "Previous Todo Comment" },
+    { "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
+    { "<leader>xT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
+    { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
+    { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
+  },
+}

@@ -4,6 +4,10 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+    },
+    {
       "princejoogie/dir-telescope.nvim",
       config = function()
         require("dir-telescope").setup({
@@ -62,10 +66,18 @@ return {
         "--with-filename",
         "--line-number",
         "--column",
-        "--smart-case",
+        "--case-sensitive",
         "--hidden",
         "--glob",
         "!.git/",
+      },
+    },
+    extensions = {
+      fzf = {
+        fuzzy = true,
+        override_generic_sorter = true,
+        override_file_sorter = true,
+        case_mode = "respect_case",
       },
     },
   },
@@ -81,5 +93,6 @@ return {
     local telescope = require("telescope")
     telescope.setup(opts)
     pcall(telescope.load_extension, "dir")
+    pcall(telescope.load_extension, "fzf")
   end,
 }

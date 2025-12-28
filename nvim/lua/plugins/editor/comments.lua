@@ -1,7 +1,9 @@
 return {
   {
     "folke/ts-comments.nvim",
-    enabled = false,
+    enabled = true,
+    event = "VeryLazy",
+    opts = {},
   },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
