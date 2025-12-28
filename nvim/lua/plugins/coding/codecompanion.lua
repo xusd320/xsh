@@ -33,7 +33,6 @@ return {
         chat = {
           adapter = "gemini",
         },
-
         inline = {
           adapter = "gemini",
         },
@@ -42,8 +41,6 @@ return {
         },
       },
     })
-
-    vim.keymap.del("n", "<leader><Space>")
 
     require("which-key").add({
       { "<leader><Space>", group = "CodeCompanion", mode = {} },

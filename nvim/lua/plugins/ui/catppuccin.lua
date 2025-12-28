@@ -1,7 +1,36 @@
 return {
   "catppuccin/nvim",
   name = "catppuccin",
+  lazy = false,
+  priority = 1000,
   opts = {
+    integrations = {
+      aerial = true,
+      blink_cmp = true,
+      dashboard = true,
+      flash = true,
+      illuminate = true,
+      indent_blankline = { enabled = true },
+      lsp_trouble = true,
+      mason = true,
+      markdown = true,
+      native_lsp = {
+        enabled = true,
+        underlines = {
+          errors = { "undercurl" },
+          hints = { "undercurl" },
+          warnings = { "undercurl" },
+          information = { "undercurl" },
+        },
+      },
+      neotree = true,
+      noice = true,
+      notify = true,
+      semantic_tokens = true,
+      telescope = true,
+      treesitter = true,
+      which_key = true,
+    },
     custom_highlights = function(colors)
       local u = require("catppuccin.utils.colors")
       return {

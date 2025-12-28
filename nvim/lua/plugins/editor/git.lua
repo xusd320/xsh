@@ -1,4 +1,24 @@
 return {
+  -- LazyGit
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    keys = {
+      { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+      { "<leader>gG", "<cmd>LazyGitConfig<cr>", desc = "LazyGit Config" },
+      { "<leader>gf", "<cmd>LazyGitCurrentFile<cr>", desc = "LazyGit Current File" },
+    },
+  },
+
   -- Git Blame
   {
     "f-person/git-blame.nvim",
@@ -16,6 +36,9 @@ return {
         virtual_text_column = 1,
       }
     end,
+    keys = {
+      { "<leader>gb", "<cmd>GitBlameToggle<cr>", desc = "Toggle Git Blame" },
+    },
   },
 
   -- Git Conflict

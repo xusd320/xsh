@@ -66,9 +66,11 @@ return {
           map("gy", vim.lsp.buf.type_definition, "Goto Type Definition")
           map("K", vim.lsp.buf.hover, "Hover")
           map("gK", vim.lsp.buf.signature_help, "Signature Help")
-          map("<leader>cr", vim.lsp.buf.rename, "Rename")
           map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
-          map("<leader>cl", vim.lsp.codelens.run, "Run Codelens")
+          map("<leader>cc", vim.lsp.codelens.run, "Run Codelens")
+          map("<leader>cC", vim.lsp.codelens.refresh, "Refresh & Display Codelens")
+          map("<leader>cr", vim.lsp.buf.rename, "Rename")
+          map("<leader>cf", function() vim.lsp.buf.format({ async = true }) end, "Format")
         end,
       })
     end,
