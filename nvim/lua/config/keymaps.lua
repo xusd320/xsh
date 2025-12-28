@@ -1,10 +1,39 @@
-local wk = require("which-key")
+-- Standard Keymaps
+local map = vim.keymap.set
 
-wk.add({
-  { "<leader>ba", "<cmd>:enew<cr>", desc = "New Buffer" },
-  { "<leader>bx", "<cmd>:%d<cr>", desc = "Clear Buffer" },
-  { "<leader>by", "<cmd>:%y<cr>", desc = "Copy Buffer" },
-  { "<leader>\\", "<cmd>e #<cr>", desc = "Switch to Other Buffer" },
-})
+-- Better window navigation
+map("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
+map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
+map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
+map("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
 
-vim.keymap.del("n", "<leader>`")
+-- Resize window using <ctrl> arrow keys
+map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
+map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
+map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
+map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+
+-- Move Lines
+map("n", "<A-j>", "<cmd>m .+1<cr>==", { desc = "Move down" })
+map("n", "<A-k>", "<cmd>m .-2<cr>==", { desc = "Move up" })
+map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move down" })
+map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move up" })
+map("v", "<A-j>", ":m '>+1<cr>gv=gv", { desc = "Move down" })
+map("v", "<A-k>", ":m '<-2<cr>gv=gv", { desc = "Move up" })
+
+-- Buffers
+map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
+map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
+
+-- Clear search with <esc>
+map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
+
+-- Save file
+map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+
+-- Quit
+map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })

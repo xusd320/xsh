@@ -14,7 +14,7 @@ brew tap daipeihust/tap
 brew tap laishulu/homebrew
 
 # CLI Tools
-brew install wget llvm lld bat jq neovim ripgrep fzf fd starship git-delta eza fnm macism cloc im-select macism zoxide zsh-history-substring-search
+brew install wget llvm lld bat jq neovim ripgrep fzf fd starship git-delta eza fnm macism cloc im-select macism zoxide zsh-history-substring-search lazygit zellij rustup
 brew install zsh zsh-syntax-highlighting zsh-autosuggestions
 
 # GUI Applications & Fonts
@@ -44,10 +44,13 @@ force_link ~/xsh/gitconfig ~/.gitconfig
 force_link ~/xsh/lazygit ~/.config/lazygit
 force_link ~/xsh/nvim ~/.config/nvim
 force_link ~/xsh/ripgreprc ~/.ripgreprc
+force_link ~/xsh/zellij ~/.config/zellij
 
 # =============================================================================
 # Post-Install Configuration
 # =============================================================================
+# Rust Setup
+rustup-init -y
 sudo chown -R $(whoami) /usr/local/bin
 
 # Rust

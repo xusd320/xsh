@@ -18,25 +18,6 @@ return {
         })
       end,
     },
-    -- "ravitemer/mcphub.nvim",
-    -- {
-    --   "Davidyz/VectorCode",
-    --   build = "pipx upgrade vectorcode",
-    --   dependencies = { "nvim-lua/plenary.nvim" },
-    -- },
-
-    -- {
-    --   "HakonHarnes/img-clip.nvim",
-    --   opts = {
-    --     filetypes = {
-    --       codecompanion = {
-    --         prompt_for_file_name = false,
-    --         template = "[Image]($FILE_PATH)",
-    --         use_absolute_path = true,
-    --       },
-    --     },
-    --   },
-    -- },
   },
   config = function()
     require("codecompanion").setup({
@@ -56,19 +37,6 @@ return {
         history = {
           enabled = true,
         },
-        -- mcphub = {
-        --   callback = "mcphub.extensions.codecompanion",
-        --   opts = {
-        --     make_vars = true,
-        --     make_slash_commands = true,
-        --     show_result_in_chat = true,
-        --   },
-        -- },
-        -- vectorcode = {
-        --   opts = {
-        --     add_tool = true,
-        --   },
-        -- },
       },
       strategies = {
         chat = {
