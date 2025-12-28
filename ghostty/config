@@ -3,13 +3,17 @@
 # =============================================================================
 
 # --- Font Configuration ---
-font-family = "JetBrainsMono Nerd Font"
+font-family = "Monaspace Neon NF"
 font-size = 14
+font-thicken = true
+font-thicken-strength = 40
+adjust-cell-width = -1
 
 # --- Theme ---
 theme = "Catppuccin Mocha"
 
 # --- Window Settings ---
+fullscreen = true
 window-padding-x = 4
 window-padding-y = 4
 window-decoration = true

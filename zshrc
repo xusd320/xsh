@@ -77,9 +77,22 @@ alias vim="nvim"
 source ~/xsh/git-auto-perf.zsh
 
 # --- Cursor Fix ---
-# Force cursor to be a blinking block to ensure visibility
-function _force_cursor_block() {
-  echo -ne '\e[1 q'
+# Force cursor to be a blinking block everywhere
+# This fixes the issue where the cursor reverts to a bar in Zsh
+_fix_cursor() {
+  printf '\033[1 q'
 }
-precmd_functions+=(_force_cursor_block)
+
+precmd_functions+=(_fix_cursor)
+
+zle-line-init() {
+  _fix_cursor
+}
+zle -N zle-line-init
+
+zle-keymap-select() {
+  _fix_cursor
+}
+zle -N zle-keymap-select
+
 
