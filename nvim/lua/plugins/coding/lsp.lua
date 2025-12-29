@@ -2,13 +2,13 @@ return {
   -- LSP Configuration
   {
     "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "saghen/blink.cmp",
     },
     opts = {
-      servers = {},
       -- Global capabilities/settings for all servers
       defaults = {
         capabilities = {
@@ -31,23 +31,26 @@ return {
       local lspconfig = require("lspconfig")
       local mason_lspconfig = require("mason-lspconfig")
       
-      -- Setup Mason LSPConfig
-      mason_lspconfig.setup({
-        ensure_installed = {}, -- Add servers here or rely on manual install
-        automatic_installation = false,
-      })
-
       -- Capabilities
       local capabilities = require("blink.cmp").get_lsp_capabilities()
       capabilities = vim.tbl_deep_extend("force", capabilities, opts.defaults.capabilities or {})
 
-      -- Setup Servers
-      mason_lspconfig.setup_handlers({
-        function(server_name)
-          local server_opts = opts.servers[server_name] or {}
-          server_opts.capabilities = vim.tbl_deep_extend("force", capabilities, server_opts.capabilities or {})
-          lspconfig[server_name].setup(server_opts)
-        end,
+      -- Setup Handler
+      local function setup(server)
+        local server_opts = opts.servers[server] or {}
+        server_opts.capabilities = vim.tbl_deep_extend("force", capabilities, server_opts.capabilities or {})
+        
+        if lspconfig[server] then
+          lspconfig[server].setup(server_opts)
+        end
+      end
+
+      -- Setup Mason LSPConfig
+      local ensure_installed = vim.tbl_keys(opts.servers or {})
+      mason_lspconfig.setup({
+        ensure_installed = ensure_installed,
+        automatic_installation = false,
+        handlers = { setup },
       })
       
       -- Keymaps
@@ -69,6 +72,7 @@ return {
           map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
           map("<leader>cc", vim.lsp.codelens.run, "Run Codelens")
           map("<leader>cC", vim.lsp.codelens.refresh, "Refresh & Display Codelens")
+          map("<leader>cl", "<cmd>LspInfo<cr>", "Lsp Info")
           map("<leader>cr", vim.lsp.buf.rename, "Rename")
           map("<leader>cf", function() vim.lsp.buf.format({ async = true }) end, "Format")
         end,
@@ -79,6 +83,7 @@ return {
   -- Mason (Tool Installer)
   {
     "mason-org/mason.nvim",
+    keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     opts = {
       ensure_installed = {
         "bash-language-server",
@@ -93,8 +98,6 @@ return {
         "js-debug-adapter",
         "json-lsp",
         "lua-language-server",
-        "markdown-toc",
-        "markdownlint-cli2",
         "marksman",
         "prettier",
         "shfmt",
@@ -105,6 +108,19 @@ return {
         "vim-language-server",
         "vtsls",
         "yaml-language-server",
+      },
+    },
+  },
+
+  -- LSP Progress
+  {
+    "j-hui/fidget.nvim",
+    event = "LspAttach",
+    opts = {
+      notification = {
+        window = {
+          winblend = 0,
+        },
       },
     },
   },

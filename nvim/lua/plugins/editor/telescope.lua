@@ -125,10 +125,10 @@ return {
     { "<leader><space>", "<cmd>Telescope find_files<cr>", desc = "Find Files (Root Dir)" },
     -- find
     { "<leader>fb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
-    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files (Root Dir)" },
-    { "<leader>fF", "<cmd>Telescope find_files cwd=false<cr>", desc = "Find Files (cwd)" },
-    { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
-    { "<leader>fR", "<cmd>Telescope oldfiles cwd=vim.loop.cwd()<cr>", desc = "Recent (cwd)" },
+    { "<leader>ff", "<cmd>Telescope find_files cwd=false<cr>", desc = "Find Files (cwd)" },
+    { "<leader>fF", "<cmd>Telescope find_files<cr>", desc = "Find Files (Root Dir)" },
+    { "<leader>fr", "<cmd>Telescope oldfiles cwd=vim.loop.cwd()<cr>", desc = "Recent (cwd)" },
+    { "<leader>fR", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
     -- git
     { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "Commits" },
     { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "Status" },
@@ -140,8 +140,8 @@ return {
     { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
     { "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Document Diagnostics" },
     { "<leader>sD", "<cmd>Telescope diagnostics<cr>", desc = "Workspace Diagnostics" },
-    { "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "Grep (Root Dir)" },
-    { "<leader>sG", "<cmd>Telescope live_grep cwd=false<cr>", desc = "Grep (cwd)" },
+    { "<leader>sg", "<cmd>Telescope live_grep cwd=false<cr>", desc = "Grep (cwd)" },
+    { "<leader>sG", "<cmd>Telescope live_grep<cr>", desc = "Grep (Root Dir)" },
     { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
     { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
     { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
@@ -152,31 +152,19 @@ return {
     {
       "<leader>sw",
       function()
-        require("telescope.builtin").grep_string({ word_match = "-w" })
-      end,
-      desc = "Word (Root Dir)",
-    },
-    {
-      "<leader>sW",
-      function()
         require("telescope.builtin").grep_string({ cwd = false, word_match = "-w" })
       end,
       desc = "Word (cwd)",
     },
     {
-      "<leader>sw",
+      "<leader>sW",
       function()
-        local saved_reg = vim.fn.getreg("v")
-        vim.cmd('noau normal! "vy"')
-        local text = vim.fn.getreg("v")
-        vim.fn.setreg("v", saved_reg)
-        require("telescope.builtin").grep_string({ search = text })
+        require("telescope.builtin").grep_string({ word_match = "-w" })
       end,
-      mode = "v",
-      desc = "Selection (Root Dir)",
+      desc = "Word (Root Dir)",
     },
     {
-      "<leader>sW",
+      "<leader>sw",
       function()
         local saved_reg = vim.fn.getreg("v")
         vim.cmd('noau normal! "vy"')
@@ -186,6 +174,18 @@ return {
       end,
       mode = "v",
       desc = "Selection (cwd)",
+    },
+    {
+      "<leader>sW",
+      function()
+        local saved_reg = vim.fn.getreg("v")
+        vim.cmd('noau normal! "vy"')
+        local text = vim.fn.getreg("v")
+        vim.fn.setreg("v", saved_reg)
+        require("telescope.builtin").grep_string({ search = text })
+      end,
+      mode = "v",
+      desc = "Selection (Root Dir)",
     },
     { "<leader>uC", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme with Preview" },
     {
