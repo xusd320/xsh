@@ -27,6 +27,11 @@ keybind = global:cmd+grave_accent=toggle_quick_terminal
 # Native Search (Requires 'tip' channel)
 keybind = cmd+f=start_search
 
+# Split Panes
+keybind = cmd+shift+\=new_split:right
+keybind = cmd+shift+-=new_split:down
+keybind = cmd+shift+backspace=close_surface
+
 # --- Updates ---
 # Use 'tip' channel to get the latest features (e.g., native search)
 auto-update-channel = tip
