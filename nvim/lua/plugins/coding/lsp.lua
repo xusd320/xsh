@@ -58,8 +58,9 @@ return {
         callback = function(args)
           local client = vim.lsp.get_client_by_id(args.data.client_id)
           local buffer = args.data.bufnr
-          local map = function(keys, func, desc)
-            vim.keymap.set("n", keys, func, { buffer = buffer, desc = desc })
+          local map = function(keys, func, desc, mode)
+            mode = mode or "n"
+            vim.keymap.set(mode, keys, func, { buffer = buffer, desc = desc })
           end
           
           map("gd", vim.lsp.buf.definition, "Goto Definition")
@@ -69,11 +70,20 @@ return {
           map("gy", vim.lsp.buf.type_definition, "Goto Type Definition")
           map("K", vim.lsp.buf.hover, "Hover")
           map("gK", vim.lsp.buf.signature_help, "Signature Help")
-          map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
-          map("<leader>cc", vim.lsp.codelens.run, "Run Codelens")
+          map("<c-k>", vim.lsp.buf.signature_help, "Signature Help", "i")
+          map("<leader>ca", vim.lsp.buf.code_action, "Code Action", { "n", "v" })
+          map("<leader>cc", vim.lsp.codelens.run, "Run Codelens", { "n", "v" })
           map("<leader>cC", vim.lsp.codelens.refresh, "Refresh & Display Codelens")
           map("<leader>cl", "<cmd>LspInfo<cr>", "Lsp Info")
           map("<leader>cr", vim.lsp.buf.rename, "Rename")
+          map("<leader>cA", function()
+            vim.lsp.buf.code_action({
+              context = {
+                only = { "source" },
+                diagnostics = {},
+              },
+            })
+          end, "Source Action")
           map("<leader>cf", function() vim.lsp.buf.format({ async = true }) end, "Format")
         end,
       })
@@ -100,7 +110,6 @@ return {
         "lua-language-server",
         "marksman",
         "prettier",
-        "rust-analyzer",
         "shfmt",
         "stylelint",
         "stylua",
