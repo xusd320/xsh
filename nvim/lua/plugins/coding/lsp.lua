@@ -100,6 +100,7 @@ return {
         "lua-language-server",
         "marksman",
         "prettier",
+        "rust-analyzer",
         "shfmt",
         "stylelint",
         "stylua",
