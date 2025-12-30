@@ -46,6 +46,7 @@ return {
     window = {
       position = "left",
       mappings = {
+        ["<Esc>"] = "close_window",
         Y = "copy_selector",
       },
     },
