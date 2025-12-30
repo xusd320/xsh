@@ -16,6 +16,7 @@ vim.opt.conceallevel = 2 -- Hide *markup* for bold and italic, but not markers w
 vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
 vim.opt.showmode = false -- Dont show mode since we have a statusline
 vim.opt.laststatus = 3 -- Global statusline
+vim.opt.showtabline = 2 -- Always show tabline
 vim.opt.fillchars = {
   foldopen = "",
   foldclose = "",
