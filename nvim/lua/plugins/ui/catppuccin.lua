@@ -9,7 +9,6 @@ return {
       blink_cmp = true,
       dashboard = true,
       flash = true,
-      fidget = true,
       illuminate = true,
       indent_blankline = { enabled = true },
       lsp_trouble = true,
@@ -39,6 +38,10 @@ return {
         LspReferenceWrite = { bg = colors.surface2 },
         LspReferenceRead = { bg = colors.surface2 },
         DiagnosticUnderlineWarn = { sp = colors.peach, style = { "underline" } },
+        
+        -- Bufferline highlights
+        BufferLineBufferSelected = { fg = colors.lavender, bg = colors.surface0, style = { "bold", "italic" } },
+        BufferLineFill = { bg = colors.mantle },
       }
     end,
     flavour = "mocha",

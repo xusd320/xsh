@@ -36,6 +36,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.splitkeep = "screen" -- Reduce jumpiness when splitting
 vim.opt.confirm = true
+vim.opt.hidden = true -- Enable modified buffers in background
 vim.opt.updatetime = 200 -- Faster completion (4000ms default)
 vim.opt.timeoutlen = 300 -- Faster key sequence completion
 vim.opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
