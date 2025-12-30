@@ -17,13 +17,31 @@ return {
       path = "relative",
       diagnostics = "nvim_lsp",
       always_show_bufferline = true,
+      diagnostics_indicator = function(_, _, diag)
+        local icons = {
+          Error = " ",
+          Warn = " ",
+          Hint = " ",
+          Info = " ",
+        }
+        local ret = (diag.error and icons.Error .. diag.error .. " " or "")
+          .. (diag.warning and icons.Warn .. diag.warning or "")
+        return vim.trim(ret)
+      end,
+      show_close_icon = false,
+      hover = {
+        enabled = true,
+        delay = 200,
+        reveal = { "close" },
+      },
       separator_style = "slant",
       offsets = {
         {
           filetype = "neo-tree",
-          text = "Neo-tree",
+          text = "Explorer",
           highlight = "Directory",
-          text_align = "left",
+          text_align = "center",
+          separator = true,
         },
       },
     },

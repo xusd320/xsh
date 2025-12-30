@@ -20,7 +20,7 @@ return {
         underlines = {
           errors = { "undercurl" },
           hints = { "undercurl" },
-          warnings = { "undercurl" },
+          warnings = { "underline" },
           information = { "undercurl" },
         },
       },
@@ -38,6 +38,7 @@ return {
         LspReferenceText = { bg = colors.surface2 },
         LspReferenceWrite = { bg = colors.surface2 },
         LspReferenceRead = { bg = colors.surface2 },
+        DiagnosticUnderlineWarn = { sp = colors.peach, style = { "underline" } },
       }
     end,
     flavour = "mocha",

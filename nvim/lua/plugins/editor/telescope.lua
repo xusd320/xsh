@@ -132,7 +132,13 @@ return {
     { "<leader>fb",      "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
     { "<leader>ff",      "<cmd>Telescope find_files cwd=false<cr>",                     desc = "Find Files (cwd)" },
     { "<leader>fF",      "<cmd>Telescope find_files<cr>",                               desc = "Find Files (Root Dir)" },
-    { "<leader>fr",      "<cmd>Telescope oldfiles cwd=vim.loop.cwd()<cr>",              desc = "Recent (cwd)" },
+    {
+      "<leader>fr",
+      function()
+        require("telescope.builtin").oldfiles({ cwd_only = true })
+      end,
+      desc = "Recent (cwd)",
+    },
     { "<leader>fR",      "<cmd>Telescope oldfiles<cr>",                                 desc = "Recent" },
     -- git
     { "<leader>gc",      "<cmd>Telescope git_commits<CR>",                              desc = "Commits" },

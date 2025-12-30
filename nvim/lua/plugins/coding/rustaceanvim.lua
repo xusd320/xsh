@@ -37,6 +37,15 @@ return {
             files = {
               watcher = "client",
             },
+            hover = {
+              memoryLayout = {
+                enabled = true,
+                niches = true,
+              },
+              documentation = {
+                enabled = false,
+              },
+            },
             procMacro = {
               enable = true,
               ignored = {

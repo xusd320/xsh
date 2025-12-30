@@ -63,11 +63,13 @@ return {
             vim.keymap.set(mode, keys, func, { buffer = buffer, desc = desc })
           end
           
-          map("gd", vim.lsp.buf.definition, "Goto Definition")
-          map("gr", vim.lsp.buf.references, "References")
-          map("gD", vim.lsp.buf.declaration, "Goto Declaration")
-          map("gI", vim.lsp.buf.implementation, "Goto Implementation")
-          map("gy", vim.lsp.buf.type_definition, "Goto Type Definition")
+          map("gd", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, "Goto Definition")
+          map("gr", function() require("telescope.builtin").lsp_references() end, "References")
+          map("gD", function() require("telescope.builtin").lsp_definitions({ reuse_win = true }) end, "Goto Declaration")
+          map("gI", function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end, "Goto Implementation")
+          map("gy", function() require("telescope.builtin").lsp_type_definitions({ reuse_win = true }) end, "Goto Type Definition")
+          map("gci", function() require("telescope.builtin").lsp_incoming_calls() end, "Incoming Calls")
+          map("gco", function() require("telescope.builtin").lsp_outgoing_calls() end, "Outgoing Calls")
           map("K", vim.lsp.buf.hover, "Hover")
           map("gK", vim.lsp.buf.signature_help, "Signature Help")
           map("<c-k>", vim.lsp.buf.signature_help, "Signature Help", "i")
@@ -118,19 +120,6 @@ return {
         "vim-language-server",
         "vtsls",
         "yaml-language-server",
-      },
-    },
-  },
-
-  -- LSP Progress
-  {
-    "j-hui/fidget.nvim",
-    event = "LspAttach",
-    opts = {
-      notification = {
-        window = {
-          winblend = 0,
-        },
       },
     },
   },

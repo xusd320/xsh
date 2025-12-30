@@ -13,8 +13,8 @@ return {
       "nvim-lua/plenary.nvim",
     },
     keys = {
-      { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-      { "<leader>gG", "<cmd>LazyGitConfig<cr>", desc = "LazyGit Config" },
+      { "<leader>gg", "<cmd>LazyGit<cr>",            desc = "LazyGit" },
+      { "<leader>gG", "<cmd>LazyGitConfig<cr>",      desc = "LazyGit Config" },
       { "<leader>gf", "<cmd>LazyGitCurrentFile<cr>", desc = "LazyGit Current File" },
     },
   },
@@ -55,8 +55,70 @@ return {
       { "<leader>gct", ":GitConflictChooseTheirs<cr>" },
       { "<leader>gcb", ":GitConflictChooseBoth<cr>" },
       { "<leader>gc0", ":GitConflictChooseNone<cr>" },
-      { "]x", ":GitConflictNextConflict<cr>" },
-      { "[x", ":GitConflictPrevConflict<cr>" },
+      { "]x",          ":GitConflictNextConflict<cr>" },
+      { "[x",          ":GitConflictPrevConflict<cr>" },
+    },
+  },
+
+  -- Git Signs
+  {
+    "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      signs = {
+        add = { text = "▎" },
+        change = { text = "▎" },
+        delete = { text = "" },
+        topdelete = { text = "" },
+        changedelete = { text = "▎" },
+        untracked = { text = "▎" },
+      },
+      on_attach = function(buffer)
+        local gs = package.loaded.gitsigns
+
+        local function map(mode, l, r, desc)
+          vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+        end
+
+        -- Navigation
+        map("n", "]h", function()
+          if vim.wo.diff then
+            return "]c"
+          end
+          vim.schedule(function()
+            gs.next_hunk()
+          end)
+          return "<Ignore>"
+        end, "Next Hunk")
+
+        map("n", "[h", function()
+          if vim.wo.diff then
+            return "[c"
+          end
+          vim.schedule(function()
+            gs.prev_hunk()
+          end)
+          return "<Ignore>"
+        end, "Prev Hunk")
+
+        -- Actions
+        map("n", "<leader>ghs", gs.stage_hunk, "Stage Hunk")
+        map("n", "<leader>ghr", gs.reset_hunk, "Reset Hunk")
+        map("v", "<leader>ghs", function()
+          gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+        end, "Stage Hunk")
+        map("v", "<leader>ghr", function()
+          gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+        end, "Reset Hunk")
+        map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
+        map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
+        map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
+        map("n", "<leader>ghp", gs.preview_hunk, "Preview Hunk")
+        map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
+        map("n", "<leader>ghd", gs.diffthis, "Diff This")
+        map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
+        map("n", "<leader>ght", gs.toggle_deleted, "Toggle Deleted")
+      end,
     },
   },
 }
