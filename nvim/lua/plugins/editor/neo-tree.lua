@@ -5,7 +5,6 @@ return {
     "nvim-tree/nvim-web-devicons",
     "MunifTanjim/nui.nvim",
   },
-  enabled = true,
   keys = {
     {
       "<leader>e",
@@ -48,6 +47,14 @@ return {
       position = "left",
       mappings = {
         Y = "copy_selector",
+      },
+    },
+    event_handlers = {
+      {
+        event = "file_opened",
+        handler = function()
+          require("neo-tree.command").execute({ action = "close" })
+        end,
       },
     },
     filesystem = {
