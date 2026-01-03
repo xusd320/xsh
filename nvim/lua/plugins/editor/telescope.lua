@@ -80,9 +80,6 @@ return {
           prompt_position = "bottom",
         },
       },
-      live_grep = {
-        only_cwd = true,
-      },
       sorting_strategy = "ascending",
       path_display = {
         filename_first = true,
@@ -103,6 +100,11 @@ return {
         "--hidden",
         "--glob",
         "!.git/",
+      },
+    },
+    pickers = {
+      live_grep = {
+        only_cwd = true,
       },
     },
     extensions = {

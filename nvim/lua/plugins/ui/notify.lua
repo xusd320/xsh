@@ -1,6 +1,7 @@
 return {
   "rcarriga/nvim-notify",
   opts = {
+    background_colour = "#1e1e2e",
     timeout = 3000,
     max_height = function()
       return math.floor(vim.o.lines * 0.75)

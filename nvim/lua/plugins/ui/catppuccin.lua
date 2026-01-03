@@ -24,6 +24,7 @@ return {
         },
       },
       neotree = true,
+      notify = true,
       semantic_tokens = true,
       telescope = true,
       treesitter = true,

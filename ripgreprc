@@ -22,7 +22,6 @@
 # Build Outputs & Artifacts
 --glob=!target/
 --glob=!dist/
---glob=!build/
 --glob=!out/
 --glob=!output/
 --glob=!*.min.js

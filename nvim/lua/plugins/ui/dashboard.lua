@@ -17,7 +17,7 @@ return {
         center = {
           { action = "Telescope find_files", desc = " Find File", icon = " ", key = "f" },
           { action = "ene | startinsert", desc = " New File", icon = " ", key = "n" },
-          { action = "Telescope oldfiles", desc = " Recent Files", icon = " ", key = "r" },
+          { action = "Telescope oldfiles only_cwd=true", desc = " Recent Files in cwd", icon = " ", key = "r" },
           { action = "Telescope live_grep", desc = " Find Text", icon = " ", key = "g" },
           { action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
           { action = "qa", desc = " Quit", icon = " ", key = "q" },
