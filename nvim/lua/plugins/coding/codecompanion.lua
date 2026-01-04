@@ -12,6 +12,42 @@ return {
   },
   config = function()
     require("codecompanion").setup({
+      adapters = {
+        http = {
+          gemini = function()
+            return require("codecompanion.adapters").extend("gemini", {
+              env = {
+                api_key = os.getenv("GEMINI_API_KEY"),
+              },
+              schema = {
+                model = {
+                  default = "gemini-3-flash-preview",
+                },
+              },
+            })
+          end,
+        },
+        acp = {
+          gemini_cli = function()
+            return require("codecompanion.adapters").extend("gemini_cli", {
+              commands = {
+                default = {
+                  "gemini",
+                  "--experimental-acp",
+                  "-m",
+                  "gemini-3-flash-preview",
+                },
+              },
+              defaults = {
+                auth_method = "gemini-api-key",
+              },
+              env = {
+                GEMINI_API_KEY = os.getenv("GEMINI_API_KEY"),
+              },
+            })
+          end,
+        },
+      },
       display = {
         action_palette = {
           width = 95,
@@ -29,25 +65,31 @@ return {
           enabled = true,
         },
       },
-      strategies = {
-        chat = {
-          adapter = "gemini",
+      interactions = {
+        background = {
+          adapter = "gemini_cli",
         },
-        inline = {
-          adapter = "gemini",
+        chat = {
+          adapter = "gemini_cli",
         },
         cmd = {
-          adapter = "gemini",
+          adapter = "gemini_cli",
+        },
+        http = {
+          adapter = "gemini_cli",
+        },
+        inline = {
+          adapter = "gemini_cli",
         },
       },
     })
 
     require("which-key").add({
-      { "<leader><Space>", group = "CodeCompanion", mode = {} },
-      { "<leader><Space>a", "<cmd>CodeCompanion<cr>", desc = "CodeCompanion Prompt" },
+      { "<leader><Space>",  group = "CodeCompanion",         mode = {} },
+      { "<leader><Space>a", "<cmd>CodeCompanion<cr>",        desc = "CodeCompanion Prompt" },
       { "<leader><Space>A", "<cmd>CodeCompanionActions<cr>", desc = "CodeCompanion Actions" },
-      { "<leader><Space>c", "<cmd>CodeCompanionChat<cr>", desc = "CodeCompanion Chat" },
-      { "<leader><Space>C", "<cmd>CodeCompanionCmd<cr>", desc = "CodeCompanion Cmd" },
+      { "<leader><Space>c", "<cmd>CodeCompanionChat<cr>",    desc = "CodeCompanion Chat" },
+      { "<leader><Space>C", "<cmd>CodeCompanionCmd<cr>",     desc = "CodeCompanion Cmd" },
     })
   end,
 }
