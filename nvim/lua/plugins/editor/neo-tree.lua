@@ -47,7 +47,8 @@ return {
       position = "left",
       mappings = {
         ["<Esc>"] = "close_window",
-        Y = "copy_selector",
+        ["Y"] = "copy_selector",
+        ["g"] = "grep_in_dir",
       },
     },
     event_handlers = {
@@ -102,6 +103,17 @@ return {
       },
     },
     commands = {
+      grep_in_dir = function(state)
+        local node = state.tree:get_node()
+        local path = node:get_id()
+        if node.type ~= "directory" then
+          path = vim.fn.fnamemodify(path, ":h")
+        end
+        require("telescope.builtin").live_grep({
+          cwd = path,
+          prompt_title = "Live Grep in " .. vim.fn.fnamemodify(path, ":~"),
+        })
+      end,
       copy_selector = function(state)
         local node = state.tree:get_node()
         local filepath = node:get_id()
