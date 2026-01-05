@@ -43,22 +43,6 @@ return {
     },
   },
   opts = {
-    window = {
-      position = "left",
-      mappings = {
-        ["<Esc>"] = "close_window",
-        ["Y"] = "copy_selector",
-        ["g"] = "grep_in_dir",
-      },
-    },
-    event_handlers = {
-      {
-        event = "file_opened",
-        handler = function()
-          require("neo-tree.command").execute({ action = "close" })
-        end,
-      },
-    },
     filesystem = {
       bind_to_cwd = false,
       follow_current_file = { enabled = true },
@@ -69,10 +53,28 @@ return {
         gitignore_source = "git check-ignore",
       },
     },
-    sources = { "filesystem", "buffers", "git_status" },
-    enable_git_status = true,
-    git_status_async = true,
+    window = {
+      width = 30,
+      position = "left",
+      mappings = {
+        ["<Esc>"] = "close_window",
+        ["Y"] = "copy_selector",
+        ["g"] = "grep_in_dir",
+      },
+    },
     default_component_configs = {
+      indent = {
+        with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
+        expander_collapsed = "",
+        expander_expanded = "",
+        expander_highlight = "NeoTreeExpander",
+      },
+      icon = {
+        folder_closed = "",
+        folder_open = "",
+        folder_empty = "󰜌",
+        default = "󰈚",
+      },
       git_status = {
         symbols = {
           staged = "⊕",
@@ -86,22 +88,23 @@ return {
           unstaged = "⊖",
         },
       },
-      file_size = {
-        enabled = false,
-      },
-      type = {
-        enabled = false,
-      },
-      last_modified = {
-        enabled = false,
-      },
-      created = {
-        enabled = false,
-      },
-      symlink_target = {
-        enabled = false,
+      file_size = { enabled = false },
+      type = { enabled = false },
+      last_modified = { enabled = false },
+      created = { enabled = false },
+      symlink_target = { enabled = false },
+    },
+    event_handlers = {
+      {
+        event = "file_opened",
+        handler = function()
+          require("neo-tree.command").execute({ action = "close" })
+        end,
       },
     },
+    sources = { "filesystem", "buffers", "git_status" },
+    enable_git_status = true,
+    git_status_async = true,
     commands = {
       grep_in_dir = function(state)
         local node = state.tree:get_node()

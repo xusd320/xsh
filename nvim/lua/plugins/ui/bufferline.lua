@@ -17,25 +17,22 @@ return {
   },
   opts = {
     options = {
-      diagnostics = "nvim_lsp",
+      mode = "buffers",
+      separator_style = "thin",
+      show_buffer_close_icons = false,
+      show_close_icon = false,
       always_show_bufferline = false,
-      diagnostics_indicator = function(_, _, diag)
-        local icons = {
-          Error = " ",
-          Warn = " ",
-          Hint = " ",
-          Info = " ",
-        }
-        local ret = (diag.error and icons.Error .. diag.error .. " " or "")
-          .. (diag.warning and icons.Warn .. diag.warning or "")
-        return vim.trim(ret)
+      diagnostics = "nvim_lsp",
+      diagnostics_indicator = function(count, level)
+        local icon = level:match("error") and " " or " "
+        return " " .. icon .. count
       end,
       offsets = {
         {
           filetype = "neo-tree",
-          text = "Neo-tree",
-          highlight = "Directory",
-          text_align = "left",
+          text = "File Explorer",
+          text_align = "center",
+          separator = true,
         },
       },
     },
