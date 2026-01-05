@@ -36,8 +36,9 @@ return {
   },
   opts = {
     defaults = {
-      prompt_prefix = " ",
-      selection_caret = " ",
+      prompt_prefix = "   ",
+      selection_caret = "󰁔 ",
+      entry_prefix = "  ",
       mappings = {
         i = {
           ["<c-t>"] = function(...)
@@ -77,10 +78,11 @@ return {
           height = 0.9,
           preview_width = 0.5,
           preview_cutoff = 0,
-          prompt_position = "bottom",
+          prompt_position = "top",
         },
       },
       sorting_strategy = "ascending",
+      results_title = false,
       path_display = {
         filename_first = true,
       },
@@ -102,17 +104,13 @@ return {
         "!.git/",
       },
     },
-    pickers = {
-      live_grep = {
-        only_cwd = true,
-      },
-    },
     extensions = {
-      ["ui-select"] = {
-        require("telescope.themes").get_cursor({
-          -- even more opts
-        }),
-      },
+      ["ui-select"] = require("telescope.themes").get_dropdown({
+        layout_config = {
+          width = 0.6,
+          height = 0.4,
+        },
+      }),
       fzf = {
         fuzzy = true,
         override_generic_sorter = true,
