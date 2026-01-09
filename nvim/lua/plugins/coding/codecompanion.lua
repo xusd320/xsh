@@ -13,40 +13,18 @@ return {
   config = function()
     require("codecompanion").setup({
       adapters = {
-        http = {
-          gemini = function()
-            return require("codecompanion.adapters").extend("gemini", {
-              env = {
-                api_key = os.getenv("GEMINI_API_KEY"),
+        opencode = function()
+          return require("codecompanion.adapters").extend("opencode", {
+            env = {
+              GEMINI_API_KEY = os.getenv("GEMINI_API_KEY"),
+            },
+            schema = {
+              model = {
+                default = "gemini-3-flash-preview",
               },
-              schema = {
-                model = {
-                  default = "gemini-3-flash-preview",
-                },
-              },
-            })
-          end,
-        },
-        acp = {
-          gemini_cli = function()
-            return require("codecompanion.adapters").extend("gemini_cli", {
-              commands = {
-                default = {
-                  "gemini",
-                  "--experimental-acp",
-                  "-m",
-                  "gemini-3-flash-preview",
-                },
-              },
-              defaults = {
-                auth_method = "gemini-api-key",
-              },
-              env = {
-                GEMINI_API_KEY = os.getenv("GEMINI_API_KEY"),
-              },
-            })
-          end,
-        },
+            },
+          })
+        end,
       },
       display = {
         action_palette = {
@@ -65,21 +43,15 @@ return {
           enabled = true,
         },
       },
-      interactions = {
-        background = {
-          adapter = "gemini_cli",
-        },
+      strategies = {
         chat = {
-          adapter = "gemini_cli",
-        },
-        cmd = {
-          adapter = "gemini_cli",
-        },
-        http = {
-          adapter = "gemini_cli",
+          adapter = "opencode",
         },
         inline = {
-          adapter = "gemini_cli",
+          adapter = "opencode",
+        },
+        agent = {
+          adapter = "opencode",
         },
       },
     })
