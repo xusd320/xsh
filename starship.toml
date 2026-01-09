@@ -1,27 +1,65 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = false
-command_timeout = 10000
+command_timeout = 800
 palette = "catppuccin_mocha"
+
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$c\
+$cmake\
+$elixir\
+$elm\
+$golang\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+$scala\
+$python\
+$docker_context\
+$fill\
+$cmd_duration\
+$line_break\
+$character"""
+
+[fill]
+symbol = " "
 
 [git_status]
 disabled = false
 ignore_submodules = true
-use_git_executable = true
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = "bold red"
+conflicted = "="
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+untracked = "?"
+stashed = "$"
+modified = "!"
+staged = "+"
+renamed = "»"
+deleted = "✘"
 
 [git_metrics]
 disabled = true
 
 [username]
 show_always = false
-style_user = "bg:surface0 fg:text"
-style_root = "bg:surface0 fg:text"
-format = '[ $user ]($style)'
+style_user = "bold sky"
+format = '[$user]($style) '
 
 [hostname]
 ssh_only = true
-style = "bg:surface0 fg:text"
-format = '[ $hostname ]($style)'
+style = "bold sky"
+format = 'at [$hostname]($style) '
 
 [character]
 success_symbol = "[[󰄛](green) ❯](peach)"
@@ -29,11 +67,32 @@ error_symbol = "[[󰄛](red) ❯](peach)"
 vimcmd_symbol = "[󰄛 ❮](subtext1)"
 
 [git_branch]
+symbol = " "
 style = "bold mauve"
+format = 'on [$symbol$branch]($style) '
 
 [directory]
-truncation_length = 4
+truncation_length = 3
+truncate_to_repo = true
 style = "bold lavender"
+format = 'in [$path]($style)[$read_only]($read_only_style) '
+
+[cmd_duration]
+min_time = 500
+format = 'took [$duration]($style)'
+style = "bold yellow"
+
+[rust]
+symbol = " "
+format = 'via [$symbol$version]($style) '
+
+[nodejs]
+symbol = "󰎙 "
+format = 'via [$symbol$version]($style) '
+
+[python]
+symbol = " "
+format = 'via [$symbol$version]($style) '
 
 # https://github.com/catppuccin/starship/blob/main/themes/mocha.toml
 [palettes.catppuccin_mocha]
@@ -149,9 +208,6 @@ format = 'with [$symbol]($style)'
 [nim]
 format = 'via [$symbol]($style)'
 
-[nodejs]
-format = 'via [$symbol]($style)'
-
 [ocaml]
 format = 'via [$symbol(\($switch_indicator$switch_name\) )]($style)'
 
@@ -176,9 +232,6 @@ format = 'via [$symbol$stack]($style)'
 [purescript]
 format = 'via [$symbol]($style)'
 
-[python]
-format = 'via [$symbol]($style)'
-
 [quarto]
 format = 'via [$symbol]($style)'
 
@@ -192,9 +245,6 @@ format = 'via [$symbol]($style)'
 format = 'via [$symbol]($style)'
 
 [ruby]
-format = 'via [$symbol]($style)'
-
-[rust]
 format = 'via [$symbol]($style)'
 
 [scala]

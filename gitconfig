@@ -1,6 +1,13 @@
 [core]
     pager = delta
-	  excludesfile = ~/.config/.gitignore_global
+    excludesfile = ~/.config/.gitignore_global
+    editor = nvim
+    autocrlf = input
+    quotepath = false
+    ignorecase = false
+
+[init]
+    defaultBranch = main
 
 [interactive]
     diffFilter = delta --color-only
@@ -9,27 +16,58 @@
     navigate = true
     light = false
     side-by-side = true
+    line-numbers = true
+    hyperlinks = true
+    syntax-theme = Catppuccin Mocha
 
 [diff]
     colorMoved = default
+    algorithm = histogram
+    renames = true
+
+[pull]
+    rebase = true
+
+[rebase]
+    autoStash = true
+
+[fetch]
+    prune = true
+
+[column]
+    ui = auto
+
+[rerere]
+    enabled = true
+    autoUpdate = true
 
 [merge]
     conflictstyle = diff3
-	  keepBackup = false
-	  tool = diffconflicts
+    keepBackup = false
+    tool = nvimdiff
 
-[mergetool "diffconflicts"]
-	  cmd = vim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
-	  trustExitCode = true
+[mergetool "nvimdiff"]
+    layout = "LOCAL,BASE,REMOTE / MERGED"
 
 [push]
-	  autoSetupRemote = true
+    autoSetupRemote = true
 
 [user]
 	  name = xusd320
 	  email = xusd320@gmail.com
 
 [alias]
+	st = status
+	co = checkout
+	br = branch
+	cp = cherry-pick
+	cl = clone
+	rb = rebase
+	mg = merge
+	pf = push --force-with-lease
+	undo = reset --soft HEAD~1
+	last = log -1 HEAD
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	build = "!a() {\nlocal _scope _attention _message\nwhile [ $# -ne 0 ]; do\ncase $1 in\n  -s | --scope )\n    if [ -z $2 ]; then\n      echo \"Missing scope!\"\n      return 1\n    fi\n    _scope=\"$2\"\n    shift 2\n    ;;\n  -a | --attention )\n    _attention=\"!\"\n    shift 1\n    ;;\n  * )\n    _message=\"${_message} $1\"\n    shift 1\n    ;;\nesac\ndone\ngit commit -m \"build${_scope:+(${_scope})}${_attention}:${_message}\"\n}; a"
 	chore = "!a() {\nlocal _scope _attention _message\nwhile [ $# -ne 0 ]; do\ncase $1 in\n  -s | --scope )\n    if [ -z $2 ]; then\n      echo \"Missing scope!\"\n      return 1\n    fi\n    _scope=\"$2\"\n    shift 2\n    ;;\n  -a | --attention )\n    _attention=\"!\"\n    shift 1\n    ;;\n  * )\n    _message=\"${_message} $1\"\n    shift 1\n    ;;\nesac\ndone\ngit commit -m \"chore${_scope:+(${_scope})}${_attention}:${_message}\"\n}; a"
 	ci = "!a() {\nlocal _scope _attention _message\nwhile [ $# -ne 0 ]; do\ncase $1 in\n  -s | --scope )\n    if [ -z $2 ]; then\n      echo \"Missing scope!\"\n      return 1\n    fi\n    _scope=\"$2\"\n    shift 2\n    ;;\n  -a | --attention )\n    _attention=\"!\"\n    shift 1\n    ;;\n  * )\n    _message=\"${_message} $1\"\n    shift 1\n    ;;\nesac\ndone\ngit commit -m \"ci${_scope:+(${_scope})}${_attention}:${_message}\"\n}; a"

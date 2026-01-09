@@ -11,41 +11,71 @@ adjust-cell-width = -1
 
 # --- Theme ---
 theme = "Catppuccin Mocha"
+window-theme = dark
 
 # --- Window Settings ---
 fullscreen = true
-window-padding-x = 4
-# Top padding 4, Bottom padding 14 (approx one line height)
-window-padding-y = 4,14
+window-padding-x = 10
+window-padding-y = 10
 window-decoration = true
+window-save-state = always
 
 # --- Aesthetics ---
-background-opacity = 0.9
+background-opacity = 0.95
 background-blur = true
-macos-titlebar-style = transparent
-unfocused-split-opacity = 0.7
+macos-titlebar-style = tabs
+unfocused-split-opacity = 0.8
 
 # --- Clipboard ---
 copy-on-select = clipboard
-
-# --- Keybindings ---
-# Toggle Quick Terminal (Global)
-keybind = global:cmd+grave_accent=toggle_quick_terminal
-# Native Search (Requires 'tip' channel)
-keybind = cmd+f=start_search
-
-# Split Panes
-keybind = cmd+shift+\=new_split:right
-keybind = cmd+shift+-=new_split:down
-keybind = cmd+shift+backspace=close_surface
-
-# --- Updates ---
-# Use 'tip' channel to get the latest features (e.g., native search)
-auto-update-channel = tip
-auto-update = download
 
 # --- Cursor ---
 cursor-style = block
 cursor-style-blink = true
 cursor-click-to-move = true
+
+# --- Performance & Behavior ---
+mouse-hide-while-typing = true
+confirm-close-surface = false
+shell-integration-features = cursor,sudo,no-title
+
+# --- Keybindings ---
+# Toggle Quick Terminal (Global)
+keybind = global:cmd+grave_accent=toggle_quick_terminal
+# Native Search
+keybind = cmd+f=start_search
+
+# AI (Opencode) Integration
+keybind = cmd+alt+a=new_split:right,opencode
+keybind = cmd+alt+enter=new_tab,opencode
+
+# Split Panes
+keybind = cmd+shift+\=new_split:right
+keybind = cmd+shift+-=new_split:down
+keybind = cmd+alt+backspace=close_surface
+
+# Split Navigation (Vim-style)
+keybind = cmd+alt+h=goto_split:left
+keybind = cmd+alt+j=goto_split:bottom
+keybind = cmd+alt+k=goto_split:top
+keybind = cmd+alt+l=goto_split:right
+
+# Split Resizing
+keybind = cmd+alt+shift+h=resize_split:left,20
+keybind = cmd+alt+shift+j=resize_split:down,20
+keybind = cmd+alt+shift+k=resize_split:up,20
+keybind = cmd+alt+shift+l=resize_split:right,20
+
+# Zoom Split
+keybind = cmd+shift+f=toggle_split_zoom
+
+# Tab Navigation
+keybind = cmd+shift+[=previous_tab
+keybind = cmd+shift+]=next_tab
+keybind = cmd+t=new_tab
+
+# --- Updates ---
+# Use 'tip' channel to get the latest features (e.g., native search)
+auto-update-channel = tip
+auto-update = download
 
