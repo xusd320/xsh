@@ -34,91 +34,88 @@ return {
       },
     },
   },
-  opts = {
-    defaults = {
-      prompt_prefix = "   ",
-      selection_caret = "󰁔 ",
-      entry_prefix = "  ",
-      mappings = {
-        i = {
-          ["<c-t>"] = function(...)
-            return require("trouble.providers.telescope").open_with_trouble(...)
-          end,
-          ["<a-t>"] = function(...)
-            return require("trouble.providers.telescope").open_selected_with_trouble(...)
-          end,
-          ["<a-i>"] = function()
-            local flash = require("telescope").extensions.flash
-            return flash.jump()
-          end,
-          ["<C-Down>"] = function(...)
-            return require("telescope.actions").cycle_history_next(...)
-          end,
-          ["<C-Up>"] = function(...)
-            return require("telescope.actions").cycle_history_prev(...)
-          end,
-          ["<C-f>"] = function(...)
-            return require("telescope.actions").preview_scrolling_down(...)
-          end,
-          ["<C-b>"] = function(...)
-            return require("telescope.actions").preview_scrolling_up(...)
-          end,
+  opts = function()
+    return {
+      defaults = {
+        prompt_prefix = "   ",
+        selection_caret = "󰁔 ",
+        entry_prefix = "  ",
+        initial_mode = "insert",
+        selection_strategy = "reset",
+        path_display = { "truncate" },
+        color_devicons = true,
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
         },
-        n = {
-          ["q"] = function(...)
-            return require("telescope.actions").close(...)
-          end,
+        mappings = {
+          i = {
+            ["<c-t>"] = function(...)
+              return require("trouble.providers.telescope").open_with_trouble(...)
+            end,
+            ["<a-t>"] = function(...)
+              return require("trouble.providers.telescope").open_selected_with_trouble(...)
+            end,
+            ["<C-Down>"] = function(...)
+              return require("telescope.actions").cycle_history_next(...)
+            end,
+            ["<C-Up>"] = function(...)
+              return require("telescope.actions").cycle_history_prev(...)
+            end,
+            ["<C-f>"] = function(...)
+              return require("telescope.actions").preview_scrolling_down(...)
+            end,
+            ["<C-b>"] = function(...)
+              return require("telescope.actions").preview_scrolling_up(...)
+            end,
+          },
+          n = {
+            ["q"] = function(...)
+              return require("telescope.actions").close(...)
+            end,
+          },
         },
-      },
-      find_command = { "fd", "--type", "f", "--hidden", "--exclude", ".git" },
-      layout_strategy = "horizontal",
-      layout_config = {
-        horizontal = {
-          width = 0.9,
-          height = 0.9,
-          preview_width = 0.5,
-          preview_cutoff = 0,
-          prompt_position = "top",
-        },
-      },
-      sorting_strategy = "ascending",
-      results_title = false,
-      path_display = {
-        filename_first = true,
-      },
-      preview = {
-        filesize_limit = 10,
-        highlight_limit = 0.25,
-        timeout = 1000,
-      },
-      vimgrep_arguments = {
-        "rg",
-        "--color=never",
-        "--no-heading",
-        "--with-filename",
-        "--line-number",
-        "--column",
-        "--case-sensitive",
-        "--hidden",
-        "--glob",
-        "!.git/",
-      },
-    },
-    extensions = {
-      ["ui-select"] = require("telescope.themes").get_dropdown({
+        layout_strategy = "horizontal",
         layout_config = {
-          width = 0.6,
-          height = 0.4,
+          horizontal = {
+            prompt_position = "top",
+            preview_width = 0.55,
+            results_width = 0.8,
+          },
+          vertical = {
+            mirror = false,
+          },
+          width = 0.87,
+          height = 0.80,
+          preview_cutoff = 120,
         },
-      }),
-      fzf = {
-        fuzzy = true,
-        override_generic_sorter = true,
-        override_file_sorter = true,
-        case_mode = "respect_case",
+        sorting_strategy = "ascending",
+        winblend = 0,
+        border = {},
+        borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+        set_env = { ["COLORTERM"] = "truecolor" },
       },
-    },
-  },
+      extensions = {
+        ["ui-select"] = require("telescope.themes").get_dropdown({
+          layout_config = {
+            width = 0.6,
+            height = 0.4,
+          },
+        }),
+        fzf = {
+          fuzzy = true,
+          override_generic_sorter = true,
+          override_file_sorter = true,
+          case_mode = "respect_case",
+        },
+      },
+    }
+  end,
   keys = {
     {
       "<leader>,",
@@ -127,7 +124,6 @@ return {
     },
     { "<leader>/",       "<cmd>Telescope live_grep<cr>",                                desc = "Grep (Root Dir)" },
     { "<leader>:",       "<cmd>Telescope command_history<cr>",                          desc = "Command History" },
-    { "<leader><space>", "<cmd>Telescope find_files<cr>",                               desc = "Find Files (Root Dir)" },
     -- find
     { "<leader>fb",      "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
     { "<leader>ff",      "<cmd>Telescope find_files cwd=false<cr>",                     desc = "Find Files (cwd)" },

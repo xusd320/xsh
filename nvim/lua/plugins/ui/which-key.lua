@@ -3,6 +3,21 @@ return {
   event = "VeryLazy",
   opts = {
     preset = "modern",
+    win = {
+      border = "rounded",
+      padding = { 1, 2, 1, 2 }, -- top, right, bottom, left
+      title = true,
+      title_pos = "center",
+      zindex = 1000,
+    },
+    layout = {
+      align = "center",
+    },
+    icons = {
+      breadcrumb = "»",
+      separator = "➜",
+      group = "+",
+    },
     spec = {
       mode = { "n", "v" },
       { "<leader><tab>", group = "tabs" },

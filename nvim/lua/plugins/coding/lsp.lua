@@ -32,6 +32,38 @@ return {
       local mason_lspconfig = require("mason-lspconfig")
       local capabilities = require("blink.cmp").get_lsp_capabilities()
 
+      -- UI: Style floating windows
+      local border = "rounded"
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
+      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
+
+      -- UI: Diagnostic signs and config
+      local icons = {
+        Error = " ",
+        Warn = " ",
+        Hint = " ",
+        Info = " ",
+      }
+      for type, icon in pairs(icons) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+      end
+
+      vim.diagnostic.config({
+        underline = true,
+        update_in_insert = false,
+        virtual_text = {
+          spacing = 4,
+          source = "if_many",
+          prefix = "●",
+        },
+        severity_sort = true,
+        float = {
+          border = "rounded",
+          source = "always",
+        },
+      })
+
       local function setup(server)
         local server_opts = vim.tbl_deep_extend("force", {
           capabilities = vim.deepcopy(capabilities),

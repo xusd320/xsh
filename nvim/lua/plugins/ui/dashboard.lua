@@ -25,6 +25,7 @@ return {
           { action = "ene | startinsert", desc = " New File", icon = " ", key = "n" },
           { action = "Telescope oldfiles", desc = " Recent Files", icon = " ", key = "r" },
           { action = "Telescope live_grep", desc = " Find Text", icon = " ", key = "g" },
+          { action = "CodeCompanionChat toggle", desc = " AI Assistant", icon = " ", key = "a" },
           { action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
           { action = "qa", desc = " Quit", icon = " ", key = "q" },
         },

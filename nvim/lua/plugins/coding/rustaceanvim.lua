@@ -15,6 +15,9 @@ return {
           vim.keymap.set("n", "gm", function()
             vim.cmd.RustLsp("expandMacro")
           end, { desc = "Expand Macro", buffer = bufnr })
+          vim.keymap.set("n", "K", function()
+            vim.cmd.RustLsp("hover")
+          end, { desc = "Hover (Rust)", buffer = bufnr })
         end,
         default_settings = {
           ["rust-analyzer"] = {

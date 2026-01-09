@@ -15,17 +15,21 @@ return {
     -- 1. Optimize mini.diff
     require("mini.diff").setup({
       view = {
-        style = "overlay", -- Overlay mode, does not break layout
+        style = "sign", -- Use sign column for diffs
         signs = {
           add = "▎", -- Consistent with gitsigns style
           change = "▎",
           delete = "",
         },
       },
-      source = {
-        -- Enable only when CodeCompanion is active
-        vim.cmd([[au FileType codecompanion lua require('mini.diff').enable(0)]])
-      }
+    })
+
+    -- Enable mini.diff for CodeCompanion buffers
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "codecompanion",
+      callback = function()
+        require("mini.diff").enable(0)
+      end,
     })
 
     -- 2. CodeCompanion core optimization
@@ -52,27 +56,30 @@ return {
         action_palette = {
           width = 95,
           height = 10,
-          provider = "default", -- Or "telescope" if you prefer
+          provider = "telescope",
           opts = {
             show_preset_actions = true,
             show_preset_prompts = true,
           },
         },
         chat = {
-          show_settings = false, -- Reduce visual noise
+          show_settings = false,
           show_token_count = true,
           show_spinner = true,
           render_headers = true,
           auto_scroll = true,
           window = {
             layout = "vertical",
-            position = "left", -- Move to the left
-            width = 0.45,
+            position = "left",
+            width = 0.40, -- Slightly narrower for better balance
             opts = {
               breakindent = true,
               cursorline = true,
               spell = false,
               wrap = true,
+              signcolumn = "yes",
+              number = false,
+              relativenumber = false,
             },
           },
         },
@@ -145,16 +152,19 @@ return {
 
     -- 3. Keymap optimization (Which-Key style)
     require("which-key").add({
-      { "<leader><Space>",  group = "CodeCompanion",         mode = {} },
-      { "<leader><Space>a", "<cmd>CodeCompanion<cr>",        desc = "Inline Assistant" },
-      { "<leader><Space>c", "<cmd>CodeCompanionChat toggle<cr>", desc = "Toggle Chat" },
-      { "<leader><Space>A", "<cmd>CodeCompanionActions<cr>", desc = "Action Palette" },
-      { "<leader><Space>d", "<cmd>CodeCompanionDiff<cr>",    desc = "Current Diff" },
-      { "<leader><Space>D", "<cmd>CodeCompanionChat diff<cr>", desc = "Session Diff (All Files)" },
-      -- Visual mode keymaps
-      { "<leader><Space>",  group = "CodeCompanion",         mode = "v" },
-      { "<leader><Space>a", ":CodeCompanion<cr>",            desc = "Inline Assistant", mode = "v" },
-      { "<leader><Space>c", ":CodeCompanionChat<cr>",        desc = "Chat with Selection", mode = "v" },
+      -- Normal Mode
+      { "<leader>a",  group = "AI (CodeCompanion)" },
+      { "<leader><leader>", "<cmd>CodeCompanionChat toggle<cr>", desc = "Toggle AI Chat (Fast)" },
+      { "<leader>ac", "<cmd>CodeCompanionChat toggle<cr>",   desc = "Toggle Chat" },
+      { "<leader>aa", "<cmd>CodeCompanion<cr>",              desc = "Inline Assistant" },
+      { "<leader>ap", "<cmd>CodeCompanionActions<cr>",       desc = "Action Palette" },
+      { "<leader>ad", "<cmd>CodeCompanionDiff<cr>",          desc = "Current Diff" },
+      { "<leader>al", "<cmd>CodeCompanionChat diff<cr>",     desc = "All Diffs" },
+
+      -- Visual Mode
+      { "<leader>a",  group = "AI (CodeCompanion)",          mode = "v" },
+      { "<leader>aa", ":CodeCompanion<cr>",                  desc = "Inline Assistant",    mode = "v" },
+      { "<leader>ac", ":CodeCompanionChat<cr>",              desc = "Chat with Selection", mode = "v" },
     })
 
     -- 4. Progress display (Fidget.nvim integration)
