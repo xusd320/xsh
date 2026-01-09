@@ -21,6 +21,7 @@ $julia\
 $nodejs\
 $nim\
 $rust\
+${custom.rust_nightly_date}\
 $scala\
 $python\
 $docker_context\
@@ -267,3 +268,13 @@ format = 'via [$symbol]($style)'
 
 [zig]
 format = 'via [$symbol]($style)'
+
+[custom.rust_nightly_date]
+disabled = false
+description = "Show the date of the nightly rust toolchain"
+command = "rustc --version | cut -d'(' -f2 | cut -d')' -f1 | awk '{print $NF}'"
+when = "rustc --version | grep -q nightly"
+detect_extensions = ["rs"]
+detect_files = ["Cargo.toml"]
+format = "[$output]($style) "
+style = "bold red"

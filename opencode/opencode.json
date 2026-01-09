@@ -1,6 +1,19 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "theme": "catppuccin-mocha",
+  "theme": "catppuccin",
+  "provider": {
+    "google": {
+      "npm": "@ai-sdk/google",
+      "models": {
+        "gemini-3-pro-preview": {
+          "name": "Gemini 3 Pro"
+        },
+        "gemini-3-flash-preview": {
+          "name": "Gemini 3 Flash"
+        }
+      }
+    }
+  },
   "model": "google/gemini-3-pro-preview",
   "small_model": "google/gemini-3-flash-preview"
 }

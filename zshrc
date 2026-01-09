@@ -59,15 +59,17 @@ export ZSH="$HOME/.oh-my-zsh"
 # zsh-defer handles the heavy ones (autosuggestions, syntax-highlighting)
 plugins=(
   colored-man-pages
+  common-aliases
   copyfile
   copypath
-  eza
   extract
+  eza
   fnm
   fzf
   git
   git-commit
   history-substring-search
+  lazygit
   starship
   sudo
   z
