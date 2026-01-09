@@ -26,10 +26,20 @@ map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
-map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 map("n", "<leader>bd", "<cmd>bd<cr>", { desc = "Delete Buffer" })
 map("n", "<leader>bD", "<cmd>bd!<cr>", { desc = "Delete Buffer (Force)" })
+
+-- Better navigation
+map("n", "H", "^", { desc = "Go to start of line" })
+map("n", "L", "$", { desc = "Go to end of line" })
+map("v", "H", "^", { desc = "Go to start of line" })
+map("v", "L", "$", { desc = "Go to end of line" })
+
+-- Keep cursor in place
+map("n", "J", "mzJ`z", { desc = "Join lines" })
+map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up" })
 
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
@@ -37,14 +47,40 @@ map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsea
 -- Save file
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
+-- System Clipboard
+map({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy to system clipboard" })
+map("n", "<leader>Y", [["+Y]], { desc = "Copy line to system clipboard" })
+map({ "n", "v" }, "<leader>p", [["+p]], { desc = "Paste from system clipboard" })
+map({ "n", "v" }, "<leader>P", [["+P]], { desc = "Paste from system clipboard (before)" })
+
+-- Terminal
+map("t", "<esc><esc>", "<C-\\><C-n>", { desc = "Enter Normal Mode" })
+map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
+map("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
+map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
+map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
+
+-- Better Indent
+map("v", "<", "<gv", { desc = "Indent left" })
+map("v", ">", ">gv", { desc = "Indent right" })
+
+-- Center search results
+map("n", "n", "nzzzv", { desc = "Next search result" })
+map("n", "N", "Nzzzv", { desc = "Prev search result" })
+
+-- Reselect last visual selection
+map("n", "gv", "`[v`]", { desc = "Reselect last changed text" })
+
 -- Quit
 map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit all" })
 
 -- Windows
-map("n", "<leader>w", "<c-w>", { desc = "Windows", remap = true })
+map("n", "<leader>ww", "<c-w>p", { desc = "Other Window" })
+map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window" })
+map("n", "<leader>w-", "<C-W>s", { desc = "Split Window Below" })
+map("n", "<leader>w|", "<C-W>v", { desc = "Split Window Right" })
 map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
 map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
-map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 
 -- Tabs
 map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
