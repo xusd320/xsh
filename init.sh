@@ -44,6 +44,7 @@ force_link ~/xsh/gitconfig ~/.gitconfig
 force_link ~/xsh/lazygit ~/.config/lazygit
 force_link ~/xsh/nvim ~/.config/nvim
 force_link ~/xsh/ripgreprc ~/.ripgreprc
+force_link ~/xsh/opencode ~/.config/opencode
 
 # =============================================================================
 # Post-Install Configuration
