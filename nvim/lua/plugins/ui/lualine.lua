@@ -37,6 +37,18 @@ return {
         },
         lualine_x = {
           {
+            function()
+              local ok, codecompanion = pcall(require, "codecompanion")
+              if ok then
+                local status = codecompanion.status()
+                if status == "processing" then
+                  return " "
+                end
+              end
+              return ""
+            end,
+          },
+          {
             "diff",
             symbols = icons.git,
             source = function()

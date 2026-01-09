@@ -19,6 +19,28 @@ return {
     },
   },
 
+  -- DiffView
+  {
+    "sindrets/diffview.nvim",
+    cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+    keys = {
+      { "<leader>gd",  group = "Diff" },
+      { "<leader>gdo", "<cmd>DiffviewOpen<cr>",          desc = "Diffview Open" },
+      { "<leader>gdc", "<cmd>DiffviewClose<cr>",         desc = "Diffview Close" },
+      { "<leader>gh",  group = "Hunk/History" },
+      { "<leader>ghh", "<cmd>DiffviewFileHistory %<cr>", desc = "File History" },
+      { "<leader>ghH", "<cmd>DiffviewFileHistory<cr>",   desc = "Project History" },
+    },
+    opts = {
+      enhanced_diff_hl = true,
+      view = {
+        merge_tool = {
+          layout = "diff3_mixed",
+        },
+      },
+    },
+  },
+
   -- Git Blame
   {
     "f-person/git-blame.nvim",
@@ -33,10 +55,11 @@ return {
         message_template = "<summary> • <date> • <author> • <<sha>>",
         date_format = "%m-%d-%Y %H:%M",
         virtual_text_column = 1,
+        enabled = false, -- Default off, use toggle
       }
     end,
     keys = {
-      { "<leader>gb", "<cmd>GitBlameToggle<cr>", desc = "Toggle Git Blame" },
+      { "<leader>gm", "<cmd>GitBlameToggle<cr>", desc = "Toggle Git Blame (Full)" },
     },
   },
 
@@ -51,12 +74,13 @@ return {
       disable_diagnostics = false,
     },
     keys = {
-      { "<leader>gco", ":GitConflictChooseOurs<cr>" },
-      { "<leader>gct", ":GitConflictChooseTheirs<cr>" },
-      { "<leader>gcb", ":GitConflictChooseBoth<cr>" },
-      { "<leader>gc0", ":GitConflictChooseNone<cr>" },
-      { "]x",          ":GitConflictNextConflict<cr>" },
-      { "[x",          ":GitConflictPrevConflict<cr>" },
+      { "<leader>gx",  group = "Conflict" },
+      { "<leader>gxo", "<cmd>GitConflictChooseOurs<cr>",   desc = "Choose Ours" },
+      { "<leader>gxt", "<cmd>GitConflictChooseTheirs<cr>",  desc = "Choose Theirs" },
+      { "<leader>gxb", "<cmd>GitConflictChooseBoth<cr>",    desc = "Choose Both" },
+      { "<leader>gx0", "<cmd>GitConflictChooseNone<cr>",    desc = "Choose None" },
+      { "]x",          "<cmd>GitConflictNextConflict<cr>", desc = "Next Conflict" },
+      { "[x",          "<cmd>GitConflictPrevConflict<cr>", desc = "Prev Conflict" },
     },
   },
 
@@ -72,6 +96,12 @@ return {
         topdelete = { text = "" },
         changedelete = { text = "▎" },
         untracked = { text = "▎" },
+      },
+      current_line_blame = true,
+      current_line_blame_opts = {
+        virt_text = true,
+        virt_text_pos = "eol",
+        delay = 500,
       },
       on_attach = function(buffer)
         local gs = package.loaded.gitsigns
@@ -115,9 +145,13 @@ return {
         map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
         map("n", "<leader>ghp", gs.preview_hunk, "Preview Hunk")
         map("n", "<leader>ghb", function() gs.blame_line({ full = true }) end, "Blame Line")
+        map("n", "<leader>ghB", gs.toggle_current_line_blame, "Toggle Line Blame")
         map("n", "<leader>ghd", gs.diffthis, "Diff This")
         map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
         map("n", "<leader>ght", gs.toggle_deleted, "Toggle Deleted")
+
+        -- Text object
+        map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "Select Hunk")
       end,
     },
   },
