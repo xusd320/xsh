@@ -20,8 +20,7 @@ gui:
       - "#ffbd5e"
     defaultFgColor:
       - "#ffffff"
-
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never --commit-style box
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never --commit-style box

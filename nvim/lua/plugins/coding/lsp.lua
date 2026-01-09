@@ -51,6 +51,15 @@ return {
             vim.keymap.set(mode or "n", keys, func, { buffer = buffer, desc = desc })
           end
 
+          -- Delete default Neovim LSP mappings that conflict with our mappings
+          local del = vim.keymap.del
+          pcall(del, "n", "grn", { buffer = buffer })
+          pcall(del, "n", "gra", { buffer = buffer })
+          pcall(del, "n", "grr", { buffer = buffer })
+          pcall(del, "n", "gri", { buffer = buffer })
+          pcall(del, "n", "gO", { buffer = buffer })
+          pcall(del, "n", "<C-s>", { buffer = buffer }) -- Signature help is typically <C-s> or <C-k> by default
+
           map("gd", "<cmd>Telescope lsp_definitions<cr>", "Goto Definition")
           map("gr", "<cmd>Telescope lsp_references<cr>", "References")
           map("gI", "<cmd>Telescope lsp_implementations<cr>", "Goto Implementation")
