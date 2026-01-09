@@ -7,6 +7,12 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 export HOMEBREW_NO_AUTO_UPDATE=1
 
+# Load secrets (API keys, etc.) from a separate file that is not committed
+if [[ -f "$HOME/.zsh_secrets" ]]; then
+    source "$HOME/.zsh_secrets"
+fi
+
+
 # =============================================================================
 # Path Configuration
 # =============================================================================
