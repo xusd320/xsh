@@ -90,3 +90,11 @@ map("n", "<leader>uc", function()
   local concept = vim.opt.conceallevel:get()
   vim.opt.conceallevel = concept == 0 and 2 or 0
 end, { desc = "Toggle Conceal" })
+
+-- Unmap Neovim 0.10 default mappings that interfere with custom 'gr' mappings
+pcall(vim.keymap.del, "n", "grn")
+pcall(vim.keymap.del, "n", "gra")
+pcall(vim.keymap.del, "n", "grr")
+pcall(vim.keymap.del, "n", "gri")
+pcall(vim.keymap.del, "n", "grt")
+pcall(vim.keymap.del, "x", "gra")
