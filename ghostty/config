@@ -14,7 +14,6 @@ theme = "Catppuccin Mocha"
 window-theme = dark
 
 # --- Window Settings ---
-title = "Ghostty"
 fullscreen = true
 window-padding-x = 10
 window-padding-y = 10
@@ -38,7 +37,7 @@ cursor-click-to-move = true
 # --- Performance & Behavior ---
 mouse-hide-while-typing = true
 confirm-close-surface = false
-shell-integration-features = cursor,sudo,no-title
+shell-integration-features = cursor,sudo
 
 # --- Keybindings ---
 # Toggle Quick Terminal (Global)
