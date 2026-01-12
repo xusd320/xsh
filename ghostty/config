@@ -52,10 +52,16 @@ keybind = super+alt+k=goto_split:top
 keybind = super+alt+l=goto_split:right
 
 # Split Panes
+# Pane creation
 keybind = super+shift+backslash=new_split:right
 keybind = super+shift+minus=new_split:down
-keybind = super+alt+backspace=close_surface
+
+# Pane management
+keybind = super+shift+backspace=close_surface
 keybind = super+shift+f=toggle_split_zoom
+
+# Tab Management (Tab Overview)
+keybind = super+alt+o=toggle_tab_overview
 
 # Tabs
 keybind = super+shift+[=previous_tab
