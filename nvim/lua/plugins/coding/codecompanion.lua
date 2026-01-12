@@ -70,7 +70,7 @@ return {
           auto_scroll = true,
           window = {
             layout = "vertical",
-            position = "left",
+            position = "right",
             width = 0.40, -- Slightly narrower for better balance
             opts = {
               breakindent = true,

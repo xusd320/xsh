@@ -53,7 +53,7 @@ return {
     },
     window = {
       width = 35,
-      position = "right",
+      position = "left",
       popup_border_style = "rounded",
       mappings = {
         ["<Esc>"] = "close_window",
