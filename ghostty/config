@@ -52,9 +52,19 @@ keybind = super+alt+k=goto_split:top
 keybind = super+alt+l=goto_split:right
 
 # Split Panes
-# Pane creation
-keybind = super+shift+backslash=new_split:right
+keybind = super+backslash=new_split:right
+# Try explicit pipe character for Cmd+Shift+\
+keybind = super+|=new_split:right
+keybind = super+minus=new_split:down
 keybind = super+shift+minus=new_split:down
+
+# Pane management
+keybind = super+shift+backspace=close_surface
+keybind = super+shift+f=toggle_split_zoom
+
+# Tab Management
+# Reserving Cmd+Option+O just in case you need it, but let's keep config simple first
+keybind = super+alt+o=toggle_tab_overview
 
 # Pane management
 keybind = super+shift+backspace=close_surface
