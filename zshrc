@@ -75,7 +75,6 @@ plugins=(
   git
   git-commit
   history-substring-search
-  lazygit
   starship
   sudo
   z
