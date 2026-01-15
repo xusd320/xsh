@@ -28,8 +28,13 @@ path_prepend() {
     done
 }
 
-path_prepend "/opt/homebrew/bin" "$HOME/.local/bin" "$HOME/.cargo/bin"
+path_prepend "/opt/homebrew/bin" "$HOME/.local/bin" "$HOME/.cargo/bin" "/opt/homebrew/opt/llvm/bin"
 path_append "/usr/local/bin" "/usr/local/sbin"
+
+# LLVM Configuration
+export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+export CMAKE_PREFIX_PATH="/opt/homebrew/opt/llvm"
 
 # =============================================================================
 # Version Managers
@@ -70,7 +75,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # zsh-defer handles the heavy ones (autosuggestions, syntax-highlighting)
 plugins=(
   colored-man-pages
-  common-aliases
   copyfile
   copypath
   extract
