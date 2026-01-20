@@ -79,6 +79,7 @@ return {
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
           local buffer = args.buf
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
           local map = function(keys, func, desc, mode)
             vim.keymap.set(mode or "n", keys, func, { buffer = buffer, desc = desc })
           end
@@ -98,6 +99,21 @@ return {
           map("<leader>ca", vim.lsp.buf.code_action, "Code Action", { "n", "v" })
           map("<leader>cr", vim.lsp.buf.rename, "Rename")
           map("<leader>cf", function() vim.lsp.buf.format({ async = true }) end, "Format")
+
+          -- Document Highlight (highlight references of symbol under cursor)
+          if client and client.supports_method("textDocument/documentHighlight") then
+            local highlight_augroup = vim.api.nvim_create_augroup("lsp_document_highlight_" .. buffer, { clear = true })
+            vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+              group = highlight_augroup,
+              buffer = buffer,
+              callback = vim.lsp.buf.document_highlight,
+            })
+            vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+              group = highlight_augroup,
+              buffer = buffer,
+              callback = vim.lsp.buf.clear_references,
+            })
+          end
         end,
       })
     end,
