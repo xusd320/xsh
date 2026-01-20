@@ -16,7 +16,7 @@ return {
             vim.cmd.RustLsp("expandMacro")
           end, { desc = "Expand Macro", buffer = bufnr })
           vim.keymap.set("n", "K", function()
-            vim.cmd.RustLsp("hover")
+            vim.cmd.RustLsp({ "hover", "actions" })
           end, { desc = "Hover (Rust)", buffer = bufnr })
         end,
         default_settings = {

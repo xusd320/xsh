@@ -70,6 +70,12 @@ vim.opt.undolevels = 10000
 -- Session
 vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
 
+-- Disable regex-based folding and syntax highlighting (use treesitter instead)
+vim.opt.foldmethod = "manual"
+vim.opt.foldexpr = ""
+vim.g.syntax_on = false
+vim.cmd("syntax off")
+
 -- Ensure backup dir exists
 if vim.fn.isdirectory(backupdir) == 0 then
   vim.fn.mkdir(backupdir, "p")

@@ -44,7 +44,10 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     local lcount = vim.api.nvim_buf_line_count(buf)
     if mark[1] > 0 and mark[1] <= lcount then
       local current_line = vim.api.nvim_win_get_cursor(0)[1]
-      if current_line == 1 then
+      local current_col = vim.api.nvim_win_get_cursor(0)[2]
+      -- Only restore last location if cursor is at the very beginning (1,0)
+      -- This prevents overriding cursor position set by Telescope or other tools
+      if current_line == 1 and current_col == 0 then
         pcall(vim.api.nvim_win_set_cursor, 0, mark)
       end
     end
