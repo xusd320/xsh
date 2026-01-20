@@ -5,8 +5,8 @@ return {
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-    opts = {
-      ensure_installed = {
+    config = function()
+      local ensure_installed = {
         "bash",
         "c",
         "css",
@@ -16,7 +16,6 @@ return {
         "javascript",
         "jsdoc",
         "json",
-        "jsonc",
         "lua",
         "luadoc",
         "markdown",
@@ -33,29 +32,32 @@ return {
         "vimdoc",
         "xml",
         "yaml",
-      },
-      indent = { enable = true },
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-        disable = function(_, bufnr)
+      }
+
+      -- Install parsers
+      require("nvim-treesitter").install(ensure_installed)
+
+      -- Enable highlight
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function(args)
           local max_filesize = 1000 * 1024
           local max_line_count = 100 * 1000
           local max_filesize_perline = 1024
-          local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(bufnr))
+          local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(args.buf))
           if ok and stats then
-            local line_count = vim.api.nvim_buf_line_count(bufnr)
+            local line_count = vim.api.nvim_buf_line_count(args.buf)
             if
-                stats.size > max_filesize
-                or line_count > max_line_count
-                or stats.size / line_count > max_filesize_perline
+              stats.size > max_filesize
+              or line_count > max_line_count
+              or stats.size / line_count > max_filesize_perline
             then
-              return true
+              return
             end
           end
+          pcall(vim.treesitter.start, args.buf)
         end,
-      },
-    },
+      })
+    end,
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
