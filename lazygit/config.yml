@@ -26,37 +26,33 @@ gui:
   showFileTree: true # Toggle with '`'
   sidePanelWidth: 0.33
   mainPanelSplitMode: "vertical"
-  statusPanelView: "folded"
+  statusPanelView: "dashboard"
   language: "en"
-
 git:
-  paging:
-    colorArg: always
-    pager: delta --dark --paging=never --commit-style box --line-numbers --side-by-side
+  pagers:
+    - colorArg: always
+      pager: delta --dark --paging=never --commit-style box --line-numbers --side-by-side
   commit:
     signOff: false
   skipHookPrefix: WIP
   mainBranches: [master, main]
-
 os:
   editCommand: "nvim"
   editCommandTemplate: "{{editor}} {{filename}}"
-
 keybinding:
   universal:
     prevItem: "<c-p>"
     nextItem: "<c-n>"
-    prevBlock: "<c-h>"
-    nextBlock: "<c-l>"
+    prevBlock: "<left>"
+    nextBlock: "<right>"
     scrollUpMain: "<c-u>"
     scrollDownMain: "<c-d>"
-
 customCommands:
   - key: "C"
     command: "git cz"
     context: "files"
     description: "commit with commitizen"
-    subprocess: true
+    output: terminal
   - key: "a"
     command: "git commit --amend --no-edit"
     context: "files"
