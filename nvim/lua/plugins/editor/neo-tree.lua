@@ -114,6 +114,20 @@ return {
         if node.type ~= "directory" then
           path = vim.fn.fnamemodify(path, ":h")
         end
+        -- Find a non neo-tree window as target
+        local win_ids = vim.api.nvim_list_wins()
+        local target_win = nil
+        for _, win_id in ipairs(win_ids) do
+          local buf = vim.api.nvim_win_get_buf(win_id)
+          local ft = vim.api.nvim_get_option_value("filetype", { buf = buf })
+          if ft ~= "neo-tree" then
+            target_win = win_id
+            break
+          end
+        end
+        if target_win then
+          vim.api.nvim_set_current_win(target_win)
+        end
         require("telescope.builtin").live_grep({
           cwd = path,
           prompt_title = "Live Grep in " .. vim.fn.fnamemodify(path, ":~"),
