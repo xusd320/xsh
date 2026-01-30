@@ -12,7 +12,7 @@ vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.cmdheight = 0 -- Hide command line when not in use
 vim.opt.wrap = false
-vim.opt.conceallevel = 2
+vim.opt.conceallevel = 0
 vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
 vim.opt.showmode = false
 vim.opt.laststatus = 3

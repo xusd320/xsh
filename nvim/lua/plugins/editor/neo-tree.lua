@@ -59,9 +59,6 @@ return {
         ["<Esc>"] = "close_window",
         ["Y"] = "copy_selector",
         ["g"] = "grep_in_dir",
-        ["l"] = "open",
-        ["h"] = "close_node",
-        ["p"] = { "toggle_preview", config = { use_float = true } },
       },
     },
     default_component_configs = {
