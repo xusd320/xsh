@@ -37,6 +37,7 @@ return {
       adapters = {
         opencode = function()
           return require("codecompanion.adapters").extend("opencode", {
+            command = "opencode",
             env = {
               GEMINI_API_KEY = os.getenv("GEMINI_API_KEY"),
             },
@@ -99,12 +100,12 @@ return {
           },
           slash_commands = {
             ["file"] = {
-              callback = "strategies.chat.slash_commands.file",
+              callback = "chat.slash_commands.file",
               description = "Select a file",
               opts = { provider = "telescope", contains_code = true },
             },
             ["buffer"] = {
-              callback = "strategies.chat.slash_commands.buffer",
+              callback = "chat.slash_commands.buffer",
               description = "Select a buffer",
               opts = { provider = "telescope", contains_code = true },
             },
