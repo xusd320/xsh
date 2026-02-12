@@ -85,7 +85,6 @@ plugins=(
   git-commit
   history-substring-search
   starship
-  sudo
   z
 )
 
