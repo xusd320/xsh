@@ -167,3 +167,5 @@ zle-keymap-select() {
 zle -N zle-keymap-select
 
 
+export PATH="/Applications/Antigravity.app/Contents/Resources/app/bin:$PATH"
+alias agy='antigravity'
