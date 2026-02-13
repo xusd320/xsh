@@ -1,12 +1,18 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    branch = "main",
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
-    config = function()
-      local ensure_installed = {
+    dependencies = {
+      {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+      },
+    },
+    opts = {
+      highlight = { enable = true },
+      indent = { enable = true },
+      ensure_installed = {
         "bash",
         "c",
         "css",
@@ -32,70 +38,38 @@ return {
         "vimdoc",
         "xml",
         "yaml",
-      }
+      },
+      textobjects = {
+        move = {
+          enable = true,
+          goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer", ["]a"] = "@parameter.inner" },
+          goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer", ["]A"] = "@parameter.inner" },
+          goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer", ["[a"] = "@parameter.inner" },
+          goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer", ["[A"] = "@parameter.inner" },
+        },
+      },
+    },
+    config = function(_, opts)
+      local nvim_ts = require("nvim-treesitter")
 
-      -- Install parsers
-      require("nvim-treesitter").install(ensure_installed)
-
-      -- Enable highlight
-      vim.api.nvim_create_autocmd("FileType", {
-        callback = function(args)
-          local max_filesize = 1000 * 1024
-          local max_line_count = 100 * 1000
-          local max_filesize_perline = 1024
-          local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(args.buf))
-          if ok and stats then
-            local line_count = vim.api.nvim_buf_line_count(args.buf)
-            if
-              stats.size > max_filesize
-              or line_count > max_line_count
-              or stats.size / line_count > max_filesize_perline
-            then
-              return
-            end
-          end
-          pcall(vim.treesitter.start, args.buf)
-        end,
-      })
-    end,
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    branch = "main",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    config = function()
-      -- When in diff mode, we want to use the default
-      -- vim text objects c & C instead of the treesitter ones.
-      local move = require("nvim-treesitter.textobjects.move") ---@type table<string,fun(...)>
-      local configs = require("nvim-treesitter.configs")
-      for name, fn in pairs(move) do
-        if name:find("goto") == 1 then
-          move[name] = function(q, ...)
-            if vim.wo.diff then
-              local config = configs.get_module("textobjects.move")[name] ---@type table<string,string>
-              for key, query in pairs(config or {}) do
-                if q == query and key:find("[%]%[][cC]") then
-                  vim.cmd("normal! " .. key)
-                  return
-                end
-              end
-            end
-            return fn(q, ...)
-          end
-        end
+      if opts.ensure_installed and #opts.ensure_installed > 0 then
+        pcall(nvim_ts.install, opts.ensure_installed, { summary = true })
       end
 
-      require("nvim-treesitter.configs").setup({
-        textobjects = {
-          move = {
-            enable = true,
-            goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer", ["]a"] = "@parameter.inner" },
-            goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer", ["]A"] = "@parameter.inner" },
-            goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer", ["[a"] = "@parameter.inner" },
-            goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer", ["[A"] = "@parameter.inner" },
-          },
-        },
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function(args)
+          if opts.highlight and opts.highlight.enable then
+            pcall(vim.treesitter.start, args.buf)
+          end
+          if opts.indent and opts.indent.enable then
+            vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
+        end,
       })
+
+      if opts.textobjects then
+        require("nvim-treesitter-textobjects").setup(opts.textobjects)
+      end
     end,
   },
   {
