@@ -5,6 +5,9 @@ return {
     ft = { "rust" },
     opts = {
       server = {
+        root_dir = function()
+          return vim.fn.getcwd()
+        end,
         on_attach = function(_, bufnr)
           vim.keymap.set("n", "<leader>cR", function()
             vim.cmd.RustLsp("codeAction")

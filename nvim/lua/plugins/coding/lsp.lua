@@ -19,7 +19,11 @@ return {
             },
           },
         },
+        root_dir = function()
+          return vim.fn.getcwd()
+        end,
       },
+      servers = {},
       document_highlight = {
         enabled = true,
       },
@@ -67,7 +71,7 @@ return {
       local function setup(server)
         local server_opts = vim.tbl_deep_extend("force", {
           capabilities = vim.deepcopy(capabilities),
-        }, opts.servers[server] or {})
+        }, opts.defaults or {}, (opts.servers or {})[server] or {})
         lspconfig[server].setup(server_opts)
       end
 
