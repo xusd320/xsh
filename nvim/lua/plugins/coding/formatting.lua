@@ -15,7 +15,6 @@ return {
   opts = {
     formatters_by_ft = {
       lua = { "stylua" },
-      fish = { "fish_indent" },
       sh = { "shfmt" },
       javascript = { "prettier" },
       typescript = { "prettier" },
@@ -26,7 +25,6 @@ return {
       json = { "prettier" },
       yaml = { "prettier" },
       markdown = { "prettier" },
-      graphql = { "prettier" },
       rust = { "rustfmt", lsp_format = "fallback" },
     },
     format_on_save = {
