@@ -77,7 +77,12 @@ return {
 
       mason_lspconfig.setup({
         ensure_installed = vim.tbl_keys(opts.servers or {}),
-        handlers = { setup },
+        handlers = {
+          setup,
+          rust_analyzer = function()
+            -- Skip rust_analyzer setup so rustaceanvim can handle it
+          end,
+        },
       })
 
       vim.api.nvim_create_autocmd("LspAttach", {
