@@ -16,13 +16,13 @@ return {
     formatters_by_ft = {
       lua = { "stylua" },
       sh = { "shfmt" },
-      javascript = { "prettier" },
-      typescript = { "prettier" },
-      javascriptreact = { "prettier" },
-      typescriptreact = { "prettier" },
+      javascript = { "biome", "prettier", stop_after_first = true },
+      typescript = { "biome", "prettier", stop_after_first = true },
+      javascriptreact = { "biome", "prettier", stop_after_first = true },
+      typescriptreact = { "biome", "prettier", stop_after_first = true },
       css = { "prettier" },
       html = { "prettier" },
-      json = { "prettier" },
+      json = { "biome", "prettier", stop_after_first = true },
       yaml = { "prettier" },
       markdown = { "prettier" },
       rust = { "rustfmt", lsp_format = "fallback" },
@@ -30,6 +30,11 @@ return {
     format_on_save = {
       timeout_ms = 500,
       lsp_format = "fallback",
+    },
+    formatters = {
+      biome = {
+        require_cwd = true,
+      },
     },
   },
 }
