@@ -170,13 +170,14 @@ return {
 
     -- 4. Progress display (Fidget.nvim integration)
     local group = vim.api.nvim_create_augroup("CodeCompanionHooks", {})
-    local fidget_handle = nil
+    local fidget_handles = {}
 
     vim.api.nvim_create_autocmd("User", {
       pattern = "CodeCompanionRequestStarted",
       group = group,
-      callback = function()
-        fidget_handle = require("fidget.progress").handle.create({
+      callback = function(request)
+        local id = request.data.id
+        fidget_handles[id] = require("fidget.progress").handle.create({
           title = " CodeCompanion",
           message = "Generating...",
           lsp_client = { name = "AI" },
@@ -187,10 +188,11 @@ return {
     vim.api.nvim_create_autocmd("User", {
       pattern = "CodeCompanionRequestFinished",
       group = group,
-      callback = function()
-        if fidget_handle then
-          fidget_handle:finish()
-          fidget_handle = nil
+      callback = function(request)
+        local id = request.data.id
+        if fidget_handles[id] then
+          fidget_handles[id]:finish()
+          fidget_handles[id] = nil
         end
       end,
     })
