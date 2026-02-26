@@ -5,6 +5,13 @@ return {
     ft = { "rust" },
     init = function()
       vim.g.rustaceanvim = {
+        tools = {
+          float_win_config = {
+            border = "rounded",
+            max_width = 80,
+            max_height = 20,
+          },
+        },
         server = {
           root_dir = function(_, _)
             return vim.fn.getcwd()

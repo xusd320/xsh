@@ -24,7 +24,6 @@ return {
         },
       },
       neotree = true,
-      notify = true,
       semantic_tokens = true,
       telescope = true,
       treesitter = true,
@@ -63,8 +62,8 @@ return {
         NavicSeparator = { fg = colors.text },
 
         -- Floating windows
-        FloatBorder = { fg = colors.surface2, bg = colors.none },
-        NormalFloat = { bg = colors.none },
+        FloatBorder = { fg = colors.blue, bg = colors.mantle },
+        NormalFloat = { bg = colors.mantle },
         
         -- Telescope
         TelescopeBorder = { fg = colors.surface2, bg = colors.none },
@@ -75,10 +74,6 @@ return {
       }
     end,
     flavour = "mocha",
-    float = {
-      transparent = true,
-    },
-    transparent_background = true,
     term_colors = true,
   },
   config = function(_, opts)
