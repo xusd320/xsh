@@ -72,18 +72,21 @@ return {
         local server_opts = vim.tbl_deep_extend("force", {
           capabilities = vim.deepcopy(capabilities),
         }, opts.defaults or {}, (opts.servers or {})[server] or {})
+
         lspconfig[server].setup(server_opts)
       end
 
       mason_lspconfig.setup({
         ensure_installed = vim.tbl_keys(opts.servers or {}),
-        handlers = {
-          setup,
-          rust_analyzer = function()
-            -- Skip rust_analyzer setup so rustaceanvim can handle it
-          end,
+        automatic_enable = {
+          exclude = { "rust_analyzer" },
         },
       })
+      
+      -- Instead of handlers, manually setup servers config using the user's setup function
+      for _, server in ipairs(vim.tbl_keys(opts.servers or {})) do
+        setup(server)
+      end
 
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)
