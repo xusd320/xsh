@@ -19,8 +19,7 @@ return {
     return {
       options = {
         mode = "buffers",
-        style_preset = require("bufferline").style_preset.minimal,
-        separator_style = "slant",
+        separator_style = "thin",
         show_buffer_close_icons = true,
         show_close_icon = true,
         max_name_length = 18,

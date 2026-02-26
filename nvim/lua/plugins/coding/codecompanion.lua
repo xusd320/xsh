@@ -6,10 +6,6 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "ravitemer/codecompanion-history.nvim",
     "echasnovski/mini.diff",
-    {
-      "MeanderingProgrammer/render-markdown.nvim",
-      ft = { "markdown", "codecompanion" },
-    },
   },
   config = function()
     -- 1. Optimize mini.diff
