@@ -42,6 +42,7 @@ force_link ~/xsh/zshrc ~/.zshrc
 force_link ~/xsh/starship.toml ~/.config/starship.toml
 force_link ~/xsh/gitconfig ~/.gitconfig
 force_link ~/xsh/lazygit ~/.config/lazygit
+force_link ~/xsh/bat ~/.config/bat
 force_link ~/xsh/nvim ~/.config/nvim
 force_link ~/xsh/ripgreprc ~/.ripgreprc
 force_link ~/xsh/opencode ~/.config/opencode
@@ -49,6 +50,9 @@ force_link ~/xsh/opencode ~/.config/opencode
 # =============================================================================
 # Post-Install Configuration
 # =============================================================================
+# bat cache
+bat cache --build
+
 # Rust Setup
 rustup-init -y
 sudo chown -R $(whoami) /usr/local/bin
