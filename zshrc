@@ -16,19 +16,29 @@ fi
 # =============================================================================
 # Path Configuration
 # =============================================================================
-# Only add paths if they exist and aren't already in PATH
+# Only add paths if they exist
 path_append() {
     for dir in "$@"; do
-        [[ -d "$dir" && ":$PATH:" != *":$dir:"* ]] && export PATH="$PATH:$dir"
+        [[ -d "$dir" ]] || continue
+        # Remove existing occurrence and append
+        PATH="${PATH//:$dir:/:}"
+        PATH="${PATH#$dir:}"
+        PATH="${PATH%:$dir}"
+        export PATH="$PATH:$dir"
     done
 }
 path_prepend() {
     for dir in "$@"; do
-        [[ -d "$dir" && ":$PATH:" != *":$dir:"* ]] && export PATH="$dir:$PATH"
+        [[ -d "$dir" ]] || continue
+        # Remove existing occurrence and prepend
+        PATH="${PATH//:$dir:/:}"
+        PATH="${PATH#$dir:}"
+        PATH="${PATH%:$dir}"
+        export PATH="$dir:$PATH"
     done
 }
 
-path_prepend "/opt/homebrew/bin" "$HOME/.local/bin" "$HOME/.cargo/bin" "/opt/homebrew/opt/llvm/bin"
+path_prepend "/opt/homebrew/bin" "/opt/homebrew/sbin" "$HOME/.local/bin" "$HOME/.cargo/bin" "/opt/homebrew/opt/llvm/bin"
 path_append "/usr/local/bin" "/usr/local/sbin"
 
 # LLVM Configuration

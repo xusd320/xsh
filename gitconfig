@@ -52,10 +52,6 @@
 [push]
     autoSetupRemote = true
 
-[user]
-	  name = xusd320
-	  email = xusd320@gmail.com
-
 [alias]
 	st = status
 	co = checkout
