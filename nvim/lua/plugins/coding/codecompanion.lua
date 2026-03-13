@@ -6,8 +6,8 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "ravitemer/codecompanion-history.nvim",
     "echasnovski/mini.diff",
-    "sindrets/diffview.nvim", -- Added for better diff view
-    "stevearc/dressing.nvim", -- Better UI for inputs
+    "sindrets/diffview.nvim",
+    "stevearc/dressing.nvim",
     "nvim-telescope/telescope.nvim",
   },
   config = function()
@@ -15,7 +15,7 @@ return {
     require("mini.diff").setup({
       view = {
         style = "sign",
-        signs = { add = "▎", change = "▎", delete = "" },
+        signs = { add = "▎", change = "▎", delete = "" },
       },
     })
 
@@ -35,7 +35,7 @@ return {
       end
     end
 
-    -- 3. CodeCompanion core optimization
+    -- 3. CodeCompanion core setup
     require("codecompanion").setup({
       adapters = {
         gemini_cli = function()
@@ -55,7 +55,6 @@ return {
                 },
               },
             },
-            -- Extend capabilities for more advanced agentic behavior
             parameters = {
               clientCapabilities = {
                 fs = {
@@ -74,6 +73,28 @@ return {
         end,
       },
 
+      -- ── Extensions ──────────────────────────────────────────────────
+      extensions = {
+        history = {
+          enabled = true,
+          opts = {
+            auto_save = true,
+            expiration_days = 30,
+            picker = "telescope",
+            keymap = "gh",
+            save_chat_keymap = "gs",
+            continue_last_chat = false,
+            delete_on_clearing_chat = false,
+            auto_generate_title = true,
+            title_generation_opts = {
+              refresh_every_n_prompts = 3,
+              max_refreshes = 3,
+            },
+          },
+        },
+      },
+
+      -- ── Display ─────────────────────────────────────────────────────
       display = {
         action_palette = {
           width = 95,
@@ -88,6 +109,7 @@ return {
           show_settings = false,
           show_token_count = true,
           show_spinner = true,
+          show_reasoning = true,
           render_headers = true,
           auto_scroll = true,
           window = {
@@ -102,39 +124,40 @@ return {
               signcolumn = "yes",
               number = false,
               relativenumber = false,
-              -- Optimization: Set foldmethod to manual to prevent startup hang
               foldenable = true,
               foldmethod = "manual",
             },
           },
           icons = {
             buffer_sync_all = "󰪴 ",
-            buffer_sync_diff = " ",
-            chat_fold = " ",
-            tool_pending = " ",
-            tool_in_progress = " ",
-            tool_failure = " ",
-            tool_success = " ",
+            buffer_sync_diff = " ",
+            chat_fold = " ",
+            tool_pending = " ",
+            tool_in_progress = " ",
+            tool_failure = " ",
+            tool_success = " ",
           },
         },
         diff = {
           enabled = true,
-          close_chat_at_completion = false, -- Keep chat open to review changes
-          provider = "diffview", -- Use diffview for much better experience
-          list_opencmd = "vsplit", -- Open diff list in a vertical split
+          close_chat_at_completion = false,
+          provider = "diffview",
+          list_opencmd = "vsplit",
         },
         icons = {
-          warning = " ",
+          warning = " ",
         },
       },
 
+      -- ── Interactions ────────────────────────────────────────────────
       interactions = {
         chat = {
           adapter = "gemini_cli",
           roles = {
-            llm = " Gemini",
-            user = " Me",
+            llm = " Gemini",
+            user = " Me",
           },
+          -- Slash commands
           slash_commands = {
             ["file"] = {
               path = "interactions.chat.slash_commands.builtin.file",
@@ -154,26 +177,149 @@ return {
             ["help"] = {
               path = "interactions.chat.slash_commands.builtin.help",
               description = "Insert help tags",
+              opts = { provider = "telescope" },
+            },
+            ["fetch"] = {
+              path = "interactions.chat.slash_commands.builtin.fetch",
+              description = "Insert URL contents",
+              opts = { adapter = "jina" },
+            },
+            ["now"] = {
+              path = "interactions.chat.slash_commands.builtin.now",
+              description = "Insert current date/time",
+            },
+            ["command"] = {
+              path = "interactions.chat.slash_commands.builtin.command",
+              description = "Change ACP command",
+            },
+            ["mode"] = {
+              path = "interactions.chat.slash_commands.builtin.mode",
+              description = "Change ACP mode",
+            },
+            ["compact"] = {
+              path = "interactions.chat.slash_commands.builtin.compact",
+              description = "Compact chat history",
+            },
+            ["image"] = {
+              path = "interactions.chat.slash_commands.builtin.image",
+              description = "Insert an image",
             },
           },
+          -- Chat buffer keymaps
           keymaps = {
             send = {
               modes = { n = { "<CR>", "<C-s>" }, i = "<C-s>" },
               index = 1,
               callback = "keymaps.send",
-              description = "Send response",
+              description = "[Request] Send",
             },
             close = {
-              modes = { n = "q", i = "<C-c>" },
+              modes = { n = "<C-c>", i = "<C-c>" },
               index = 2,
               callback = "keymaps.close",
-              description = "Close chat",
+              description = "[Chat] Close",
+            },
+            stop = {
+              modes = { n = "q" },
+              index = 3,
+              callback = "keymaps.stop",
+              description = "[Request] Stop",
             },
             regenerate = {
               modes = { n = "gr" },
-              index = 3,
+              index = 4,
               callback = "keymaps.regenerate",
-              description = "Regenerate",
+              description = "[Request] Regenerate",
+            },
+            clear = {
+              modes = { n = "gx" },
+              index = 5,
+              callback = "keymaps.clear",
+              description = "[Chat] Clear",
+            },
+            codeblock = {
+              modes = { n = "gc" },
+              index = 6,
+              callback = "keymaps.codeblock",
+              description = "[Chat] Insert codeblock",
+            },
+            yank_code = {
+              modes = { n = "gy" },
+              index = 7,
+              callback = "keymaps.yank_code",
+              description = "[Chat] Yank code",
+            },
+            fold_code = {
+              modes = { n = "gf" },
+              index = 8,
+              callback = "keymaps.fold_code",
+              description = "[Chat] Fold code",
+            },
+            next_header = {
+              modes = { n = "]]" },
+              index = 9,
+              callback = "keymaps.next_header",
+              description = "[Nav] Next header",
+            },
+            previous_header = {
+              modes = { n = "[[" },
+              index = 10,
+              callback = "keymaps.previous_header",
+              description = "[Nav] Previous header",
+            },
+            next_chat = {
+              modes = { n = "}" },
+              index = 11,
+              callback = "keymaps.next_chat",
+              description = "[Nav] Next chat",
+            },
+            previous_chat = {
+              modes = { n = "{" },
+              index = 12,
+              callback = "keymaps.previous_chat",
+              description = "[Nav] Previous chat",
+            },
+            change_adapter = {
+              modes = { n = "ga" },
+              index = 13,
+              callback = "keymaps.change_adapter",
+              description = "[Adapter] Change adapter/model",
+            },
+            goto_file_under_cursor = {
+              modes = { n = "gR" },
+              index = 14,
+              callback = "keymaps.goto_file_under_cursor",
+              description = "[Chat] Open file under cursor",
+            },
+            debug = {
+              modes = { n = "gd" },
+              index = 15,
+              callback = "keymaps.debug",
+              description = "[Chat] View debug info",
+            },
+            system_prompt = {
+              modes = { n = "gP" },
+              index = 16,
+              callback = "keymaps.toggle_system_prompt",
+              description = "[Chat] Toggle system prompt",
+            },
+            buffer_sync_all = {
+              modes = { n = "gba" },
+              index = 17,
+              callback = "keymaps.buffer_sync_all",
+              description = "[Chat] Toggle buffer sync",
+            },
+            buffer_sync_diff = {
+              modes = { n = "gbd" },
+              index = 18,
+              callback = "keymaps.buffer_sync_diff",
+              description = "[Chat] Toggle buffer diff sync",
+            },
+            options = {
+              modes = { n = "?" },
+              callback = "keymaps.options",
+              description = "Show all keymaps",
+              hide = true,
             },
           },
           opts = {
@@ -204,6 +350,180 @@ return {
         },
       },
 
+      -- ── Prompt Library ──────────────────────────────────────────────
+      prompt_library = {
+        ["Code Review"] = {
+          strategy = "chat",
+          description = "Review code for bugs, performance, and best practices",
+          opts = {
+            index = 1,
+            is_default = true,
+            is_slash_cmd = false,
+            modes = { "v" },
+            short_name = "review",
+            auto_submit = true,
+          },
+          prompts = {
+            {
+              role = "system",
+              content = [[You are an expert code reviewer. Analyze the provided code carefully and provide feedback on:
+1. **Bugs & Logic Errors** - identify potential bugs or incorrect logic
+2. **Performance** - suggest optimizations where applicable
+3. **Security** - flag any security concerns
+4. **Readability** - suggest improvements for clarity and maintainability
+5. **Best Practices** - recommend idiomatic patterns for the language
+
+Be specific with line references and provide concrete suggestions.]],
+            },
+            {
+              role = "user",
+              content = "Please review the following code:\n\n```${filetype}\n${selection}\n```\n",
+            },
+          },
+        },
+        ["Explain Code"] = {
+          strategy = "chat",
+          description = "Explain how the selected code works",
+          opts = {
+            index = 2,
+            is_default = true,
+            is_slash_cmd = false,
+            modes = { "v" },
+            short_name = "explain",
+            auto_submit = true,
+          },
+          prompts = {
+            {
+              role = "user",
+              content = "Please explain how this code works in detail. Break down the logic step by step:\n\n```${filetype}\n${selection}\n```\n",
+            },
+          },
+        },
+        ["Write Tests"] = {
+          strategy = "chat",
+          description = "Generate unit tests for the selected code",
+          opts = {
+            index = 3,
+            is_default = true,
+            is_slash_cmd = false,
+            modes = { "v" },
+            short_name = "tests",
+            auto_submit = true,
+          },
+          prompts = {
+            {
+              role = "system",
+              content = [[You are an expert in writing tests. Generate comprehensive unit tests for the provided code. Include:
+- Happy path tests
+- Edge cases
+- Error handling tests
+- Use the testing framework that is standard for the language/project.]],
+            },
+            {
+              role = "user",
+              content = "Please write unit tests for this code:\n\n```${filetype}\n${selection}\n```\n",
+            },
+          },
+        },
+        ["Fix Code"] = {
+          strategy = "chat",
+          description = "Fix bugs or issues in the selected code",
+          opts = {
+            index = 4,
+            is_default = true,
+            is_slash_cmd = false,
+            modes = { "v" },
+            short_name = "fix",
+            auto_submit = true,
+          },
+          prompts = {
+            {
+              role = "user",
+              content = "There is a problem with this code. Please identify the issue and fix it:\n\n```${filetype}\n${selection}\n```\n",
+            },
+          },
+        },
+        ["Refactor"] = {
+          strategy = "chat",
+          description = "Refactor the selected code for better quality",
+          opts = {
+            index = 5,
+            is_default = true,
+            is_slash_cmd = false,
+            modes = { "v" },
+            short_name = "refactor",
+            auto_submit = true,
+          },
+          prompts = {
+            {
+              role = "system",
+              content = "Refactor the code to improve readability, maintainability, and performance while preserving the exact same behavior. Explain what you changed and why.",
+            },
+            {
+              role = "user",
+              content = "Please refactor this code:\n\n```${filetype}\n${selection}\n```\n",
+            },
+          },
+        },
+        ["Add Documentation"] = {
+          strategy = "inline",
+          description = "Add documentation comments to the selected code",
+          opts = {
+            index = 6,
+            is_default = true,
+            is_slash_cmd = false,
+            modes = { "v" },
+            short_name = "doc",
+            auto_submit = true,
+          },
+          prompts = {
+            {
+              role = "user",
+              content = "Add comprehensive documentation comments (docstrings, JSDoc, etc.) to this code. Use the appropriate documentation format for the language:\n\n```${filetype}\n${selection}\n```\n",
+            },
+          },
+        },
+        ["Commit Message"] = {
+          strategy = "chat",
+          description = "Generate a commit message for staged changes",
+          opts = {
+            index = 7,
+            is_default = true,
+            is_slash_cmd = true,
+            short_name = "commit",
+            auto_submit = true,
+          },
+          prompts = {
+            {
+              role = "user",
+              content = function()
+                return "Generate a concise, conventional commit message for the following staged changes. Use the format `type(scope): description`. Output ONLY the commit message, nothing else.\n\n```diff\n"
+                  .. vim.fn.system("git diff --staged")
+                  .. "\n```\n"
+              end,
+            },
+          },
+        },
+      },
+
+      -- ── Rules ───────────────────────────────────────────────────────
+      rules = {
+        default = {
+          description = "Project rules",
+          files = {
+            ".cursorrules",
+            ".clinerules",
+            ".rules",
+            "AGENT.md",
+            "AGENTS.md",
+            { path = "CLAUDE.md", parser = "claude" },
+            { path = "CLAUDE.local.md", parser = "claude" },
+          },
+          is_preset = true,
+        },
+      },
+
+      -- ── Global Options ──────────────────────────────────────────────
       opts = {
         log_level = "ERROR",
         send_code = true,
@@ -217,8 +537,9 @@ return {
       },
     })
 
-    -- 3. Keymap optimization
+    -- 4. Keymap optimization
     require("which-key").add({
+      -- Normal mode
       { "<leader>a", group = "AI (CodeCompanion)" },
       { "<leader><leader>", "<cmd>CodeCompanionChat toggle<cr>", desc = "Toggle AI Chat" },
       { "<leader>ac", "<cmd>CodeCompanionChat toggle<cr>", desc = "Toggle Chat" },
@@ -227,13 +548,21 @@ return {
       { "<leader>ad", "<cmd>CodeCompanionDiff<cr>", desc = "Current Diff" },
       { "<leader>al", "<cmd>CodeCompanionChat diff<cr>", desc = "All Diffs" },
       { "<leader>as", "<cmd>CodeCompanionChat stop<cr>", desc = "Stop Generation" },
+      { "<leader>ah", "<cmd>CodeCompanionHistory<cr>", desc = "Chat History" },
 
+      -- Visual mode
       { "<leader>a", group = "AI (CodeCompanion)", mode = "v" },
       { "<leader>aa", ":CodeCompanion<cr>", desc = "Inline Assistant", mode = "v" },
       { "<leader>ac", ":CodeCompanionChat<cr>", desc = "Chat with Selection", mode = "v" },
+      { "<leader>ae", ":CodeCompanion /explain<cr>", desc = "Explain Code", mode = "v" },
+      { "<leader>ar", ":CodeCompanion /review<cr>", desc = "Review Code", mode = "v" },
+      { "<leader>af", ":CodeCompanion /fix<cr>", desc = "Fix Code", mode = "v" },
+      { "<leader>at", ":CodeCompanion /tests<cr>", desc = "Write Tests", mode = "v" },
+      { "<leader>aR", ":CodeCompanion /refactor<cr>", desc = "Refactor Code", mode = "v" },
+      { "<leader>ad", ":CodeCompanion /doc<cr>", desc = "Add Documentation", mode = "v" },
     })
 
-    -- 4. Progress display
+    -- 5. Progress display with fidget.nvim
     local fidget_handles = {}
     local group = vim.api.nvim_create_augroup("CodeCompanionHooks", {})
 
@@ -243,7 +572,7 @@ return {
       callback = function(request)
         local id = request.data.id
         fidget_handles[id] = require("fidget.progress").handle.create({
-          title = " CodeCompanion",
+          title = " CodeCompanion",
           message = "Generating...",
           lsp_client = { name = "AI" },
         })
@@ -262,7 +591,7 @@ return {
       end,
     })
 
-    -- 5. Set highlight groups for role headers
+    -- 6. Highlight groups
     vim.api.nvim_set_hl(0, "CodeCompanionChatHeader", { link = "Title", bold = true })
     vim.api.nvim_set_hl(0, "CodeCompanionChatSeparator", { link = "Comment" })
   end,
