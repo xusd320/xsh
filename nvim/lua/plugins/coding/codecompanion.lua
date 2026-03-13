@@ -6,26 +6,17 @@ return {
     "nvim-treesitter/nvim-treesitter",
     "ravitemer/codecompanion-history.nvim",
     "echasnovski/mini.diff",
+    "sindrets/diffview.nvim", -- Added for better diff view
+    "stevearc/dressing.nvim", -- Better UI for inputs
+    "nvim-telescope/telescope.nvim",
   },
   config = function()
-    -- 1. Optimize mini.diff
+    -- 1. Optimize mini.diff (keep for inline diffs)
     require("mini.diff").setup({
       view = {
-        style = "sign", -- Use sign column for diffs
-        signs = {
-          add = "▎", -- Consistent with gitsigns style
-          change = "▎",
-          delete = "",
-        },
+        style = "sign",
+        signs = { add = "▎", change = "▎", delete = "" },
       },
-    })
-
-    -- Enable mini.diff for CodeCompanion buffers
-    vim.api.nvim_create_autocmd("FileType", {
-      pattern = "codecompanion",
-      callback = function()
-        require("mini.diff").enable(0)
-      end,
     })
 
     -- 2. CodeCompanion core optimization
@@ -34,16 +25,34 @@ return {
         gemini_cli = function()
           return require("codecompanion.adapters").extend("gemini_cli", {
             command = "gemini",
-            env = {
-              GEMINI_API_KEY = os.getenv("GEMINI_API_KEY"),
+            args = {
+              "--experimental-acp",
+              "--quiet",
             },
             schema = {
               model = {
-                default = "gemini-2.0-flash-exp",
+                default = "gemini-3.1-pro-preview",
+                choices = {
+                  "gemini-3.1-pro-preview",
+                  "gemini-3.1-flash-preview",
+                  "gemini-3.1-flash-lite",
+                },
+              },
+            },
+            -- Extend capabilities for more advanced agentic behavior
+            parameters = {
+              clientCapabilities = {
+                fs = {
+                  readTextFile = true,
+                  writeTextFile = true,
+                  listFiles = true,
+                  searchFiles = true,
+                },
               },
             },
             opts = {
               user_approval = true,
+              show_model_choices = true,
             },
           })
         end,
@@ -68,7 +77,7 @@ return {
           window = {
             layout = "vertical",
             position = "right",
-            width = 0.40, -- Slightly narrower for better balance
+            width = 0.45,
             opts = {
               breakindent = true,
               cursorline = true,
@@ -77,13 +86,29 @@ return {
               signcolumn = "yes",
               number = false,
               relativenumber = false,
+              -- Optimization: Set foldmethod to manual to prevent startup hang
+              foldenable = true,
+              foldmethod = "manual",
             },
+          },
+          icons = {
+            buffer_sync_all = "󰪴 ",
+            buffer_sync_diff = " ",
+            chat_fold = " ",
+            tool_pending = " ",
+            tool_in_progress = " ",
+            tool_failure = " ",
+            tool_success = " ",
           },
         },
         diff = {
           enabled = true,
-          close_chat_at_completion = true,
-          provider = "mini_diff",
+          close_chat_at_completion = false, -- Keep chat open to review changes
+          provider = "diffview", -- Use diffview for much better experience
+          list_opencmd = "vsplit", -- Open diff list in a vertical split
+        },
+        icons = {
+          warning = " ",
         },
       },
 
@@ -91,19 +116,80 @@ return {
         chat = {
           adapter = "gemini_cli",
           roles = {
-            llm = "Gemini",
-            user = "Me",
+            llm = " Gemini",
+            user = " Me",
           },
           slash_commands = {
             ["file"] = {
-              callback = "chat.slash_commands.file",
-              description = "Select a file",
+              path = "interactions.chat.slash_commands.builtin.file",
+              description = "Insert a file",
               opts = { provider = "telescope", contains_code = true },
             },
             ["buffer"] = {
-              callback = "chat.slash_commands.buffer",
-              description = "Select a buffer",
+              path = "interactions.chat.slash_commands.builtin.buffer",
+              description = "Insert a buffer",
               opts = { provider = "telescope", contains_code = true },
+            },
+            ["symbols"] = {
+              path = "interactions.chat.slash_commands.builtin.symbols",
+              description = "Insert symbols",
+              opts = { provider = "telescope", contains_code = true },
+            },
+            ["help"] = {
+              path = "interactions.chat.slash_commands.builtin.help",
+              description = "Insert help tags",
+            },
+          },
+          editor_context = {
+            ["buffer"] = {
+              path = "interactions.chat.editor_context.buffer",
+              replace = function(prefix, message, bufnr)
+                local buf_utils = require("codecompanion.utils.buffers")
+                local buf_id = bufnr
+                if not vim.api.nvim_buf_is_valid(buf_id) then
+                  buf_id = vim.api.nvim_get_current_buf()
+                end
+                if not vim.api.nvim_buf_is_valid(buf_id) then
+                  return message:gsub(vim.pesc(prefix) .. "{buffer}", "unknown buffer")
+                end
+                local ok, bufname = pcall(buf_utils.name_from_bufnr, buf_id)
+                if not ok then bufname = "unknown" end
+                local replacement = "file `" .. bufname .. "` (with buffer number: " .. buf_id .. ")"
+                return message:gsub(vim.pesc(prefix) .. "{buffer}", replacement)
+              end,
+            },
+          },
+          keymaps = {
+            send = {
+              modes = { n = { "<CR>", "<C-s>" }, i = "<C-s>" },
+              index = 1,
+              callback = "keymaps.send",
+              description = "Send response",
+            },
+            close = {
+              modes = { n = "q", i = "<C-c>" },
+              index = 2,
+              callback = "keymaps.close",
+              description = "Close chat",
+            },
+            regenerate = {
+              modes = { n = "gr" },
+              index = 3,
+              callback = "keymaps.regenerate",
+              description = "Regenerate",
+            },
+            -- Navigation in diffs
+            next_hunk = {
+              modes = { n = "]]" },
+              index = 4,
+              callback = "keymaps.next_hunk",
+              description = "Next Hunk",
+            },
+            previous_hunk = {
+              modes = { n = "[[" },
+              index = 5,
+              callback = "keymaps.previous_hunk",
+              description = "Previous Hunk",
             },
           },
           opts = {
@@ -126,9 +212,8 @@ return {
         agent = {
           adapter = "gemini_cli",
           tools = {
-            ["files"] = {
-              opts = { user_approval = true },
-            },
+            ["files"] = { opts = { user_approval = true } },
+            ["run_command"] = { opts = { user_approval = true } },
           },
           opts = {
             show_diff = true,
@@ -144,29 +229,33 @@ return {
         send_code = true,
         use_default_actions = true,
         use_default_prompts = true,
+        triggers = {
+          slash_commands = "/",
+          editor_context = "#",
+          tools = "@",
+        },
       },
     })
 
-    -- 3. Keymap optimization (Which-Key style)
+    -- 3. Keymap optimization
     require("which-key").add({
-      -- Normal Mode
-      { "<leader>a",  group = "AI (CodeCompanion)" },
-      { "<leader><leader>", "<cmd>CodeCompanionChat toggle<cr>", desc = "Toggle AI Chat (Fast)" },
-      { "<leader>ac", "<cmd>CodeCompanionChat toggle<cr>",   desc = "Toggle Chat" },
-      { "<leader>aa", "<cmd>CodeCompanion<cr>",              desc = "Inline Assistant" },
-      { "<leader>ap", "<cmd>CodeCompanionActions<cr>",       desc = "Action Palette" },
-      { "<leader>ad", "<cmd>CodeCompanionDiff<cr>",          desc = "Current Diff" },
-      { "<leader>al", "<cmd>CodeCompanionChat diff<cr>",     desc = "All Diffs" },
+      { "<leader>a", group = "AI (CodeCompanion)" },
+      { "<leader><leader>", "<cmd>CodeCompanionChat toggle<cr>", desc = "Toggle AI Chat" },
+      { "<leader>ac", "<cmd>CodeCompanionChat toggle<cr>", desc = "Toggle Chat" },
+      { "<leader>aa", "<cmd>CodeCompanion<cr>", desc = "Inline Assistant" },
+      { "<leader>ap", "<cmd>CodeCompanionActions<cr>", desc = "Action Palette" },
+      { "<leader>ad", "<cmd>CodeCompanionDiff<cr>", desc = "Current Diff" },
+      { "<leader>al", "<cmd>CodeCompanionChat diff<cr>", desc = "All Diffs" },
+      { "<leader>as", "<cmd>CodeCompanionChat stop<cr>", desc = "Stop Generation" },
 
-      -- Visual Mode
-      { "<leader>a",  group = "AI (CodeCompanion)",          mode = "v" },
-      { "<leader>aa", ":CodeCompanion<cr>",                  desc = "Inline Assistant",    mode = "v" },
-      { "<leader>ac", ":CodeCompanionChat<cr>",              desc = "Chat with Selection", mode = "v" },
+      { "<leader>a", group = "AI (CodeCompanion)", mode = "v" },
+      { "<leader>aa", ":CodeCompanion<cr>", desc = "Inline Assistant", mode = "v" },
+      { "<leader>ac", ":CodeCompanionChat<cr>", desc = "Chat with Selection", mode = "v" },
     })
 
-    -- 4. Progress display (Fidget.nvim integration)
-    local group = vim.api.nvim_create_augroup("CodeCompanionHooks", {})
+    -- 4. Progress display
     local fidget_handles = {}
+    local group = vim.api.nvim_create_augroup("CodeCompanionHooks", {})
 
     vim.api.nvim_create_autocmd("User", {
       pattern = "CodeCompanionRequestStarted",
@@ -192,5 +281,9 @@ return {
         end
       end,
     })
+
+    -- 5. Set highlight groups for role headers
+    vim.api.nvim_set_hl(0, "CodeCompanionChatHeader", { link = "Title", bold = true })
+    vim.api.nvim_set_hl(0, "CodeCompanionChatSeparator", { link = "Comment" })
   end,
 }
