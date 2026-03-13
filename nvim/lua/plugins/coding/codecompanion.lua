@@ -31,15 +31,15 @@ return {
     -- 2. CodeCompanion core optimization
     require("codecompanion").setup({
       adapters = {
-        opencode = function()
-          return require("codecompanion.adapters").extend("opencode", {
-            command = "opencode",
+        gemini_cli = function()
+          return require("codecompanion.adapters").extend("gemini_cli", {
+            command = "gemini",
             env = {
               GEMINI_API_KEY = os.getenv("GEMINI_API_KEY"),
             },
             schema = {
               model = {
-                default = "gemini-3-flash-preview",
+                default = "gemini-2.0-flash-exp",
               },
             },
             opts = {
@@ -89,7 +89,7 @@ return {
 
       interactions = {
         chat = {
-          adapter = "opencode",
+          adapter = "gemini_cli",
           roles = {
             llm = "Gemini",
             user = "Me",
@@ -112,7 +112,7 @@ return {
           },
         },
         inline = {
-          adapter = "opencode",
+          adapter = "gemini_cli",
           keymaps = {
             accept_change = { modes = { n = "ga" }, index = 1, desc = "Accept change" },
             reject_change = { modes = { n = "gr" }, index = 2, desc = "Reject change" },
@@ -124,7 +124,7 @@ return {
           },
         },
         agent = {
-          adapter = "opencode",
+          adapter = "gemini_cli",
           tools = {
             ["files"] = {
               opts = { user_approval = true },
