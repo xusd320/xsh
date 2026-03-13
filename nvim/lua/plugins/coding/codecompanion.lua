@@ -26,7 +26,7 @@ return {
           return require("codecompanion.adapters").extend("gemini_cli", {
             command = "gemini",
             args = {
-              "--experimental-acp",
+              "--acp",
               "--quiet",
             },
             schema = {
@@ -178,19 +178,6 @@ return {
               callback = "keymaps.regenerate",
               description = "Regenerate",
             },
-            -- Navigation in diffs
-            next_hunk = {
-              modes = { n = "]]" },
-              index = 4,
-              callback = "keymaps.next_hunk",
-              description = "Next Hunk",
-            },
-            previous_hunk = {
-              modes = { n = "[[" },
-              index = 5,
-              callback = "keymaps.previous_hunk",
-              description = "Previous Hunk",
-            },
           },
           opts = {
             auto_submit = false,
@@ -199,10 +186,6 @@ return {
         },
         inline = {
           adapter = "gemini_cli",
-          keymaps = {
-            accept_change = { modes = { n = "ga" }, index = 1, desc = "Accept change" },
-            reject_change = { modes = { n = "gr" }, index = 2, desc = "Reject change" },
-          },
           opts = {
             user_approval = true,
             show_diff = true,
