@@ -19,7 +19,23 @@ return {
       },
     })
 
-    -- 2. CodeCompanion core optimization
+    -- 2. Monkey-patch: guard against invalid buffer in editor_context/buffer replace
+    -- Upstream bug: https://github.com/olimorris/codecompanion.nvim/issues/952
+    do
+      local buf_ec = require("codecompanion.interactions.chat.editor_context.buffer")
+      local original_replace = buf_ec.replace
+      buf_ec.replace = function(prefix, message, bufnr)
+        if not vim.api.nvim_buf_is_valid(bufnr) then
+          bufnr = vim.api.nvim_get_current_buf()
+        end
+        if not vim.api.nvim_buf_is_valid(bufnr) then
+          return message:gsub(vim.pesc(prefix) .. "{buffer}", "unknown buffer")
+        end
+        return original_replace(prefix, message, bufnr)
+      end
+    end
+
+    -- 3. CodeCompanion core optimization
     require("codecompanion").setup({
       adapters = {
         gemini_cli = function()
@@ -138,25 +154,6 @@ return {
             ["help"] = {
               path = "interactions.chat.slash_commands.builtin.help",
               description = "Insert help tags",
-            },
-          },
-          editor_context = {
-            ["buffer"] = {
-              path = "interactions.chat.editor_context.buffer",
-              replace = function(prefix, message, bufnr)
-                local buf_utils = require("codecompanion.utils.buffers")
-                local buf_id = bufnr
-                if not vim.api.nvim_buf_is_valid(buf_id) then
-                  buf_id = vim.api.nvim_get_current_buf()
-                end
-                if not vim.api.nvim_buf_is_valid(buf_id) then
-                  return message:gsub(vim.pesc(prefix) .. "{buffer}", "unknown buffer")
-                end
-                local ok, bufname = pcall(buf_utils.name_from_bufnr, buf_id)
-                if not ok then bufname = "unknown" end
-                local replacement = "file `" .. bufname .. "` (with buffer number: " .. buf_id .. ")"
-                return message:gsub(vim.pesc(prefix) .. "{buffer}", replacement)
-              end,
             },
           },
           keymaps = {
