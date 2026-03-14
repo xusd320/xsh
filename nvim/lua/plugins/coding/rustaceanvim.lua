@@ -32,7 +32,6 @@ return {
           end,
           default_settings = {
             ["rust-analyzer"] = {
-              linkedProjects = { "Cargo.toml" },
               cachePriming = {
                 enable = false,
               },
