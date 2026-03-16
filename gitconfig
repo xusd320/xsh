@@ -1,3 +1,7 @@
+[user]
+    name = xusd320
+    email = xusd320@gmail.com
+
 [core]
     pager = delta
     excludesfile = ~/.config/.gitignore_global
