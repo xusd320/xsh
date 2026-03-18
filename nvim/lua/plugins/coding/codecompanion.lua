@@ -22,7 +22,7 @@ return {
     -- 2. Monkey-patch: guard against invalid buffer in editor_context/buffer replace
     -- Upstream bug: https://github.com/olimorris/codecompanion.nvim/issues/952
     do
-      local buf_ec = require("codecompanion.interactions.chat.editor_context.buffer")
+      local buf_ec = require("codecompanion.interactions.shared.editor_context.buffer")
       local original_replace = buf_ec.replace
       buf_ec.replace = function(prefix, message, bufnr)
         if not vim.api.nvim_buf_is_valid(bufnr) then
