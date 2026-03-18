@@ -21,13 +21,13 @@ fullscreen = true
 window-padding-x = 10
 window-padding-y = 10
 window-decoration = true
-window-save-state = always
+window-save-state = never
 
 # --- Aesthetics ---
 background-opacity = 0.95
 background-blur = true
 # Use 'hidden' for a cleaner look or 'tabs' for native tab bar
-macos-titlebar-style = hidden
+macos-titlebar-style = tabs
 unfocused-split-opacity = 0.8
 
 # --- Clipboard ---
@@ -86,6 +86,7 @@ keybind = super+shift+f=toggle_split_zoom
 
 # Tab Management
 keybind = super+t=new_tab
+keybind = super+shift+t=new_tab
 keybind = super+alt+o=toggle_tab_overview
 keybind = super+shift+[=previous_tab
 keybind = super+shift+]=next_tab
