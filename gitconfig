@@ -83,4 +83,4 @@
 [http]
 	postBuffer = 524288000
 [oh-my-zsh]
-	git-commit-alias = 400591e71c894063eb08b6cae18ab66c19a1b756
+	git-commit-alias = 44394e7225cd2e2200fa2e6a0ed957fed6a4d5d0

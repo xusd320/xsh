@@ -17,6 +17,12 @@ brew tap laishulu/homebrew
 brew install wget llvm lld bat jq neovim ripgrep fzf fd starship git-delta eza fnm macism cloc im-select zoxide zsh-history-substring-search lazygit rustup cmake tree-sitter
 brew install zsh zsh-syntax-highlighting zsh-autosuggestions
 
+# Install OpenJDK@21
+brew tap sdkman/tap
+brew install sdkman-cli
+sdk install maven 3.6.3
+sdk install java 21.0.2-open
+
 # GUI Applications & Fonts
 brew install --cask font-monaspace-nerd-font visual-studio-code rectangle switchhosts ghostty
 
@@ -30,11 +36,11 @@ git submodule update --init
 mkdir -p ~/.config
 
 force_link() {
-    src=$1
-    dst=$2
-    rm -rf "$dst"
-    ln -s "$src" "$dst"
-    echo "Linked $src -> $dst"
+  src=$1
+  dst=$2
+  rm -rf "$dst"
+  ln -s "$src" "$dst"
+  echo "Linked $src -> $dst"
 }
 
 force_link ~/xsh/ghostty ~/.config/ghostty
