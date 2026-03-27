@@ -22,6 +22,7 @@ brew tap sdkman/tap
 brew install sdkman-cli
 sdk install maven 3.6.3
 sdk install java 21.0.2-open
+sdk default java 21.0.2-open
 
 # GUI Applications & Fonts
 brew install --cask font-monaspace-nerd-font visual-studio-code rectangle switchhosts ghostty

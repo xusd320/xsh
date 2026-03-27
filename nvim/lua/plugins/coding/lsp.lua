@@ -165,6 +165,7 @@ return {
         "vim-language-server",
         "vtsls",
         "yaml-language-server",
+        "jdtls",
       },
     },
   },
