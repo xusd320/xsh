@@ -19,9 +19,6 @@ return {
             },
           },
         },
-        root_dir = function()
-          return vim.fn.getcwd()
-        end,
       },
       servers = {},
       document_highlight = {
@@ -78,6 +75,8 @@ return {
         local server_opts = vim.tbl_deep_extend("force", {
           capabilities = vim.deepcopy(capabilities),
         }, opts.defaults or {}, (opts.servers or {})[server] or {})
+
+
 
         lspconfig[server].setup(server_opts)
       end
@@ -165,7 +164,7 @@ return {
         "vim-language-server",
         "vtsls",
         "yaml-language-server",
-        "jdtls",
+
       },
     },
   },
