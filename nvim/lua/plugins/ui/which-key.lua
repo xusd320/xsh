@@ -14,6 +14,7 @@ return {
       align = "center",
     },
     icons = {
+      mappings = false,
       breadcrumb = "»",
       separator = "➜",
       group = "+",
@@ -33,7 +34,7 @@ return {
       { "<leader>u", group = "UI" },
       { "<leader>w", group = "Window" },
       { "<leader>x", group = "Diagnostics" },
-      { "<leader>a", group = "AI" },
+      { "<leader>d", group = "Debug" },
       { "[", group = "Prev" },
       { "]", group = "Next" },
       { "g", group = "Goto" },

@@ -5,5 +5,6 @@ return {
   opts = {
     file_types = { "markdown", "codecompanion" },
     render_modes = { "n", "c", "i", "v", "V" },
+    latex = { enabled = false },
   },
 }

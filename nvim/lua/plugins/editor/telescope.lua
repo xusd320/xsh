@@ -10,6 +10,16 @@ return {
     {
       "princejoogie/dir-telescope.nvim",
       config = function()
+        -- Monkey-patch: fix deprecated vim.validate{} syntax (upstream hasn't updated)
+        local settings = require("dir-telescope.settings")
+        settings.set = function(opts)
+          settings.current = vim.tbl_deep_extend("force", settings.current, opts)
+          vim.validate("hidden", settings.current.hidden, "boolean")
+          vim.validate("debug", settings.current.debug, "boolean")
+          vim.validate("no_ignore", settings.current.no_ignore, "boolean")
+          vim.validate("show_preview", settings.current.show_preview, "boolean")
+          vim.validate("follow_symlinks", settings.current.follow_symlinks, "boolean")
+        end
         require("dir-telescope").setup({
           hidden = false,
           no_ignore = true,

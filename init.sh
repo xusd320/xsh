@@ -14,7 +14,7 @@ brew tap daipeihust/tap
 brew tap laishulu/homebrew
 
 # CLI Tools
-brew install wget llvm lld bat jq neovim ripgrep fzf fd starship git-delta eza fnm macism cloc im-select zoxide zsh-history-substring-search lazygit rustup cmake tree-sitter
+brew install wget llvm lld bat jq neovim ripgrep fzf fd starship git-delta eza fnm macism cloc im-select zoxide zsh-history-substring-search lazygit rustup cmake tree-sitter wordnet
 brew install zsh zsh-syntax-highlighting zsh-autosuggestions
 
 # Install OpenJDK@21

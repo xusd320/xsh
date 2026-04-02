@@ -34,15 +34,11 @@ return {
       local capabilities = require("blink.cmp").get_lsp_capabilities()
 
       -- UI: Style floating windows
-      local border = "rounded"
-      local handlers_opts = {
-        border = border,
+      local float_opts = {
+        border = "rounded",
         max_width = 80,
         max_height = 20,
       }
-
-      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, handlers_opts)
-      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, handlers_opts)
 
       -- UI: Diagnostic signs and config
       local icons = {
@@ -110,15 +106,15 @@ return {
           map("gr", "<cmd>Telescope lsp_references<cr>", "References")
           map("gI", "<cmd>Telescope lsp_implementations<cr>", "Goto Implementation")
           map("gy", "<cmd>Telescope lsp_type_definitions<cr>", "Goto Type Definition")
-          map("K", vim.lsp.buf.hover, "Hover")
-          map("gK", vim.lsp.buf.signature_help, "Signature Help")
-          map("<c-k>", vim.lsp.buf.signature_help, "Signature Help", "i")
+          map("K", function() vim.lsp.buf.hover(float_opts) end, "Hover")
+          map("gK", function() vim.lsp.buf.signature_help(float_opts) end, "Signature Help")
+          map("<c-k>", function() vim.lsp.buf.signature_help(float_opts) end, "Signature Help", "i")
           map("<leader>ca", vim.lsp.buf.code_action, "Code Action", { "n", "v" })
           map("<leader>cr", vim.lsp.buf.rename, "Rename")
           map("<leader>cf", function() vim.lsp.buf.format({ async = true }) end, "Format")
 
           -- Document Highlight (highlight references of symbol under cursor)
-          if client and client.supports_method("textDocument/documentHighlight") then
+          if client and client:supports_method("textDocument/documentHighlight") then
             local highlight_augroup = vim.api.nvim_create_augroup("lsp_document_highlight_" .. buffer, { clear = true })
             vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
               group = highlight_augroup,

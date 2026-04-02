@@ -67,7 +67,6 @@ return {
   {
     "akinsho/git-conflict.nvim",
     event = { "BufRead", "BufNewFile" },
-    tag = "v2.1.0",
     opts = {
       default_mappings = false,
       default_commands = true,

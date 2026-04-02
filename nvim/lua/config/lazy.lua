@@ -21,6 +21,7 @@ require("lazy").setup({
     lazy = true,
     version = false,
   },
+  rocks = { enabled = false },
   install = {},
   checker = { enabled = false },
   performance = {

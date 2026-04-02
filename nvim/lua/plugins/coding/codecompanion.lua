@@ -11,6 +11,21 @@ return {
     "nvim-telescope/telescope.nvim",
   },
   config = function()
+    -- 0. Compat shim: silence deprecated vim.validate{table} warnings from upstream plugins
+    -- codecompanion uses old-style vim.validate({k={v,"type"}}) which is deprecated in Nvim 0.12+
+    -- This shim detects old-style calls and translates them to the new API
+    local original_validate = vim.validate
+    vim.validate = function(name, ...)
+      if type(name) == "table" then
+        for k, v in pairs(name) do
+          local value, expected, optional = v[1], v[2], v[3]
+          original_validate(k, value, expected, optional)
+        end
+        return
+      end
+      return original_validate(name, ...)
+    end
+
     -- 1. Optimize mini.diff (keep for inline diffs)
     require("mini.diff").setup({
       view = {
