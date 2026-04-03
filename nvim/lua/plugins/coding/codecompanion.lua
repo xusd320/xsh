@@ -12,14 +12,26 @@ return {
   },
   config = function()
     -- 0. Compat shim: silence deprecated vim.validate{table} warnings from upstream plugins
-    -- codecompanion uses old-style vim.validate({k={v,"type"}}) which is deprecated in Nvim 0.12+
+    -- codecompanion/git-conflict use old-style vim.validate({k={v,"type"}}) which is deprecated in Nvim 0.12+
     -- This shim detects old-style calls and translates them to the new API
     local original_validate = vim.validate
+    -- Old API used single-char abbreviations; new API requires full type names
+    local type_aliases = { s = "string", n = "number", t = "table", b = "boolean", f = "function" }
     vim.validate = function(name, ...)
       if type(name) == "table" then
         for k, v in pairs(name) do
           local value, expected, optional = v[1], v[2], v[3]
-          original_validate(k, value, expected, optional)
+          if type(expected) == "function" then
+            -- Old API allowed a custom validator function; call it directly
+            local ok, err = expected(value)
+            if not ok then
+              error(string.format("invalid argument '%s': %s", k, err or "validation failed"))
+            end
+          else
+            -- Translate type abbreviations (e.g. 'n' -> 'number')
+            expected = type_aliases[expected] or expected
+            original_validate(k, value, expected, optional)
+          end
         end
         return
       end
